@@ -30,11 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             SideBar = new Panel();
-            button5 = new ReaLTaiizor.Controls.Button();
-            button4 = new ReaLTaiizor.Controls.Button();
-            button3 = new ReaLTaiizor.Controls.Button();
-            button2 = new ReaLTaiizor.Controls.Button();
-            button1 = new ReaLTaiizor.Controls.Button();
+            btnHistorico = new ReaLTaiizor.Controls.Button();
+            btnOtimizacao = new ReaLTaiizor.Controls.Button();
+            btnLimpeza = new ReaLTaiizor.Controls.Button();
+            btnDiagnostico = new ReaLTaiizor.Controls.Button();
             pictureBox1 = new PictureBox();
             PanelCPU = new FlowLayoutPanel();
             dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
@@ -59,11 +58,10 @@
             // SideBar
             // 
             SideBar.BackColor = Color.Black;
-            SideBar.Controls.Add(button5);
-            SideBar.Controls.Add(button4);
-            SideBar.Controls.Add(button3);
-            SideBar.Controls.Add(button2);
-            SideBar.Controls.Add(button1);
+            SideBar.Controls.Add(btnHistorico);
+            SideBar.Controls.Add(btnOtimizacao);
+            SideBar.Controls.Add(btnLimpeza);
+            SideBar.Controls.Add(btnDiagnostico);
             SideBar.Controls.Add(pictureBox1);
             SideBar.Dock = DockStyle.Left;
             SideBar.Location = new Point(0, 0);
@@ -71,100 +69,85 @@
             SideBar.Size = new Size(200, 668);
             SideBar.TabIndex = 0;
             // 
-            // button5
+            // btnHistorico
             // 
-            button5.BackColor = Color.Transparent;
-            button5.BorderColor = Color.FromArgb(32, 34, 37);
-            button5.EnteredBorderColor = Color.Maroon;
-            button5.EnteredColor = Color.FromArgb(32, 34, 37);
-            button5.Font = new Font("Microsoft Sans Serif", 12F);
-            button5.Image = null;
-            button5.ImageAlign = ContentAlignment.MiddleLeft;
-            button5.InactiveColor = Color.FromArgb(32, 34, 37);
-            button5.Location = new Point(38, 424);
-            button5.Name = "button5";
-            button5.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button5.PressedColor = Color.FromArgb(165, 37, 37);
-            button5.Size = new Size(120, 40);
-            button5.TabIndex = 11;
-            button5.Text = "Historico";
-            button5.TextAlignment = StringAlignment.Center;
+            btnHistorico.BackColor = Color.Black;
+            btnHistorico.BorderColor = Color.Transparent;
+            btnHistorico.EnteredBorderColor = Color.DarkGray;
+            btnHistorico.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnHistorico.Font = new Font("Microsoft Sans Serif", 12F);
+            btnHistorico.Image = null;
+            btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHistorico.InactiveColor = Color.FromArgb(32, 34, 37);
+            btnHistorico.Location = new Point(12, 374);
+            btnHistorico.Name = "btnHistorico";
+            btnHistorico.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnHistorico.PressedColor = Color.FromArgb(165, 37, 37);
+            btnHistorico.Size = new Size(173, 40);
+            btnHistorico.TabIndex = 11;
+            btnHistorico.Text = "Historico";
+            btnHistorico.TextAlignment = StringAlignment.Center;
+            btnHistorico.Click += btnHistorico_Click;
             // 
-            // button4
+            // btnOtimizacao
             // 
-            button4.BackColor = Color.Transparent;
-            button4.BorderColor = Color.FromArgb(32, 34, 37);
-            button4.EnteredBorderColor = Color.Maroon;
-            button4.EnteredColor = Color.FromArgb(32, 34, 37);
-            button4.Font = new Font("Microsoft Sans Serif", 12F);
-            button4.Image = null;
-            button4.ImageAlign = ContentAlignment.MiddleLeft;
-            button4.InactiveColor = Color.FromArgb(32, 34, 37);
-            button4.Location = new Point(38, 358);
-            button4.Name = "button4";
-            button4.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button4.PressedColor = Color.FromArgb(165, 37, 37);
-            button4.Size = new Size(120, 40);
-            button4.TabIndex = 10;
-            button4.Text = "Otimização";
-            button4.TextAlignment = StringAlignment.Center;
+            btnOtimizacao.BackColor = Color.Black;
+            btnOtimizacao.BorderColor = Color.Transparent;
+            btnOtimizacao.EnteredBorderColor = Color.DarkGray;
+            btnOtimizacao.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnOtimizacao.Font = new Font("Microsoft Sans Serif", 12F);
+            btnOtimizacao.Image = null;
+            btnOtimizacao.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOtimizacao.InactiveColor = Color.FromArgb(32, 34, 37);
+            btnOtimizacao.Location = new Point(12, 306);
+            btnOtimizacao.Name = "btnOtimizacao";
+            btnOtimizacao.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnOtimizacao.PressedColor = Color.FromArgb(165, 37, 37);
+            btnOtimizacao.Size = new Size(173, 40);
+            btnOtimizacao.TabIndex = 10;
+            btnOtimizacao.Text = "Otimização";
+            btnOtimizacao.TextAlignment = StringAlignment.Center;
+            btnOtimizacao.Click += btnOtimizacao_Click;
             // 
-            // button3
+            // btnLimpeza
             // 
-            button3.BackColor = Color.Transparent;
-            button3.BorderColor = Color.FromArgb(32, 34, 37);
-            button3.EnteredBorderColor = Color.Maroon;
-            button3.EnteredColor = Color.FromArgb(32, 34, 37);
-            button3.Font = new Font("Microsoft Sans Serif", 12F);
-            button3.Image = null;
-            button3.ImageAlign = ContentAlignment.MiddleLeft;
-            button3.InactiveColor = Color.FromArgb(32, 34, 37);
-            button3.Location = new Point(38, 295);
-            button3.Name = "button3";
-            button3.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button3.PressedColor = Color.FromArgb(165, 37, 37);
-            button3.Size = new Size(120, 40);
-            button3.TabIndex = 9;
-            button3.Text = "Limpeza";
-            button3.TextAlignment = StringAlignment.Center;
+            btnLimpeza.BackColor = Color.Black;
+            btnLimpeza.BorderColor = Color.Transparent;
+            btnLimpeza.EnteredBorderColor = Color.DarkGray;
+            btnLimpeza.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnLimpeza.Font = new Font("Microsoft Sans Serif", 12F);
+            btnLimpeza.Image = null;
+            btnLimpeza.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLimpeza.InactiveColor = Color.FromArgb(32, 34, 37);
+            btnLimpeza.Location = new Point(12, 238);
+            btnLimpeza.Name = "btnLimpeza";
+            btnLimpeza.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnLimpeza.PressedColor = Color.FromArgb(165, 37, 37);
+            btnLimpeza.Size = new Size(173, 40);
+            btnLimpeza.TabIndex = 9;
+            btnLimpeza.Text = "Limpeza";
+            btnLimpeza.TextAlignment = StringAlignment.Center;
+            btnLimpeza.Click += btnLimpeza_Click;
             // 
-            // button2
+            // btnDiagnostico
             // 
-            button2.BackColor = Color.Transparent;
-            button2.BorderColor = Color.FromArgb(32, 34, 37);
-            button2.EnteredBorderColor = Color.Maroon;
-            button2.EnteredColor = Color.FromArgb(32, 34, 37);
-            button2.Font = new Font("Microsoft Sans Serif", 12F);
-            button2.Image = null;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.InactiveColor = Color.FromArgb(32, 34, 37);
-            button2.Location = new Point(38, 228);
-            button2.Name = "button2";
-            button2.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button2.PressedColor = Color.FromArgb(165, 37, 37);
-            button2.Size = new Size(120, 40);
-            button2.TabIndex = 8;
-            button2.Text = "Diagnostico";
-            button2.TextAlignment = StringAlignment.Center;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.Transparent;
-            button1.BorderColor = Color.FromArgb(32, 34, 37);
-            button1.EnteredBorderColor = Color.Maroon;
-            button1.EnteredColor = Color.FromArgb(32, 34, 37);
-            button1.Font = new Font("Microsoft Sans Serif", 12F);
-            button1.Image = null;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.InactiveColor = Color.FromArgb(32, 34, 37);
-            button1.Location = new Point(38, 162);
-            button1.Name = "button1";
-            button1.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            button1.PressedColor = Color.FromArgb(165, 37, 37);
-            button1.Size = new Size(120, 40);
-            button1.TabIndex = 7;
-            button1.Text = "Dashboard";
-            button1.TextAlignment = StringAlignment.Center;
+            btnDiagnostico.BackColor = Color.Black;
+            btnDiagnostico.BorderColor = Color.Transparent;
+            btnDiagnostico.EnteredBorderColor = Color.DarkGray;
+            btnDiagnostico.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnDiagnostico.Font = new Font("Microsoft Sans Serif", 12F);
+            btnDiagnostico.Image = null;
+            btnDiagnostico.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDiagnostico.InactiveColor = Color.FromArgb(32, 34, 37);
+            btnDiagnostico.Location = new Point(12, 171);
+            btnDiagnostico.Name = "btnDiagnostico";
+            btnDiagnostico.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnDiagnostico.PressedColor = Color.FromArgb(165, 37, 37);
+            btnDiagnostico.Size = new Size(173, 40);
+            btnDiagnostico.TabIndex = 8;
+            btnDiagnostico.Text = "Diagnostico";
+            btnDiagnostico.TextAlignment = StringAlignment.Center;
+            btnDiagnostico.Click += btnDiagnostico_Click;
             // 
             // pictureBox1
             // 
@@ -181,7 +164,7 @@
             PanelCPU.BackColor = Color.FromArgb(21, 21, 21);
             PanelCPU.BorderStyle = BorderStyle.FixedSingle;
             PanelCPU.Controls.Add(dungeonLabel3);
-            PanelCPU.Location = new Point(210, 125);
+            PanelCPU.Location = new Point(267, 125);
             PanelCPU.Name = "PanelCPU";
             PanelCPU.Size = new Size(195, 100);
             PanelCPU.TabIndex = 1;
@@ -202,7 +185,7 @@
             PanelRam.BackColor = Color.FromArgb(21, 21, 21);
             PanelRam.BorderStyle = BorderStyle.FixedSingle;
             PanelRam.Controls.Add(dungeonLabel2);
-            PanelRam.Location = new Point(428, 125);
+            PanelRam.Location = new Point(485, 125);
             PanelRam.Name = "PanelRam";
             PanelRam.Size = new Size(195, 100);
             PanelRam.TabIndex = 2;
@@ -223,7 +206,7 @@
             PanelDisco.BackColor = Color.FromArgb(21, 21, 21);
             PanelDisco.BorderStyle = BorderStyle.FixedSingle;
             PanelDisco.Controls.Add(dungeonLabel4);
-            PanelDisco.Location = new Point(650, 125);
+            PanelDisco.Location = new Point(707, 125);
             PanelDisco.Name = "PanelDisco";
             PanelDisco.Size = new Size(195, 100);
             PanelDisco.TabIndex = 3;
@@ -245,7 +228,7 @@
             PanelGPU.BorderStyle = BorderStyle.FixedSingle;
             PanelGPU.Controls.Add(dungeonLabel5);
             PanelGPU.FlowDirection = FlowDirection.TopDown;
-            PanelGPU.Location = new Point(873, 125);
+            PanelGPU.Location = new Point(930, 125);
             PanelGPU.Name = "PanelGPU";
             PanelGPU.Size = new Size(195, 100);
             PanelGPU.TabIndex = 4;
@@ -352,11 +335,10 @@
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel2;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel4;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel5;
-        private ReaLTaiizor.Controls.Button button1;
-        private ReaLTaiizor.Controls.Button button5;
-        private ReaLTaiizor.Controls.Button button4;
-        private ReaLTaiizor.Controls.Button button3;
-        private ReaLTaiizor.Controls.Button button2;
+        private ReaLTaiizor.Controls.Button btnHistorico;
+        private ReaLTaiizor.Controls.Button btnOtimizacao;
+        private ReaLTaiizor.Controls.Button btnLimpeza;
+        private ReaLTaiizor.Controls.Button btnDiagnostico;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel6;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel7;
     }
