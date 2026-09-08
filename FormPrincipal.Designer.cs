@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             SideBar = new Panel();
             btnHistorico = new ReaLTaiizor.Controls.Button();
@@ -37,16 +38,21 @@
             pictureBox1 = new PictureBox();
             PanelCPU = new FlowLayoutPanel();
             dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
+            lblCPU = new ReaLTaiizor.Controls.DungeonLabel();
             PanelRam = new FlowLayoutPanel();
             dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
+            lblRAM = new ReaLTaiizor.Controls.DungeonLabel();
             PanelDisco = new FlowLayoutPanel();
             dungeonLabel4 = new ReaLTaiizor.Controls.DungeonLabel();
+            lblDISCO = new ReaLTaiizor.Controls.DungeonLabel();
             PanelGPU = new FlowLayoutPanel();
             dungeonLabel5 = new ReaLTaiizor.Controls.DungeonLabel();
+            lblGPU = new ReaLTaiizor.Controls.DungeonLabel();
             lbl = new ReaLTaiizor.Controls.BigLabel();
             dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             dungeonLabel6 = new ReaLTaiizor.Controls.DungeonLabel();
             dungeonLabel7 = new ReaLTaiizor.Controls.DungeonLabel();
+            timerSistema = new System.Windows.Forms.Timer(components);
             SideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             PanelCPU.SuspendLayout();
@@ -164,6 +170,7 @@
             PanelCPU.BackColor = Color.FromArgb(21, 21, 21);
             PanelCPU.BorderStyle = BorderStyle.FixedSingle;
             PanelCPU.Controls.Add(dungeonLabel3);
+            PanelCPU.Controls.Add(lblCPU);
             PanelCPU.Location = new Point(267, 125);
             PanelCPU.Name = "PanelCPU";
             PanelCPU.Size = new Size(195, 100);
@@ -180,11 +187,25 @@
             dungeonLabel3.TabIndex = 8;
             dungeonLabel3.Text = "CPU";
             // 
+            // lblCPU
+            // 
+            lblCPU.BackColor = Color.Transparent;
+            lblCPU.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblCPU.ForeColor = Color.Maroon;
+            lblCPU.ImageAlign = ContentAlignment.BottomCenter;
+            lblCPU.Location = new Point(3, 20);
+            lblCPU.Name = "lblCPU";
+            lblCPU.Size = new Size(159, 20);
+            lblCPU.TabIndex = 10;
+            lblCPU.Text = "Dados CPU";
+            lblCPU.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // PanelRam
             // 
             PanelRam.BackColor = Color.FromArgb(21, 21, 21);
             PanelRam.BorderStyle = BorderStyle.FixedSingle;
             PanelRam.Controls.Add(dungeonLabel2);
+            PanelRam.Controls.Add(lblRAM);
             PanelRam.Location = new Point(485, 125);
             PanelRam.Name = "PanelRam";
             PanelRam.Size = new Size(195, 100);
@@ -201,11 +222,25 @@
             dungeonLabel2.TabIndex = 7;
             dungeonLabel2.Text = "RAM";
             // 
+            // lblRAM
+            // 
+            lblRAM.BackColor = Color.Transparent;
+            lblRAM.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblRAM.ForeColor = Color.Maroon;
+            lblRAM.ImageAlign = ContentAlignment.BottomCenter;
+            lblRAM.Location = new Point(3, 20);
+            lblRAM.Name = "lblRAM";
+            lblRAM.Size = new Size(159, 20);
+            lblRAM.TabIndex = 11;
+            lblRAM.Text = "Dados RAM";
+            lblRAM.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // PanelDisco
             // 
             PanelDisco.BackColor = Color.FromArgb(21, 21, 21);
             PanelDisco.BorderStyle = BorderStyle.FixedSingle;
             PanelDisco.Controls.Add(dungeonLabel4);
+            PanelDisco.Controls.Add(lblDISCO);
             PanelDisco.Location = new Point(707, 125);
             PanelDisco.Name = "PanelDisco";
             PanelDisco.Size = new Size(195, 100);
@@ -222,11 +257,25 @@
             dungeonLabel4.TabIndex = 8;
             dungeonLabel4.Text = "DISCO";
             // 
+            // lblDISCO
+            // 
+            lblDISCO.BackColor = Color.Transparent;
+            lblDISCO.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblDISCO.ForeColor = Color.Maroon;
+            lblDISCO.ImageAlign = ContentAlignment.BottomCenter;
+            lblDISCO.Location = new Point(3, 20);
+            lblDISCO.Name = "lblDISCO";
+            lblDISCO.Size = new Size(159, 20);
+            lblDISCO.TabIndex = 12;
+            lblDISCO.Text = "DataDisco";
+            lblDISCO.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // PanelGPU
             // 
             PanelGPU.BackColor = Color.FromArgb(21, 21, 21);
             PanelGPU.BorderStyle = BorderStyle.FixedSingle;
             PanelGPU.Controls.Add(dungeonLabel5);
+            PanelGPU.Controls.Add(lblGPU);
             PanelGPU.FlowDirection = FlowDirection.TopDown;
             PanelGPU.Location = new Point(930, 125);
             PanelGPU.Name = "PanelGPU";
@@ -243,6 +292,19 @@
             dungeonLabel5.Size = new Size(159, 20);
             dungeonLabel5.TabIndex = 9;
             dungeonLabel5.Text = "GPU";
+            // 
+            // lblGPU
+            // 
+            lblGPU.BackColor = Color.Transparent;
+            lblGPU.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblGPU.ForeColor = Color.Maroon;
+            lblGPU.ImageAlign = ContentAlignment.BottomCenter;
+            lblGPU.Location = new Point(3, 20);
+            lblGPU.Name = "lblGPU";
+            lblGPU.Size = new Size(159, 20);
+            lblGPU.TabIndex = 13;
+            lblGPU.Text = "Dados GPU";
+            lblGPU.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lbl
             // 
@@ -292,6 +354,10 @@
             dungeonLabel7.TabIndex = 8;
             dungeonLabel7.Text = "Aplicativos em Execução";
             // 
+            // timerSistema
+            // 
+            timerSistema.Enabled = true;
+            // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -311,6 +377,7 @@
             Name = "FormPrincipal";
             Text = "WinTurner";
             WindowState = FormWindowState.Maximized;
+            Load += FormPrincipal_Load;
             SideBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             PanelCPU.ResumeLayout(false);
@@ -341,5 +408,10 @@
         private ReaLTaiizor.Controls.Button btnDiagnostico;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel6;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel7;
+        private ReaLTaiizor.Controls.DungeonLabel lblCPU;
+        private ReaLTaiizor.Controls.DungeonLabel lblRAM;
+        private ReaLTaiizor.Controls.DungeonLabel lblDISCO;
+        private ReaLTaiizor.Controls.DungeonLabel lblGPU;
+        private System.Windows.Forms.Timer timerSistema;
     }
 }
