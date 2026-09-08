@@ -171,7 +171,7 @@
             PanelCPU.BorderStyle = BorderStyle.FixedSingle;
             PanelCPU.Controls.Add(dungeonLabel3);
             PanelCPU.Controls.Add(lblCPU);
-            PanelCPU.Location = new Point(267, 125);
+            PanelCPU.Location = new Point(288, 148);
             PanelCPU.Name = "PanelCPU";
             PanelCPU.Size = new Size(195, 100);
             PanelCPU.TabIndex = 1;
@@ -206,7 +206,7 @@
             PanelRam.BorderStyle = BorderStyle.FixedSingle;
             PanelRam.Controls.Add(dungeonLabel2);
             PanelRam.Controls.Add(lblRAM);
-            PanelRam.Location = new Point(485, 125);
+            PanelRam.Location = new Point(506, 148);
             PanelRam.Name = "PanelRam";
             PanelRam.Size = new Size(195, 100);
             PanelRam.TabIndex = 2;
@@ -241,7 +241,7 @@
             PanelDisco.BorderStyle = BorderStyle.FixedSingle;
             PanelDisco.Controls.Add(dungeonLabel4);
             PanelDisco.Controls.Add(lblDISCO);
-            PanelDisco.Location = new Point(707, 125);
+            PanelDisco.Location = new Point(728, 148);
             PanelDisco.Name = "PanelDisco";
             PanelDisco.Size = new Size(195, 100);
             PanelDisco.TabIndex = 3;
@@ -277,7 +277,7 @@
             PanelGPU.Controls.Add(dungeonLabel5);
             PanelGPU.Controls.Add(lblGPU);
             PanelGPU.FlowDirection = FlowDirection.TopDown;
-            PanelGPU.Location = new Point(930, 125);
+            PanelGPU.Location = new Point(951, 148);
             PanelGPU.Name = "PanelGPU";
             PanelGPU.Size = new Size(195, 100);
             PanelGPU.TabIndex = 4;
@@ -314,9 +314,9 @@
             lbl.ForeColor = Color.WhiteSmoke;
             lbl.Location = new Point(214, 11);
             lbl.Name = "lbl";
-            lbl.Size = new Size(290, 44);
+            lbl.Size = new Size(488, 44);
             lbl.TabIndex = 5;
-            lbl.Text = "Dashboard";
+            lbl.Text = "PAINEL DE CONTROLE";
             // 
             // dungeonLabel1
             // 
@@ -324,7 +324,7 @@
             dungeonLabel1.BackColor = Color.Transparent;
             dungeonLabel1.Font = new Font("Castellar", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel1.ForeColor = Color.FromArgb(119, 119, 119);
-            dungeonLabel1.Location = new Point(322, 71);
+            dungeonLabel1.Location = new Point(214, 102);
             dungeonLabel1.Name = "dungeonLabel1";
             dungeonLabel1.Size = new Size(261, 19);
             dungeonLabel1.TabIndex = 6;
@@ -336,7 +336,7 @@
             dungeonLabel6.BackColor = Color.Transparent;
             dungeonLabel6.Font = new Font("Castellar", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel6.ForeColor = Color.Maroon;
-            dungeonLabel6.Location = new Point(232, 36);
+            dungeonLabel6.Location = new Point(410, 36);
             dungeonLabel6.Name = "dungeonLabel6";
             dungeonLabel6.Size = new Size(351, 35);
             dungeonLabel6.TabIndex = 7;
