@@ -1,12 +1,13 @@
 ﻿using System.Diagnostics;
 using System.Management;
-using WinTurner.Models;
 
 namespace WinTurner.Services
 {
     public class SistemaService
     {
         private readonly PerformanceCounter _cpuCounter;
+        private readonly PerformanceCounter _ramCounter;
+        private readonly PerformanceCounter _diskCounter;
 
         public SistemaService()
         {
@@ -16,38 +17,63 @@ namespace WinTurner.Services
                 "_Total"
             );
 
-            // Primeira leitura do PerformanceCounter
+            _ramCounter = new PerformanceCounter(
+                "Memory",
+                "% Committed Bytes In Use"
+            );
+
+            _diskCounter = new PerformanceCounter(
+                "PhysicalDisk",
+                "% Disk Time",
+                "_Total"
+            );
+
+            // Primeiras leituras necessárias para inicializar os contadores
             _cpuCounter.NextValue();
+            _ramCounter.NextValue();
+            _diskCounter.NextValue();
         }
 
         public InformacoesSistema ObterInformacoes()
         {
-            var memoria = ObterMemoria();
-            var disco = ObterDisco();
+            var disco = ObterInformacoesDisco();
             var gpu = ObterGpu();
 
             return new InformacoesSistema
             {
                 CpuUso = ObterCpu(),
-                RamUso = memoria.UsoPercentual,
-                RamTotalGB = memoria.TotalGB,
-                RamDisponivelGB = memoria.DisponivelGB,
-                DiscoUso = disco.UsoPercentual,
+                RamUso = ObterRam(),
+                RamTotalGB = ObterRamTotal(),
+                RamDisponivelGB = ObterRamDisponivel(),
+
+                DiscoUso = ObterDiscoAtividade(),
                 DiscoTotalGB = disco.TotalGB,
                 DiscoDisponivelGB = disco.DisponivelGB,
+
                 GpuNome = gpu
             };
         }
 
         private double ObterCpu()
         {
-            return Math.Round(_cpuCounter.NextValue(), 1);
+            return Math.Round(
+                Math.Clamp(_cpuCounter.NextValue(), 0, 100),
+                1
+            );
         }
 
-        private (double TotalGB, double DisponivelGB, double UsoPercentual) ObterMemoria()
+        private double ObterRam()
+        {
+            return Math.Round(
+                Math.Clamp(_ramCounter.NextValue(), 0, 100),
+                1
+            );
+        }
+
+        private double ObterRamTotal()
         {
             using var searcher = new ManagementObjectSearcher(
-                "SELECT TotalVisibleMemorySize, FreePhysicalMemory FROM Win32_OperatingSystem"
+                "SELECT TotalVisibleMemorySize FROM Win32_OperatingSystem"
             );
 
             foreach (ManagementObject obj in searcher.Get())
@@ -56,40 +82,51 @@ namespace WinTurner.Services
                     obj["TotalVisibleMemorySize"]
                 );
 
+                return Math.Round(totalKB / 1024 / 1024, 2);
+            }
+
+            return 0;
+        }
+
+        private double ObterRamDisponivel()
+        {
+            using var searcher = new ManagementObjectSearcher(
+                "SELECT FreePhysicalMemory FROM Win32_OperatingSystem"
+            );
+
+            foreach (ManagementObject obj in searcher.Get())
+            {
                 double livreKB = Convert.ToDouble(
                     obj["FreePhysicalMemory"]
                 );
 
-                double totalGB = totalKB / 1024 / 1024;
-                double livreGB = livreKB / 1024 / 1024;
-
-                double uso = ((totalGB - livreGB) / totalGB) * 100;
-
-                return (
-                    Math.Round(totalGB, 2),
-                    Math.Round(livreGB, 2),
-                    Math.Round(uso, 1)
-                );
+                return Math.Round(livreKB / 1024 / 1024, 2);
             }
 
-            return (0, 0, 0);
+            return 0;
         }
 
-        private (double TotalGB, double DisponivelGB, double UsoPercentual) ObterDisco()
+        private double ObterDiscoAtividade()
+        {
+            return Math.Round(
+                Math.Clamp(_diskCounter.NextValue(), 0, 100),
+                1
+            );
+        }
+
+        private (double TotalGB, double DisponivelGB) ObterInformacoesDisco()
         {
             DriveInfo drive = new DriveInfo("C:\\");
 
-            double totalGB = drive.TotalSize / 1024.0 / 1024.0 / 1024.0;
-            double disponivelGB = drive.AvailableFreeSpace / 1024.0 / 1024.0 / 1024.0;
+            double totalGB =
+                drive.TotalSize / 1024.0 / 1024.0 / 1024.0;
 
-            double usadoGB = totalGB - disponivelGB;
-
-            double uso = (usadoGB / totalGB) * 100;
+            double disponivelGB =
+                drive.AvailableFreeSpace / 1024.0 / 1024.0 / 1024.0;
 
             return (
                 Math.Round(totalGB, 2),
-                Math.Round(disponivelGB, 2),
-                Math.Round(uso, 1)
+                Math.Round(disponivelGB, 2)
             );
         }
 

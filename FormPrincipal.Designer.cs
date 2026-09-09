@@ -30,6 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             SideBar = new Panel();
             btnHistorico = new ReaLTaiizor.Controls.Button();
             btnOtimizacao = new ReaLTaiizor.Controls.Button();
@@ -46,19 +49,21 @@
             dungeonLabel4 = new ReaLTaiizor.Controls.DungeonLabel();
             lblDISCO = new ReaLTaiizor.Controls.DungeonLabel();
             PanelGPU = new FlowLayoutPanel();
-            dungeonLabel5 = new ReaLTaiizor.Controls.DungeonLabel();
+            lblGpuNome = new ReaLTaiizor.Controls.DungeonLabel();
             lblGPU = new ReaLTaiizor.Controls.DungeonLabel();
             lbl = new ReaLTaiizor.Controls.BigLabel();
             dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             dungeonLabel6 = new ReaLTaiizor.Controls.DungeonLabel();
             dungeonLabel7 = new ReaLTaiizor.Controls.DungeonLabel();
             timerSistema = new System.Windows.Forms.Timer(components);
+            dgvProcessos = new ReaLTaiizor.Controls.PoisonDataGridView();
             SideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             PanelCPU.SuspendLayout();
             PanelRam.SuspendLayout();
             PanelDisco.SuspendLayout();
             PanelGPU.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProcessos).BeginInit();
             SuspendLayout();
             // 
             // SideBar
@@ -79,6 +84,7 @@
             // 
             btnHistorico.BackColor = Color.Black;
             btnHistorico.BorderColor = Color.Transparent;
+            btnHistorico.Cursor = Cursors.Hand;
             btnHistorico.EnteredBorderColor = Color.DarkGray;
             btnHistorico.EnteredColor = Color.FromArgb(32, 34, 37);
             btnHistorico.Font = new Font("Microsoft Sans Serif", 12F);
@@ -99,6 +105,7 @@
             // 
             btnOtimizacao.BackColor = Color.Black;
             btnOtimizacao.BorderColor = Color.Transparent;
+            btnOtimizacao.Cursor = Cursors.Hand;
             btnOtimizacao.EnteredBorderColor = Color.DarkGray;
             btnOtimizacao.EnteredColor = Color.FromArgb(32, 34, 37);
             btnOtimizacao.Font = new Font("Microsoft Sans Serif", 12F);
@@ -119,6 +126,7 @@
             // 
             btnLimpeza.BackColor = Color.Black;
             btnLimpeza.BorderColor = Color.Transparent;
+            btnLimpeza.Cursor = Cursors.Hand;
             btnLimpeza.EnteredBorderColor = Color.DarkGray;
             btnLimpeza.EnteredColor = Color.FromArgb(32, 34, 37);
             btnLimpeza.Font = new Font("Microsoft Sans Serif", 12F);
@@ -139,6 +147,7 @@
             // 
             btnDiagnostico.BackColor = Color.Black;
             btnDiagnostico.BorderColor = Color.Transparent;
+            btnDiagnostico.Cursor = Cursors.Hand;
             btnDiagnostico.EnteredBorderColor = Color.DarkGray;
             btnDiagnostico.EnteredColor = Color.FromArgb(32, 34, 37);
             btnDiagnostico.Font = new Font("Microsoft Sans Serif", 12F);
@@ -274,7 +283,7 @@
             // 
             PanelGPU.BackColor = Color.FromArgb(21, 21, 21);
             PanelGPU.BorderStyle = BorderStyle.FixedSingle;
-            PanelGPU.Controls.Add(dungeonLabel5);
+            PanelGPU.Controls.Add(lblGpuNome);
             PanelGPU.Controls.Add(lblGPU);
             PanelGPU.FlowDirection = FlowDirection.TopDown;
             PanelGPU.Location = new Point(951, 148);
@@ -282,16 +291,16 @@
             PanelGPU.Size = new Size(195, 100);
             PanelGPU.TabIndex = 4;
             // 
-            // dungeonLabel5
+            // lblGpuNome
             // 
-            dungeonLabel5.BackColor = Color.Transparent;
-            dungeonLabel5.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
-            dungeonLabel5.ForeColor = Color.Maroon;
-            dungeonLabel5.Location = new Point(3, 0);
-            dungeonLabel5.Name = "dungeonLabel5";
-            dungeonLabel5.Size = new Size(159, 20);
-            dungeonLabel5.TabIndex = 9;
-            dungeonLabel5.Text = "GPU";
+            lblGpuNome.BackColor = Color.Transparent;
+            lblGpuNome.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblGpuNome.ForeColor = Color.Maroon;
+            lblGpuNome.Location = new Point(3, 0);
+            lblGpuNome.Name = "lblGpuNome";
+            lblGpuNome.Size = new Size(159, 20);
+            lblGpuNome.TabIndex = 9;
+            lblGpuNome.Text = "GPU";
             // 
             // lblGPU
             // 
@@ -358,12 +367,56 @@
             // 
             timerSistema.Enabled = true;
             // 
+            // dgvProcessos
+            // 
+            dgvProcessos.AllowUserToResizeRows = false;
+            dgvProcessos.BackgroundColor = Color.FromArgb(255, 255, 255);
+            dgvProcessos.BorderStyle = BorderStyle.None;
+            dgvProcessos.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvProcessos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvProcessos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvProcessos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvProcessos.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvProcessos.EnableHeadersVisualStyles = false;
+            dgvProcessos.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dgvProcessos.GridColor = Color.FromArgb(255, 255, 255);
+            dgvProcessos.Location = new Point(252, 345);
+            dgvProcessos.Name = "dgvProcessos";
+            dgvProcessos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvProcessos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvProcessos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvProcessos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProcessos.Size = new Size(801, 285);
+            dgvProcessos.TabIndex = 9;
+            // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(29, 29, 29);
             ClientSize = new Size(1060, 668);
+            Controls.Add(dgvProcessos);
             Controls.Add(dungeonLabel7);
             Controls.Add(lbl);
             Controls.Add(dungeonLabel6);
@@ -384,6 +437,7 @@
             PanelRam.ResumeLayout(false);
             PanelDisco.ResumeLayout(false);
             PanelGPU.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvProcessos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -401,7 +455,7 @@
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel3;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel2;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel4;
-        private ReaLTaiizor.Controls.DungeonLabel dungeonLabel5;
+        private ReaLTaiizor.Controls.DungeonLabel lblGpuNome;
         private ReaLTaiizor.Controls.Button btnHistorico;
         private ReaLTaiizor.Controls.Button btnOtimizacao;
         private ReaLTaiizor.Controls.Button btnLimpeza;
@@ -413,5 +467,6 @@
         private ReaLTaiizor.Controls.DungeonLabel lblDISCO;
         private ReaLTaiizor.Controls.DungeonLabel lblGPU;
         private System.Windows.Forms.Timer timerSistema;
+        private ReaLTaiizor.Controls.PoisonDataGridView dgvProcessos;
     }
 }
