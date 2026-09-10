@@ -15,6 +15,8 @@ namespace WinTuner.Forms
             InitializeComponent();
         }
 
+        #region Botões de Navegação
+
         private void btnPainel_Click(object sender, EventArgs e)
         {
             FormPrincipal formPrincipal = new FormPrincipal();
@@ -43,7 +45,8 @@ namespace WinTuner.Forms
             FormHistorico formHistorico = new FormHistorico();
             formHistorico.Show();
             this.Hide();
-
         }
+
+        #endregion
     }
 }

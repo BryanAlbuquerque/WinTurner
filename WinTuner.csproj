@@ -29,4 +29,10 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Limpeza\" />
+    <Folder Include="Services\Historico\" />
+    <Folder Include="Services\Otimizacao\" />
+  </ItemGroup>
+
 </Project>
