@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             SideBar = new Panel();
             btnHistorico = new ReaLTaiizor.Controls.Button();
             btnOtimizacao = new ReaLTaiizor.Controls.Button();
@@ -91,7 +91,7 @@
             btnHistorico.Image = null;
             btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
             btnHistorico.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnHistorico.Location = new Point(12, 486);
+            btnHistorico.Location = new Point(12, 440);
             btnHistorico.Name = "btnHistorico";
             btnHistorico.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnHistorico.PressedColor = Color.FromArgb(165, 37, 37);
@@ -112,7 +112,7 @@
             btnOtimizacao.Image = null;
             btnOtimizacao.ImageAlign = ContentAlignment.MiddleLeft;
             btnOtimizacao.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Location = new Point(12, 393);
+            btnOtimizacao.Location = new Point(12, 362);
             btnOtimizacao.Name = "btnOtimizacao";
             btnOtimizacao.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnOtimizacao.PressedColor = Color.FromArgb(165, 37, 37);
@@ -133,7 +133,7 @@
             btnLimpeza.Image = null;
             btnLimpeza.ImageAlign = ContentAlignment.MiddleLeft;
             btnLimpeza.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnLimpeza.Location = new Point(12, 306);
+            btnLimpeza.Location = new Point(12, 284);
             btnLimpeza.Name = "btnLimpeza";
             btnLimpeza.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnLimpeza.PressedColor = Color.FromArgb(165, 37, 37);
@@ -180,7 +180,7 @@
             PanelCPU.BorderStyle = BorderStyle.FixedSingle;
             PanelCPU.Controls.Add(dungeonLabel3);
             PanelCPU.Controls.Add(lblCPU);
-            PanelCPU.Location = new Point(326, 148);
+            PanelCPU.Location = new Point(333, 149);
             PanelCPU.Name = "PanelCPU";
             PanelCPU.Size = new Size(195, 100);
             PanelCPU.TabIndex = 1;
@@ -215,7 +215,7 @@
             PanelRam.BorderStyle = BorderStyle.FixedSingle;
             PanelRam.Controls.Add(dungeonLabel2);
             PanelRam.Controls.Add(lblRAM);
-            PanelRam.Location = new Point(544, 148);
+            PanelRam.Location = new Point(580, 148);
             PanelRam.Name = "PanelRam";
             PanelRam.Size = new Size(195, 100);
             PanelRam.TabIndex = 2;
@@ -250,7 +250,7 @@
             PanelDisco.BorderStyle = BorderStyle.FixedSingle;
             PanelDisco.Controls.Add(dungeonLabel4);
             PanelDisco.Controls.Add(lblDISCO);
-            PanelDisco.Location = new Point(766, 148);
+            PanelDisco.Location = new Point(823, 148);
             PanelDisco.Name = "PanelDisco";
             PanelDisco.Size = new Size(195, 100);
             PanelDisco.TabIndex = 3;
@@ -286,7 +286,7 @@
             PanelGPU.Controls.Add(lblGpuNome);
             PanelGPU.Controls.Add(lblGPU);
             PanelGPU.FlowDirection = FlowDirection.TopDown;
-            PanelGPU.Location = new Point(989, 148);
+            PanelGPU.Location = new Point(1073, 148);
             PanelGPU.Name = "PanelGPU";
             PanelGPU.Size = new Size(195, 100);
             PanelGPU.TabIndex = 4;
@@ -333,7 +333,7 @@
             dungeonLabel1.BackColor = Color.Transparent;
             dungeonLabel1.Font = new Font("Castellar", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel1.ForeColor = Color.FromArgb(119, 119, 119);
-            dungeonLabel1.Location = new Point(228, 116);
+            dungeonLabel1.Location = new Point(228, 115);
             dungeonLabel1.Name = "dungeonLabel1";
             dungeonLabel1.Size = new Size(261, 19);
             dungeonLabel1.TabIndex = 6;
@@ -370,44 +370,45 @@
             // dgvProcessos
             // 
             dgvProcessos.AllowUserToResizeRows = false;
+            dgvProcessos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvProcessos.BackgroundColor = Color.FromArgb(255, 255, 255);
             dgvProcessos.BorderStyle = BorderStyle.None;
             dgvProcessos.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvProcessos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvProcessos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvProcessos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProcessos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(136, 136, 136);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvProcessos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(136, 136, 136);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvProcessos.DefaultCellStyle = dataGridViewCellStyle2;
             dgvProcessos.EnableHeadersVisualStyles = false;
             dgvProcessos.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
             dgvProcessos.GridColor = Color.FromArgb(255, 255, 255);
-            dgvProcessos.Location = new Point(273, 371);
+            dgvProcessos.Location = new Point(228, 371);
             dgvProcessos.Name = "dgvProcessos";
             dgvProcessos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(0, 174, 219);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(255, 255, 255);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(0, 198, 247);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(17, 17, 17);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvProcessos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(0, 174, 219);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(255, 255, 255);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(0, 198, 247);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(17, 17, 17);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvProcessos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvProcessos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvProcessos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProcessos.Size = new Size(801, 285);
+            dgvProcessos.Size = new Size(1040, 285);
             dgvProcessos.TabIndex = 9;
             // 
             // FormPrincipal
@@ -415,7 +416,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(29, 29, 29);
-            ClientSize = new Size(1060, 668);
+            ClientSize = new Size(1299, 668);
             Controls.Add(dgvProcessos);
             Controls.Add(dungeonLabel7);
             Controls.Add(lbl);
