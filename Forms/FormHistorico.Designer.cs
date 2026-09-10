@@ -33,11 +33,11 @@
             dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             pictureBox1 = new PictureBox();
             SideBar = new Panel();
+            btnOtimizacao = new ReaLTaiizor.Controls.Button();
             btnLimpeza = new ReaLTaiizor.Controls.Button();
             btnDiagnostico = new ReaLTaiizor.Controls.Button();
             btnPainel = new ReaLTaiizor.Controls.Button();
             lbl = new ReaLTaiizor.Controls.BigLabel();
-            btnOtimizacao = new ReaLTaiizor.Controls.Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SideBar.SuspendLayout();
             SuspendLayout();
@@ -89,6 +89,27 @@
             SideBar.Name = "SideBar";
             SideBar.Size = new Size(200, 673);
             SideBar.TabIndex = 26;
+            // 
+            // btnOtimizacao
+            // 
+            btnOtimizacao.BackColor = Color.Black;
+            btnOtimizacao.BorderColor = Color.Transparent;
+            btnOtimizacao.Cursor = Cursors.Hand;
+            btnOtimizacao.EnteredBorderColor = Color.DarkGray;
+            btnOtimizacao.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnOtimizacao.Font = new Font("Microsoft Sans Serif", 12F);
+            btnOtimizacao.Image = null;
+            btnOtimizacao.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOtimizacao.InactiveColor = Color.FromArgb(32, 34, 37);
+            btnOtimizacao.Location = new Point(12, 397);
+            btnOtimizacao.Name = "btnOtimizacao";
+            btnOtimizacao.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnOtimizacao.PressedColor = Color.FromArgb(165, 37, 37);
+            btnOtimizacao.Size = new Size(173, 40);
+            btnOtimizacao.TabIndex = 15;
+            btnOtimizacao.Text = "Otimização";
+            btnOtimizacao.TextAlignment = StringAlignment.Center;
+            btnOtimizacao.Click += btnOtimizacao_Click;
             // 
             // btnLimpeza
             // 
@@ -165,27 +186,6 @@
             lbl.TabIndex = 27;
             lbl.Text = "HISTORICO";
             // 
-            // btnOtimizacao
-            // 
-            btnOtimizacao.BackColor = Color.Black;
-            btnOtimizacao.BorderColor = Color.Transparent;
-            btnOtimizacao.Cursor = Cursors.Hand;
-            btnOtimizacao.EnteredBorderColor = Color.DarkGray;
-            btnOtimizacao.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Font = new Font("Microsoft Sans Serif", 12F);
-            btnOtimizacao.Image = null;
-            btnOtimizacao.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOtimizacao.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Location = new Point(12, 397);
-            btnOtimizacao.Name = "btnOtimizacao";
-            btnOtimizacao.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnOtimizacao.PressedColor = Color.FromArgb(165, 37, 37);
-            btnOtimizacao.Size = new Size(173, 40);
-            btnOtimizacao.TabIndex = 15;
-            btnOtimizacao.Text = "Otimização";
-            btnOtimizacao.TextAlignment = StringAlignment.Center;
-            btnOtimizacao.Click += btnOtimizacao_Click;
-            // 
             // FormHistorico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -196,6 +196,7 @@
             Controls.Add(dungeonLabel1);
             Controls.Add(SideBar);
             Controls.Add(lbl);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormHistorico";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Historico";

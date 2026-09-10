@@ -196,6 +196,7 @@
             Controls.Add(dungeonLabel6);
             Controls.Add(dungeonLabel1);
             Controls.Add(SideBar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormDiagnostico";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Diagnostico";

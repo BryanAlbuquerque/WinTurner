@@ -196,6 +196,7 @@
             Controls.Add(dungeonLabel1);
             Controls.Add(SideBar);
             Controls.Add(lbl);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormLimpeza";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Limpeza";
