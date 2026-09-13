@@ -5,17 +5,19 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WinTuner.Forms.Diagnostico;
 
 namespace WinTuner.Forms
 {
     public partial class FormDiagnostico : Form
     {
+        private Form? _formAtual;
         public FormDiagnostico()
         {
+
             InitializeComponent();
         }
 
-        #region Botões de Navegação
 
         private void btnPainel_Click(object sender, EventArgs e)
         {
@@ -47,7 +49,40 @@ namespace WinTuner.Forms
             this.Hide();
         }
 
-        #endregion
+        private void AbrirFormulario(Form formulario)
+        {
+            if (_formAtual != null)
+            {
+                _formAtual.Close();
+                _formAtual.Dispose();
+            }
 
+            _formAtual = formulario;
+
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+
+            pnlConteudo.Controls.Clear();
+            pnlConteudo.Controls.Add(formulario);
+
+            formulario.Show();
+        }
+
+        private void btntnInfoComputador_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new SysInfo());
+        }
+
+
+        private void btnVerificarDisco_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new VerificarDisco());
+        }
+
+        private void FormDiagnostico_Load(object sender, EventArgs e)
+        {
+            AbrirFormulario(new SysInfo());
+        }
     }
 }

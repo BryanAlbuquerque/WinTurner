@@ -39,6 +39,9 @@
             dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
             btnPainel = new ReaLTaiizor.Controls.Button();
             lbl = new ReaLTaiizor.Controls.BigLabel();
+            btntnInfoComputador = new ReaLTaiizor.Controls.Button();
+            btnVerificarDisco = new ReaLTaiizor.Controls.Button();
+            pnlConteudo = new ReaLTaiizor.Controls.Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SideBar.SuspendLayout();
             SuspendLayout();
@@ -161,7 +164,7 @@
             dungeonLabel2.BackColor = Color.Transparent;
             dungeonLabel2.Dock = DockStyle.Bottom;
             dungeonLabel2.Font = new Font("Castellar", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dungeonLabel2.ForeColor = Color.Lime;
+            dungeonLabel2.ForeColor = Color.Red;
             dungeonLabel2.Location = new Point(0, 660);
             dungeonLabel2.Name = "dungeonLabel2";
             dungeonLabel2.Size = new Size(201, 14);
@@ -201,12 +204,70 @@
             lbl.TabIndex = 15;
             lbl.Text = "DIAGNÓSTICO ";
             // 
+            // btntnInfoComputador
+            // 
+            btntnInfoComputador.BackColor = Color.Black;
+            btntnInfoComputador.BorderColor = Color.Transparent;
+            btntnInfoComputador.Cursor = Cursors.Hand;
+            btntnInfoComputador.EnteredBorderColor = Color.DarkGray;
+            btntnInfoComputador.EnteredColor = Color.FromArgb(32, 34, 37);
+            btntnInfoComputador.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btntnInfoComputador.Image = null;
+            btntnInfoComputador.ImageAlign = ContentAlignment.MiddleLeft;
+            btntnInfoComputador.InactiveColor = Color.FromArgb(29, 29, 29);
+            btntnInfoComputador.Location = new Point(231, 120);
+            btntnInfoComputador.Name = "btntnInfoComputador";
+            btntnInfoComputador.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btntnInfoComputador.PressedColor = Color.FromArgb(165, 37, 37);
+            btntnInfoComputador.Size = new Size(241, 27);
+            btntnInfoComputador.TabIndex = 20;
+            btntnInfoComputador.Text = "Info do Computador";
+            btntnInfoComputador.TextAlignment = StringAlignment.Center;
+            btntnInfoComputador.Click += btntnInfoComputador_Click;
+            // 
+            // btnVerificarDisco
+            // 
+            btnVerificarDisco.BackColor = Color.Black;
+            btnVerificarDisco.BorderColor = Color.Transparent;
+            btnVerificarDisco.Cursor = Cursors.Hand;
+            btnVerificarDisco.EnteredBorderColor = Color.DarkGray;
+            btnVerificarDisco.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnVerificarDisco.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnVerificarDisco.Image = null;
+            btnVerificarDisco.ImageAlign = ContentAlignment.MiddleLeft;
+            btnVerificarDisco.InactiveColor = Color.FromArgb(29, 29, 29);
+            btnVerificarDisco.Location = new Point(489, 120);
+            btnVerificarDisco.Name = "btnVerificarDisco";
+            btnVerificarDisco.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnVerificarDisco.PressedColor = Color.FromArgb(165, 37, 37);
+            btnVerificarDisco.Size = new Size(176, 27);
+            btnVerificarDisco.TabIndex = 21;
+            btnVerificarDisco.Text = "VERIFICAR DISCO";
+            btnVerificarDisco.TextAlignment = StringAlignment.Center;
+            btnVerificarDisco.Click += btnVerificarDisco_Click;
+            // 
+            // pnlConteudo
+            // 
+            pnlConteudo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlConteudo.BackColor = Color.FromArgb(39, 51, 63);
+            pnlConteudo.EdgeColor = Color.FromArgb(32, 41, 50);
+            pnlConteudo.Location = new Point(231, 167);
+            pnlConteudo.Name = "pnlConteudo";
+            pnlConteudo.Padding = new Padding(5);
+            pnlConteudo.Size = new Size(817, 495);
+            pnlConteudo.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            pnlConteudo.TabIndex = 22;
+            pnlConteudo.Text = "panel1";
+            // 
             // FormDiagnostico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(29, 29, 29);
             ClientSize = new Size(1060, 674);
+            Controls.Add(pnlConteudo);
+            Controls.Add(btnVerificarDisco);
+            Controls.Add(btntnInfoComputador);
             Controls.Add(lbl);
             Controls.Add(dungeonLabel6);
             Controls.Add(dungeonLabel1);
@@ -216,6 +277,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Diagnostico";
             WindowState = FormWindowState.Maximized;
+            Load += FormDiagnostico_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             SideBar.ResumeLayout(false);
             SideBar.PerformLayout();
@@ -234,5 +296,8 @@
         private ReaLTaiizor.Controls.BigLabel lbl;
         private ReaLTaiizor.Controls.Button btnPainel;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel2;
+        private ReaLTaiizor.Controls.Button btntnInfoComputador;
+        private ReaLTaiizor.Controls.Button btnVerificarDisco;
+        private ReaLTaiizor.Controls.Panel pnlConteudo;
     }
 }

@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Forms\Diagnostico\" />
     <Folder Include="Services\Limpeza\" />
     <Folder Include="Services\Historico\" />
     <Folder Include="Services\Otimizacao\" />
