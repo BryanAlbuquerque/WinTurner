@@ -34,6 +34,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(29, 29, 29);
             ClientSize = new Size(1006, 667);
             Name = "VerificarDisco";
             Text = "VerificarDisco";

@@ -50,5 +50,6 @@ namespace WinTuner.Forms.Diagnostico
             lblDadosMemoriaVirtual.Text = informacoes.MemoriaVirtualTotal;
             lblMemoriVirtualDisponivel.Text = informacoes.MemoriaVirtualDisponivel;
         }
+
     }
 }
