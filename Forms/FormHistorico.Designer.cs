@@ -33,6 +33,7 @@
             dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
             pictureBox1 = new PictureBox();
             SideBar = new Panel();
+            dungeonLabel5 = new ReaLTaiizor.Controls.DungeonLabel();
             btnOtimizacao = new ReaLTaiizor.Controls.Button();
             btnLimpeza = new ReaLTaiizor.Controls.Button();
             btnDiagnostico = new ReaLTaiizor.Controls.Button();
@@ -79,6 +80,7 @@
             // SideBar
             // 
             SideBar.BackColor = Color.Black;
+            SideBar.Controls.Add(dungeonLabel5);
             SideBar.Controls.Add(btnOtimizacao);
             SideBar.Controls.Add(btnLimpeza);
             SideBar.Controls.Add(btnDiagnostico);
@@ -90,6 +92,19 @@
             SideBar.Size = new Size(200, 673);
             SideBar.TabIndex = 26;
             // 
+            // dungeonLabel5
+            // 
+            dungeonLabel5.AutoSize = true;
+            dungeonLabel5.BackColor = Color.Transparent;
+            dungeonLabel5.Dock = DockStyle.Bottom;
+            dungeonLabel5.Font = new Font("Castellar", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel5.ForeColor = Color.Lime;
+            dungeonLabel5.Location = new Point(0, 645);
+            dungeonLabel5.Name = "dungeonLabel5";
+            dungeonLabel5.Size = new Size(201, 14);
+            dungeonLabel5.TabIndex = 23;
+            dungeonLabel5.Text = "⚫ SISTEMA OPERACIONAL";
+            // 
             // btnOtimizacao
             // 
             btnOtimizacao.BackColor = Color.Black;
@@ -97,11 +112,11 @@
             btnOtimizacao.Cursor = Cursors.Hand;
             btnOtimizacao.EnteredBorderColor = Color.DarkGray;
             btnOtimizacao.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Font = new Font("Microsoft Sans Serif", 12F);
+            btnOtimizacao.Font = new Font("Castellar", 12F, FontStyle.Bold);
             btnOtimizacao.Image = null;
             btnOtimizacao.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOtimizacao.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Location = new Point(12, 397);
+            btnOtimizacao.InactiveColor = Color.Black;
+            btnOtimizacao.Location = new Point(12, 416);
             btnOtimizacao.Name = "btnOtimizacao";
             btnOtimizacao.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnOtimizacao.PressedColor = Color.FromArgb(165, 37, 37);
@@ -118,11 +133,11 @@
             btnLimpeza.Cursor = Cursors.Hand;
             btnLimpeza.EnteredBorderColor = Color.DarkGray;
             btnLimpeza.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnLimpeza.Font = new Font("Microsoft Sans Serif", 12F);
+            btnLimpeza.Font = new Font("Castellar", 12F, FontStyle.Bold);
             btnLimpeza.Image = null;
             btnLimpeza.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLimpeza.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnLimpeza.Location = new Point(12, 331);
+            btnLimpeza.InactiveColor = Color.Black;
+            btnLimpeza.Location = new Point(12, 329);
             btnLimpeza.Name = "btnLimpeza";
             btnLimpeza.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnLimpeza.PressedColor = Color.FromArgb(165, 37, 37);
@@ -139,11 +154,11 @@
             btnDiagnostico.Cursor = Cursors.Hand;
             btnDiagnostico.EnteredBorderColor = Color.DarkGray;
             btnDiagnostico.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnDiagnostico.Font = new Font("Microsoft Sans Serif", 12F);
+            btnDiagnostico.Font = new Font("Castellar", 12F, FontStyle.Bold);
             btnDiagnostico.Image = null;
             btnDiagnostico.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDiagnostico.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnDiagnostico.Location = new Point(12, 264);
+            btnDiagnostico.InactiveColor = Color.Black;
+            btnDiagnostico.Location = new Point(12, 246);
             btnDiagnostico.Name = "btnDiagnostico";
             btnDiagnostico.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnDiagnostico.PressedColor = Color.FromArgb(165, 37, 37);
@@ -160,11 +175,11 @@
             btnPainel.Cursor = Cursors.Hand;
             btnPainel.EnteredBorderColor = Color.DarkGray;
             btnPainel.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnPainel.Font = new Font("Microsoft Sans Serif", 12F);
+            btnPainel.Font = new Font("Castellar", 12F, FontStyle.Bold);
             btnPainel.Image = null;
             btnPainel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPainel.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnPainel.Location = new Point(12, 199);
+            btnPainel.InactiveColor = Color.Black;
+            btnPainel.Location = new Point(12, 164);
             btnPainel.Name = "btnPainel";
             btnPainel.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnPainel.PressedColor = Color.FromArgb(165, 37, 37);
@@ -203,6 +218,7 @@
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             SideBar.ResumeLayout(false);
+            SideBar.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -218,5 +234,6 @@
         private ReaLTaiizor.Controls.Button btnPainel;
         private ReaLTaiizor.Controls.BigLabel lbl;
         private ReaLTaiizor.Controls.Button btnOtimizacao;
+        private ReaLTaiizor.Controls.DungeonLabel dungeonLabel5;
     }
 }

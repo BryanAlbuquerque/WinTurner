@@ -34,6 +34,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             SideBar = new Panel();
+            dungeonLabel5 = new ReaLTaiizor.Controls.DungeonLabel();
             btnHistorico = new ReaLTaiizor.Controls.Button();
             btnOtimizacao = new ReaLTaiizor.Controls.Button();
             btnLimpeza = new ReaLTaiizor.Controls.Button();
@@ -69,6 +70,7 @@
             // SideBar
             // 
             SideBar.BackColor = Color.Black;
+            SideBar.Controls.Add(dungeonLabel5);
             SideBar.Controls.Add(btnHistorico);
             SideBar.Controls.Add(btnOtimizacao);
             SideBar.Controls.Add(btnLimpeza);
@@ -80,6 +82,19 @@
             SideBar.Size = new Size(200, 668);
             SideBar.TabIndex = 0;
             // 
+            // dungeonLabel5
+            // 
+            dungeonLabel5.AutoSize = true;
+            dungeonLabel5.BackColor = Color.Transparent;
+            dungeonLabel5.Dock = DockStyle.Bottom;
+            dungeonLabel5.Font = new Font("Castellar", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel5.ForeColor = Color.Lime;
+            dungeonLabel5.Location = new Point(0, 640);
+            dungeonLabel5.Name = "dungeonLabel5";
+            dungeonLabel5.Size = new Size(201, 14);
+            dungeonLabel5.TabIndex = 20;
+            dungeonLabel5.Text = "⚫ SISTEMA OPERACIONAL";
+            // 
             // btnHistorico
             // 
             btnHistorico.BackColor = Color.Black;
@@ -87,11 +102,11 @@
             btnHistorico.Cursor = Cursors.Hand;
             btnHistorico.EnteredBorderColor = Color.DarkGray;
             btnHistorico.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnHistorico.Font = new Font("Microsoft Sans Serif", 12F);
+            btnHistorico.Font = new Font("Castellar", 12F, FontStyle.Bold);
             btnHistorico.Image = null;
             btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHistorico.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnHistorico.Location = new Point(12, 440);
+            btnHistorico.InactiveColor = Color.Black;
+            btnHistorico.Location = new Point(12, 393);
             btnHistorico.Name = "btnHistorico";
             btnHistorico.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnHistorico.PressedColor = Color.FromArgb(165, 37, 37);
@@ -108,11 +123,11 @@
             btnOtimizacao.Cursor = Cursors.Hand;
             btnOtimizacao.EnteredBorderColor = Color.DarkGray;
             btnOtimizacao.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Font = new Font("Microsoft Sans Serif", 12F);
+            btnOtimizacao.Font = new Font("Castellar", 12F, FontStyle.Bold);
             btnOtimizacao.Image = null;
             btnOtimizacao.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOtimizacao.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Location = new Point(12, 362);
+            btnOtimizacao.InactiveColor = Color.Black;
+            btnOtimizacao.Location = new Point(12, 323);
             btnOtimizacao.Name = "btnOtimizacao";
             btnOtimizacao.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnOtimizacao.PressedColor = Color.FromArgb(165, 37, 37);
@@ -129,11 +144,11 @@
             btnLimpeza.Cursor = Cursors.Hand;
             btnLimpeza.EnteredBorderColor = Color.DarkGray;
             btnLimpeza.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnLimpeza.Font = new Font("Microsoft Sans Serif", 12F);
+            btnLimpeza.Font = new Font("Castellar", 12F, FontStyle.Bold);
             btnLimpeza.Image = null;
             btnLimpeza.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLimpeza.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnLimpeza.Location = new Point(12, 284);
+            btnLimpeza.InactiveColor = Color.Black;
+            btnLimpeza.Location = new Point(12, 249);
             btnLimpeza.Name = "btnLimpeza";
             btnLimpeza.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnLimpeza.PressedColor = Color.FromArgb(165, 37, 37);
@@ -150,11 +165,11 @@
             btnDiagnostico.Cursor = Cursors.Hand;
             btnDiagnostico.EnteredBorderColor = Color.DarkGray;
             btnDiagnostico.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnDiagnostico.Font = new Font("Microsoft Sans Serif", 12F);
+            btnDiagnostico.Font = new Font("Castellar", 12F, FontStyle.Bold);
             btnDiagnostico.Image = null;
             btnDiagnostico.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDiagnostico.InactiveColor = Color.FromArgb(32, 34, 37);
-            btnDiagnostico.Location = new Point(12, 208);
+            btnDiagnostico.InactiveColor = Color.Black;
+            btnDiagnostico.Location = new Point(12, 169);
             btnDiagnostico.Name = "btnDiagnostico";
             btnDiagnostico.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnDiagnostico.PressedColor = Color.FromArgb(165, 37, 37);
@@ -333,7 +348,7 @@
             dungeonLabel1.BackColor = Color.Transparent;
             dungeonLabel1.Font = new Font("Castellar", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel1.ForeColor = Color.FromArgb(119, 119, 119);
-            dungeonLabel1.Location = new Point(228, 115);
+            dungeonLabel1.Location = new Point(228, 102);
             dungeonLabel1.Name = "dungeonLabel1";
             dungeonLabel1.Size = new Size(261, 19);
             dungeonLabel1.TabIndex = 6;
@@ -433,6 +448,7 @@
             WindowState = FormWindowState.Maximized;
             Load += FormPrincipal_Load;
             SideBar.ResumeLayout(false);
+            SideBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             PanelCPU.ResumeLayout(false);
             PanelRam.ResumeLayout(false);
@@ -469,5 +485,6 @@
         private ReaLTaiizor.Controls.DungeonLabel lblGPU;
         private System.Windows.Forms.Timer timerSistema;
         private ReaLTaiizor.Controls.PoisonDataGridView dgvProcessos;
+        private ReaLTaiizor.Controls.DungeonLabel dungeonLabel5;
     }
 }
