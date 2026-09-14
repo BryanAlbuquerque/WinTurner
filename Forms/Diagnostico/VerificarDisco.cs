@@ -1,84 +1,26 @@
 ﻿using System.Diagnostics;
-using System.Text;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using WinTurner.Services.Diagnosticos;
 
 namespace WinTuner.Forms.Diagnostico
 {
     public partial class VerificarDisco : Form
     {
+        private readonly VerificarDiscoService _verificarDiscoService;
+
         private CancellationTokenSource? _cancellationTokenSource;
-        private bool _verificando;
+        private Stopwatch? _stopwatch;
 
         public VerificarDisco()
         {
             InitializeComponent();
 
-            CarregarUnidade();
+            _verificarDiscoService = new VerificarDiscoService();
+
+            CarregarUnidades();
             ConfigurarEstadoInicial();
-        }
-
-        private void CarregarUnidade()
-        {
-            try
-            {
-                DriveInfo? unidadePrincipal = DriveInfo
-                    .GetDrives()
-                    .FirstOrDefault(d =>
-                        d.IsReady &&
-                        d.DriveType == DriveType.Fixed &&
-                        d.Name.Equals(@"C:\", StringComparison.OrdinalIgnoreCase));
-
-                unidadePrincipal ??= DriveInfo
-                    .GetDrives()
-                    .FirstOrDefault(d =>
-                        d.IsReady &&
-                        d.DriveType == DriveType.Fixed);
-
-                if (unidadePrincipal == null)
-                {
-                    lblDadosDisco01.Text = "Nenhuma unidade encontrada";
-                    lblDadosDisco02.Text = "Nenhuma unidade disponível";
-
-                    lblCapacidade.Text = "--";
-                    lblUtilizado.Text = "--";
-                    lblDisponivel.Text = "--";
-                    lblSistemaArquivos.Text = "--";
-
-                    return;
-                }
-
-                CarregarInformacoesUnidade(unidadePrincipal);
-            }
-            catch (Exception ex)
-            {
-                lblDadosDisco01.Text = "Erro ao carregar unidade";
-                lblDadosDisco02.Text = ex.Message;
-
-                lblCapacidade.Text = "--";
-                lblUtilizado.Text = "--";
-                lblDisponivel.Text = "--";
-                lblSistemaArquivos.Text = "--";
-            }
-        }
-
-        private void CarregarInformacoesUnidade(DriveInfo unidade)
-        {
-            double totalGB = unidade.TotalSize / 1024d / 1024d / 1024d;
-            double disponivelGB = unidade.AvailableFreeSpace / 1024d / 1024d / 1024d;
-            double utilizadoGB = totalGB - disponivelGB;
-
-            double percentualUso = totalGB > 0
-                ? (utilizadoGB / totalGB) * 100
-                : 0;
-
-            lblDadosDisco01.Text = unidade.Name;
-            lblDadosDisco02.Text = string.IsNullOrWhiteSpace(unidade.VolumeLabel)
-                ? "Sem nome"
-                : unidade.VolumeLabel;
-
-            lblCapacidade.Text = $"{totalGB:N1} GB";
-            lblUtilizado.Text = $"{utilizadoGB:N1} GB ({percentualUso:N0}%)";
-            lblDisponivel.Text = $"{disponivelGB:N1} GB";
-            lblSistemaArquivos.Text = unidade.DriveFormat;
         }
 
         private void ConfigurarEstadoInicial()
@@ -87,12 +29,7 @@ namespace WinTuner.Forms.Diagnostico
             lblStatus.ForeColor = Color.FromArgb(145, 145, 145);
 
             lblDescricaoStatus.Text =
-                "Nenhuma verificação foi executada nesta sessão.";
-
-            lblResultado.Text =
-                "Aguardando uma verificação do sistema de arquivos.";
-
-            lblResultado.ForeColor = Color.FromArgb(145, 145, 145);
+                "Selecione uma unidade e clique em \"VERIFICAR DISCO\" para iniciar a análise.";
 
             lblEtapa1.Text = "○ Sistema de arquivos";
             lblEtapa2.Text = "○ Metadados do volume";
@@ -102,279 +39,390 @@ namespace WinTuner.Forms.Diagnostico
             lblEtapa2.ForeColor = Color.FromArgb(145, 145, 145);
             lblEtapa3.ForeColor = Color.FromArgb(145, 145, 145);
 
-            progressBar.Value = 0;
+            progressBar.Style = ProgressBarStyle.Marquee;
+            progressBar.MarqueeAnimationSpeed = 25;
+            progressBar.Visible = false;
 
             btnVerificar.Enabled = true;
         }
 
-        private async void btnVerificar_Click(object? sender, EventArgs e)
+        private void CarregarUnidades()
         {
-            if (_verificando)
-                return;
-
-            await VerificarUnidadeAsync();
-        }
-
-        private async Task VerificarUnidadeAsync()
-        {
-            _verificando = true;
-
-            _cancellationTokenSource?.Dispose();
-            _cancellationTokenSource = new CancellationTokenSource();
+            cmbUnidades.Items.Clear();
 
             try
             {
-                btnVerificar.Enabled = false;
-
-                progressBar.Style = ProgressBarStyle.Marquee;
-                progressBar.MarqueeAnimationSpeed = 25;
-
-                AtualizarStatus(
-                    "● VERIFICANDO",
-                    Color.FromArgb(235, 170, 45),
-                    "O Windows está analisando o sistema de arquivos."
-                );
-
-                lblResultado.Text = "Iniciando verificação...";
-                lblResultado.ForeColor = Color.FromArgb(220, 220, 220);
-
-                lblEtapa1.Text = "● Sistema de arquivos";
-                lblEtapa1.ForeColor = Color.FromArgb(220, 35, 35);
-
-                lblEtapa2.Text = "○ Metadados do volume";
-                lblEtapa2.ForeColor = Color.FromArgb(145, 145, 145);
-
-                lblEtapa3.Text = "○ Integridade da unidade";
-                lblEtapa3.ForeColor = Color.FromArgb(145, 145, 145);
-
-                string unidade = ObterUnidade();
-
-                if (string.IsNullOrWhiteSpace(unidade))
+                foreach (DriveInfo drive in DriveInfo.GetDrives())
                 {
-                    throw new InvalidOperationException(
-                        "Não foi possível identificar uma unidade válida."
-                    );
+                    if (drive.DriveType != DriveType.Fixed)
+                        continue;
+
+                    if (!drive.IsReady)
+                        continue;
+
+                    string unidade = drive.Name.TrimEnd('\\');
+
+                    string volume = string.IsNullOrWhiteSpace(drive.VolumeLabel)
+                        ? "Sem nome"
+                        : drive.VolumeLabel;
+
+                    cmbUnidades.Items.Add(
+                        new UnidadeItem
+                        {
+                            Unidade = unidade,
+                            Volume = volume,
+                            SistemaArquivos = drive.DriveFormat
+                        });
                 }
 
-                lblResultado.Text =
-                    $"Executando análise na unidade {unidade}...\r\n\r\n" +
-                    "Isso pode levar alguns minutos.";
-
-                string resultado = await ExecutarChkdskAsync(
-                    unidade,
-                    _cancellationTokenSource.Token
-                );
-
-                lblEtapa1.Text = "✓ Sistema de arquivos";
-                lblEtapa1.ForeColor = Color.FromArgb(80, 190, 100);
-
-                lblEtapa2.Text = "✓ Metadados do volume";
-                lblEtapa2.ForeColor = Color.FromArgb(80, 190, 100);
-
-                lblEtapa3.Text = "✓ Integridade da unidade";
-                lblEtapa3.ForeColor = Color.FromArgb(80, 190, 100);
-
-                progressBar.Style = ProgressBarStyle.Continuous;
-                progressBar.Value = 100;
-
-                InterpretarResultado(resultado);
-            }
-            catch (OperationCanceledException)
-            {
-                progressBar.Style = ProgressBarStyle.Continuous;
-                progressBar.Value = 0;
-
-                AtualizarStatus(
-                    "● CANCELADO",
-                    Color.FromArgb(145, 145, 145),
-                    "A verificação foi cancelada."
-                );
-
-                lblResultado.Text =
-                    "A operação foi cancelada pelo usuário.";
-
-                lblResultado.ForeColor = Color.FromArgb(145, 145, 145);
+                if (cmbUnidades.Items.Count > 0)
+                {
+                    cmbUnidades.SelectedIndex = 0;
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Nenhuma unidade de armazenamento disponível foi encontrada.",
+                        "WinTurner",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {
-                progressBar.Style = ProgressBarStyle.Continuous;
-                progressBar.Value = 0;
+                MessageBox.Show(
+                    $"Não foi possível carregar as unidades.\n\n{ex.Message}",
+                    "WinTurner",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
 
-                AtualizarStatus(
-                    "● ERRO",
-                    Color.FromArgb(220, 35, 35),
-                    "Não foi possível concluir a verificação."
-                );
+        private void cmbUnidades_SelectedIndexChanged(
+            object sender,
+            EventArgs e)
+        {
+            if (cmbUnidades.SelectedItem is not UnidadeItem item)
+                return;
 
-                lblResultado.Text =
-                    $"Erro durante a verificação:\r\n\r\n{ex.Message}";
+            CarregarInformacoesDisco(item);
+        }
 
-                lblResultado.ForeColor = Color.FromArgb(220, 80, 80);
+        private void CarregarInformacoesDisco(UnidadeItem item)
+        {
+            try
+            {
+                DriveInfo drive = new DriveInfo(item.Unidade + "\\");
+
+                if (!drive.IsReady)
+                    return;
+
+                double totalGB =
+                    drive.TotalSize /
+                    1024.0 /
+                    1024.0 /
+                    1024.0;
+
+                double disponivelGB =
+                    drive.AvailableFreeSpace /
+                    1024.0 /
+                    1024.0 /
+                    1024.0;
+
+                double utilizadoGB = totalGB - disponivelGB;
+
+                lblDadosDisco01.Text = item.Unidade;
+
+                lblDadosDisco02.Text =
+                    string.IsNullOrWhiteSpace(drive.VolumeLabel)
+                        ? "Sem nome"
+                        : drive.VolumeLabel;
+
+                lblSistemaArquivos.Text = drive.DriveFormat;
+                lblCapacidade.Text = $"{totalGB:0.00} GB";
+                lblUtilizado.Text = $"{utilizadoGB:0.00} GB";
+                lblDisponivel.Text = $"{disponivelGB:0.00} GB";
+            }
+            catch
+            {
+                lblDadosDisco01.Text = item.Unidade;
+                lblDadosDisco02.Text = "Não identificado";
+                lblSistemaArquivos.Text = "Não identificado";
+                lblCapacidade.Text = "-";
+                lblUtilizado.Text = "-";
+                lblDisponivel.Text = "-";
+            }
+        }
+
+        private async void btnVerificar_Click(
+            object sender,
+            EventArgs e)
+        {
+            if (_cancellationTokenSource != null)
+                return;
+
+            if (cmbUnidades.SelectedItem is not UnidadeItem item)
+            {
+                MessageBox.Show(
+                    "Selecione uma unidade para verificar.",
+                    "WinTurner",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            try
+            {
+                _cancellationTokenSource =
+                    new CancellationTokenSource();
+
+                _stopwatch = Stopwatch.StartNew();
+
+                AlterarEstado(true);
+                LimparResultado();
+
+                lblStatus.Text = "● VERIFICANDO";
+                lblStatus.ForeColor =
+                    Color.FromArgb(230, 170, 60);
+
+                lblDescricaoStatus.Text =
+                    $"O Windows está verificando a unidade {item.Unidade}. " +
+                    "Esse processo pode levar alguns minutos.";
+
+                AtualizarEtapa(
+                    lblEtapa1,
+                    "● Analisando sistema de arquivos",
+                    Color.FromArgb(230, 170, 60));
+
+                AtualizarEtapa(
+                    lblEtapa2,
+                    "○ Aguardando",
+                    Color.FromArgb(145, 145, 145));
+
+                AtualizarEtapa(
+                    lblEtapa3,
+                    "○ Aguardando",
+                    Color.FromArgb(145, 145, 145));
+
+                EscreverResultado(
+                    "WINTURNER - VERIFICAÇÃO DO DISCO\r\n" +
+                    "============================================\r\n\r\n");
+
+                EscreverResultado(
+                    $"Unidade: {item.Unidade}\r\n");
+
+                EscreverResultado(
+                    $"Sistema de arquivos: {item.SistemaArquivos}\r\n");
+
+                EscreverResultado(
+                    $"Início: {DateTime.Now:dd/MM/yyyy HH:mm:ss}\r\n\r\n");
+
+                EscreverResultado(
+                    "Executando CHKDSK...\r\n\r\n");
+
+                var progresso = new Progress<string>(
+                    linha =>
+                    {
+                        EscreverResultado(
+                            linha + Environment.NewLine);
+                    });
+
+                ResultadoVerificacaoDisco resultado =
+                    await _verificarDiscoService.VerificarAsync(
+                        item.Unidade,
+                        progresso,
+                        _cancellationTokenSource.Token);
+
+                _stopwatch.Stop();
+
+                if (resultado.Sucesso)
+                {
+                    lblStatus.Text = "● SAUDÁVEL";
+                    lblStatus.ForeColor =
+                        Color.FromArgb(70, 200, 110);
+
+                    lblDescricaoStatus.Text =
+                        "A verificação foi concluída e não foram " +
+                        "detectados problemas pelo CHKDSK.";
+
+                    AtualizarEtapa(
+                        lblEtapa1,
+                        "● Sistema de arquivos OK",
+                        Color.FromArgb(70, 200, 110));
+
+                    AtualizarEtapa(
+                        lblEtapa2,
+                        "● Metadados do volume OK",
+                        Color.FromArgb(70, 200, 110));
+
+                    AtualizarEtapa(
+                        lblEtapa3,
+                        "● Integridade verificada",
+                        Color.FromArgb(70, 200, 110));
+                }
+                else
+                {
+                    lblStatus.Text = "● ATENÇÃO";
+                    lblStatus.ForeColor =
+                        Color.FromArgb(230, 75, 75);
+
+                    lblDescricaoStatus.Text =
+                        "O CHKDSK terminou indicando que a unidade " +
+                        "precisa de atenção. Consulte o resultado abaixo.";
+
+                    AtualizarEtapa(
+                        lblEtapa1,
+                        "● Verificação concluída com atenção",
+                        Color.FromArgb(230, 75, 75));
+
+                    AtualizarEtapa(
+                        lblEtapa2,
+                        "● Volume analisado",
+                        Color.FromArgb(230, 170, 60));
+
+                    AtualizarEtapa(
+                        lblEtapa3,
+                        "● Consulte o resultado",
+                        Color.FromArgb(230, 170, 60));
+                }
+
+                EscreverResultado(
+                    "\r\n============================================\r\n");
+
+                EscreverResultado(
+                    $"Código de saída: {resultado.CodigoSaida}\r\n");
+
+                EscreverResultado(
+                    $"Tempo total: {resultado.Duracao:mm\\:ss}\r\n");
+
+                EscreverResultado(
+                    $"Resultado: {resultado.Mensagem}\r\n");
+            }
+            catch (OperationCanceledException)
+            {
+                _stopwatch?.Stop();
+
+                lblStatus.Text = "● CANCELADO";
+                lblStatus.ForeColor =
+                    Color.FromArgb(230, 170, 60);
+
+                lblDescricaoStatus.Text =
+                    "A verificação foi cancelada.";
+
+                AtualizarEtapa(
+                    lblEtapa1,
+                    "● Verificação cancelada",
+                    Color.FromArgb(230, 170, 60));
+
+                AtualizarEtapa(
+                    lblEtapa2,
+                    "○ Não concluído",
+                    Color.FromArgb(145, 145, 145));
+
+                AtualizarEtapa(
+                    lblEtapa3,
+                    "○ Não concluído",
+                    Color.FromArgb(145, 145, 145));
+
+                EscreverResultado(
+                    "\r\n\r\nA verificação foi cancelada pelo usuário.");
+            }
+            catch (Exception ex)
+            {
+                _stopwatch?.Stop();
+
+                lblStatus.Text = "● ERRO";
+                lblStatus.ForeColor =
+                    Color.FromArgb(230, 75, 75);
+
+                lblDescricaoStatus.Text =
+                    "Ocorreu um erro durante a verificação.";
+
+                AtualizarEtapa(
+                    lblEtapa1,
+                    "● Erro na verificação",
+                    Color.FromArgb(230, 75, 75));
+
+                EscreverResultado(
+                    $"\r\n\r\nERRO:\r\n{ex.Message}");
+
+                MessageBox.Show(
+                    $"Não foi possível verificar o disco.\n\n{ex.Message}",
+                    "WinTurner",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
             finally
             {
-                _verificando = false;
-                btnVerificar.Enabled = true;
+                _stopwatch?.Stop();
+
+                _cancellationTokenSource?.Dispose();
+                _cancellationTokenSource = null;
+
+                AlterarEstado(false);
             }
         }
 
-        private string ObterUnidade()
+        private void AlterarEstado(bool verificando)
         {
-            DriveInfo? unidade = DriveInfo
-                .GetDrives()
-                .FirstOrDefault(d =>
-                    d.IsReady &&
-                    d.DriveType == DriveType.Fixed &&
-                    d.Name.Equals(@"C:\", StringComparison.OrdinalIgnoreCase));
-
-            unidade ??= DriveInfo
-                .GetDrives()
-                .FirstOrDefault(d =>
-                    d.IsReady &&
-                    d.DriveType == DriveType.Fixed);
-
-            return unidade?.Name.TrimEnd('\\') ?? string.Empty;
+            cmbUnidades.Enabled = !verificando;
+            btnVerificar.Enabled = !verificando;
+            btnAtualizar.Enabled = !verificando;
+            progressBar.Visible = verificando;
         }
 
-        private async Task<string> ExecutarChkdskAsync(
-            string unidade,
-            CancellationToken cancellationToken)
+        private void AtualizarEtapa(
+            Label label,
+            string texto,
+            Color cor)
         {
-            var saida = new StringBuilder();
-
-            using Process processo = new Process();
-
-            processo.StartInfo = new ProcessStartInfo
-            {
-                FileName = "chkdsk.exe",
-                Arguments = $"{unidade} /scan",
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                StandardOutputEncoding = Encoding.Default,
-                StandardErrorEncoding = Encoding.Default
-            };
-
-            processo.OutputDataReceived += (_, e) =>
-            {
-                if (!string.IsNullOrWhiteSpace(e.Data))
-                {
-                    lock (saida)
-                    {
-                        saida.AppendLine(e.Data);
-                    }
-
-                    BeginInvoke(() =>
-                    {
-                        lblResultado.Text = e.Data;
-                    });
-                }
-            };
-
-            processo.ErrorDataReceived += (_, e) =>
-            {
-                if (!string.IsNullOrWhiteSpace(e.Data))
-                {
-                    lock (saida)
-                    {
-                        saida.AppendLine(e.Data);
-                    }
-                }
-            };
-
-            if (!processo.Start())
-            {
-                throw new InvalidOperationException(
-                    "Não foi possível iniciar o CHKDSK."
-                );
-            }
-
-            processo.BeginOutputReadLine();
-            processo.BeginErrorReadLine();
-
-            await processo.WaitForExitAsync(cancellationToken);
-
-            return saida.ToString();
+            label.Text = texto;
+            label.ForeColor = cor;
         }
 
-        private void InterpretarResultado(string resultado)
+        private void LimparResultado()
         {
-            string texto = resultado.ToLowerInvariant();
-
-            bool encontrouProblema =
-                texto.Contains("found problems")
-                || texto.Contains("problemas")
-                || texto.Contains("errors")
-                || texto.Contains("erros")
-                || texto.Contains("corrupt")
-                || texto.Contains("corromp");
-
-            if (encontrouProblema)
-            {
-                AtualizarStatus(
-                    "● ATENÇÃO",
-                    Color.FromArgb(235, 170, 45),
-                    "A verificação identificou possíveis problemas."
-                );
-
-                lblResultado.Text =
-                    "A verificação encontrou informações que precisam de atenção.\r\n\r\n" +
-                    "Consulte o resultado detalhado abaixo para verificar " +
-                    "se é necessário executar uma operação de reparo.";
-
-                lblResultado.ForeColor = Color.FromArgb(235, 170, 45);
-            }
-            else
-            {
-                AtualizarStatus(
-                    "● SAUDÁVEL",
-                    Color.FromArgb(80, 190, 100),
-                    "Nenhum problema relevante foi identificado."
-                );
-
-                lblResultado.Text =
-                    "A verificação foi concluída com sucesso.\r\n\r\n" +
-                    "O sistema de arquivos não apresentou problemas " +
-                    "que exijam intervenção imediata.";
-
-                lblResultado.ForeColor = Color.FromArgb(80, 190, 100);
-            }
+            lblResultado.Text =
+                "Executando verificação...\r\n\r\n";
         }
 
-        private void AtualizarStatus(
-            string status,
-            Color cor,
-            string descricao)
+        private void EscreverResultado(string texto)
         {
-            lblStatus.Text = status;
-            lblStatus.ForeColor = cor;
-
-            lblDescricaoStatus.Text = descricao;
+            lblResultado.Text += texto;
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
+        private void btnAtualizar_Click(
+            object sender,
+            EventArgs e)
         {
-            if (_verificando)
-            {
-                DialogResult resposta = MessageBox.Show(
-                    "Uma verificação do disco está em andamento.\r\n\r\n" +
-                    "Deseja realmente fechar o WinTurner?",
-                    "Verificação em andamento",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning
-                );
+            if (_cancellationTokenSource != null)
+                return;
 
-                if (resposta != DialogResult.Yes)
-                {
-                    e.Cancel = true;
-                    return;
-                }
+            CarregarUnidades();
+        }
 
-                _cancellationTokenSource?.Cancel();
-            }
+        protected override void OnFormClosing(
+            FormClosingEventArgs e)
+        {
+            _cancellationTokenSource?.Cancel();
 
             base.OnFormClosing(e);
+        }
+
+        private sealed class UnidadeItem
+        {
+            public string Unidade { get; set; } = string.Empty;
+
+            public string Volume { get; set; } = string.Empty;
+
+            public string SistemaArquivos { get; set; } =
+                string.Empty;
+
+            public override string ToString()
+            {
+                return $"{Unidade}  •  {Volume}  •  {SistemaArquivos}";
+            }
         }
     }
 }
