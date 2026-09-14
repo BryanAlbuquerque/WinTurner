@@ -249,7 +249,7 @@
             // pnlConteudo
             // 
             pnlConteudo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlConteudo.BackColor = Color.FromArgb(39, 51, 63);
+            pnlConteudo.BackColor = Color.Black;
             pnlConteudo.EdgeColor = Color.FromArgb(32, 41, 50);
             pnlConteudo.Location = new Point(231, 167);
             pnlConteudo.Name = "pnlConteudo";
