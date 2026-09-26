@@ -6,7 +6,20 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\Historico\**" />
+    <Compile Remove="Services\Limpeza\**" />
+    <Compile Remove="Services\Otimizacao\**" />
+    <EmbeddedResource Remove="Services\Historico\**" />
+    <EmbeddedResource Remove="Services\Limpeza\**" />
+    <EmbeddedResource Remove="Services\Otimizacao\**" />
+    <None Remove="Services\Historico\**" />
+    <None Remove="Services\Limpeza\**" />
+    <None Remove="Services\Otimizacao\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ReaLTaiizor" Version="3.8.2.1" />
@@ -27,12 +40,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\Limpeza\" />
-    <Folder Include="Services\Historico\" />
-    <Folder Include="Services\Otimizacao\" />
   </ItemGroup>
 
 </Project>

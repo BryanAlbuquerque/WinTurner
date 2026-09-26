@@ -84,5 +84,16 @@ namespace WinTuner.Forms
         {
             AbrirFormulario(new SysInfo());
         }
+
+        private void btnIntegridade_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new IntegridadeWindows());
+        }
+
+        private void btnRede_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new DiagnosticoRede());
+        }
+
     }
 }

@@ -280,6 +280,7 @@
             btnIntegridade.TabIndex = 23;
             btnIntegridade.Text = "INTEGRIDADE WIN";
             btnIntegridade.TextAlignment = StringAlignment.Center;
+            btnIntegridade.Click += btnIntegridade_Click;
             // 
             // btnRede
             // 
@@ -300,6 +301,7 @@
             btnRede.TabIndex = 24;
             btnRede.Text = "REDE";
             btnRede.TextAlignment = StringAlignment.Center;
+            btnRede.Click += btnRede_Click;
             // 
             // FormDiagnostico
             // 
