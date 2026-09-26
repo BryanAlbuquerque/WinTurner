@@ -34,22 +34,19 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             SideBar = new Panel();
+            dungeonLabel8 = new ReaLTaiizor.Controls.DungeonLabel();
             dungeonLabel5 = new ReaLTaiizor.Controls.DungeonLabel();
             btnHistorico = new ReaLTaiizor.Controls.Button();
             btnOtimizacao = new ReaLTaiizor.Controls.Button();
             btnLimpeza = new ReaLTaiizor.Controls.Button();
             btnDiagnostico = new ReaLTaiizor.Controls.Button();
             pictureBox1 = new PictureBox();
-            PanelCPU = new FlowLayoutPanel();
             dungeonLabel3 = new ReaLTaiizor.Controls.DungeonLabel();
             lblCPU = new ReaLTaiizor.Controls.DungeonLabel();
-            PanelRam = new FlowLayoutPanel();
             dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
             lblRAM = new ReaLTaiizor.Controls.DungeonLabel();
-            PanelDisco = new FlowLayoutPanel();
             dungeonLabel4 = new ReaLTaiizor.Controls.DungeonLabel();
             lblDISCO = new ReaLTaiizor.Controls.DungeonLabel();
-            PanelGPU = new FlowLayoutPanel();
             lblGpuNome = new ReaLTaiizor.Controls.DungeonLabel();
             lblGPU = new ReaLTaiizor.Controls.DungeonLabel();
             lbl = new ReaLTaiizor.Controls.BigLabel();
@@ -58,18 +55,23 @@
             dungeonLabel7 = new ReaLTaiizor.Controls.DungeonLabel();
             timerSistema = new System.Windows.Forms.Timer(components);
             dgvProcessos = new ReaLTaiizor.Controls.PoisonDataGridView();
+            panel1 = new ReaLTaiizor.Controls.Panel();
+            panel2 = new ReaLTaiizor.Controls.Panel();
+            panel3 = new ReaLTaiizor.Controls.Panel();
+            panel4 = new ReaLTaiizor.Controls.Panel();
             SideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            PanelCPU.SuspendLayout();
-            PanelRam.SuspendLayout();
-            PanelDisco.SuspendLayout();
-            PanelGPU.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProcessos).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // SideBar
             // 
             SideBar.BackColor = Color.Black;
+            SideBar.Controls.Add(dungeonLabel8);
             SideBar.Controls.Add(dungeonLabel5);
             SideBar.Controls.Add(btnHistorico);
             SideBar.Controls.Add(btnOtimizacao);
@@ -79,19 +81,31 @@
             SideBar.Dock = DockStyle.Left;
             SideBar.Location = new Point(0, 0);
             SideBar.Name = "SideBar";
-            SideBar.Size = new Size(200, 668);
+            SideBar.Size = new Size(222, 651);
             SideBar.TabIndex = 0;
+            // 
+            // dungeonLabel8
+            // 
+            dungeonLabel8.AutoSize = true;
+            dungeonLabel8.BackColor = Color.Transparent;
+            dungeonLabel8.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel8.ForeColor = Color.Maroon;
+            dungeonLabel8.Location = new Point(-2, 136);
+            dungeonLabel8.Name = "dungeonLabel8";
+            dungeonLabel8.Size = new Size(210, 33);
+            dungeonLabel8.TabIndex = 10;
+            dungeonLabel8.Text = "━━━━━━━━━━━━━━━";
             // 
             // dungeonLabel5
             // 
             dungeonLabel5.AutoSize = true;
             dungeonLabel5.BackColor = Color.Transparent;
             dungeonLabel5.Dock = DockStyle.Bottom;
-            dungeonLabel5.Font = new Font("Castellar", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel5.ForeColor = Color.Lime;
-            dungeonLabel5.Location = new Point(0, 640);
+            dungeonLabel5.Location = new Point(0, 636);
             dungeonLabel5.Name = "dungeonLabel5";
-            dungeonLabel5.Size = new Size(201, 14);
+            dungeonLabel5.Size = new Size(185, 15);
             dungeonLabel5.TabIndex = 20;
             dungeonLabel5.Text = "⚫ SISTEMA OPERACIONAL";
             // 
@@ -102,11 +116,11 @@
             btnHistorico.Cursor = Cursors.Hand;
             btnHistorico.EnteredBorderColor = Color.DarkGray;
             btnHistorico.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnHistorico.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnHistorico.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnHistorico.Image = null;
             btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
             btnHistorico.InactiveColor = Color.Black;
-            btnHistorico.Location = new Point(12, 393);
+            btnHistorico.Location = new Point(25, 428);
             btnHistorico.Name = "btnHistorico";
             btnHistorico.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnHistorico.PressedColor = Color.FromArgb(165, 37, 37);
@@ -123,11 +137,11 @@
             btnOtimizacao.Cursor = Cursors.Hand;
             btnOtimizacao.EnteredBorderColor = Color.DarkGray;
             btnOtimizacao.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnOtimizacao.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnOtimizacao.Image = null;
             btnOtimizacao.ImageAlign = ContentAlignment.MiddleLeft;
             btnOtimizacao.InactiveColor = Color.Black;
-            btnOtimizacao.Location = new Point(12, 323);
+            btnOtimizacao.Location = new Point(25, 347);
             btnOtimizacao.Name = "btnOtimizacao";
             btnOtimizacao.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnOtimizacao.PressedColor = Color.FromArgb(165, 37, 37);
@@ -144,11 +158,11 @@
             btnLimpeza.Cursor = Cursors.Hand;
             btnLimpeza.EnteredBorderColor = Color.DarkGray;
             btnLimpeza.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnLimpeza.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnLimpeza.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnLimpeza.Image = null;
             btnLimpeza.ImageAlign = ContentAlignment.MiddleLeft;
             btnLimpeza.InactiveColor = Color.Black;
-            btnLimpeza.Location = new Point(12, 249);
+            btnLimpeza.Location = new Point(25, 277);
             btnLimpeza.Name = "btnLimpeza";
             btnLimpeza.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnLimpeza.PressedColor = Color.FromArgb(165, 37, 37);
@@ -165,11 +179,11 @@
             btnDiagnostico.Cursor = Cursors.Hand;
             btnDiagnostico.EnteredBorderColor = Color.DarkGray;
             btnDiagnostico.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnDiagnostico.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnDiagnostico.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnDiagnostico.Image = null;
             btnDiagnostico.ImageAlign = ContentAlignment.MiddleLeft;
             btnDiagnostico.InactiveColor = Color.Black;
-            btnDiagnostico.Location = new Point(12, 169);
+            btnDiagnostico.Location = new Point(25, 209);
             btnDiagnostico.Name = "btnDiagnostico";
             btnDiagnostico.PressedBorderColor = Color.FromArgb(165, 37, 37);
             btnDiagnostico.PressedColor = Color.FromArgb(165, 37, 37);
@@ -184,28 +198,17 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(194, 118);
+            pictureBox1.Size = new Size(205, 141);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // PanelCPU
-            // 
-            PanelCPU.BackColor = Color.FromArgb(21, 21, 21);
-            PanelCPU.BorderStyle = BorderStyle.FixedSingle;
-            PanelCPU.Controls.Add(dungeonLabel3);
-            PanelCPU.Controls.Add(lblCPU);
-            PanelCPU.Location = new Point(333, 149);
-            PanelCPU.Name = "PanelCPU";
-            PanelCPU.Size = new Size(195, 100);
-            PanelCPU.TabIndex = 1;
-            // 
             // dungeonLabel3
             // 
             dungeonLabel3.BackColor = Color.Transparent;
-            dungeonLabel3.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            dungeonLabel3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             dungeonLabel3.ForeColor = Color.Maroon;
-            dungeonLabel3.Location = new Point(3, 0);
+            dungeonLabel3.Location = new Point(8, 5);
             dungeonLabel3.Name = "dungeonLabel3";
             dungeonLabel3.Size = new Size(159, 20);
             dungeonLabel3.TabIndex = 8;
@@ -214,33 +217,22 @@
             // lblCPU
             // 
             lblCPU.BackColor = Color.Transparent;
-            lblCPU.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblCPU.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblCPU.ForeColor = Color.Maroon;
             lblCPU.ImageAlign = ContentAlignment.BottomCenter;
-            lblCPU.Location = new Point(3, 20);
+            lblCPU.Location = new Point(53, 41);
             lblCPU.Name = "lblCPU";
             lblCPU.Size = new Size(159, 20);
             lblCPU.TabIndex = 10;
             lblCPU.Text = "Dados CPU";
             lblCPU.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // PanelRam
-            // 
-            PanelRam.BackColor = Color.FromArgb(21, 21, 21);
-            PanelRam.BorderStyle = BorderStyle.FixedSingle;
-            PanelRam.Controls.Add(dungeonLabel2);
-            PanelRam.Controls.Add(lblRAM);
-            PanelRam.Location = new Point(580, 148);
-            PanelRam.Name = "PanelRam";
-            PanelRam.Size = new Size(195, 100);
-            PanelRam.TabIndex = 2;
-            // 
             // dungeonLabel2
             // 
             dungeonLabel2.BackColor = Color.Transparent;
-            dungeonLabel2.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            dungeonLabel2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             dungeonLabel2.ForeColor = Color.Maroon;
-            dungeonLabel2.Location = new Point(3, 0);
+            dungeonLabel2.Location = new Point(9, 5);
             dungeonLabel2.Name = "dungeonLabel2";
             dungeonLabel2.Size = new Size(159, 20);
             dungeonLabel2.TabIndex = 7;
@@ -249,33 +241,22 @@
             // lblRAM
             // 
             lblRAM.BackColor = Color.Transparent;
-            lblRAM.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblRAM.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblRAM.ForeColor = Color.Maroon;
             lblRAM.ImageAlign = ContentAlignment.BottomCenter;
-            lblRAM.Location = new Point(3, 20);
+            lblRAM.Location = new Point(45, 41);
             lblRAM.Name = "lblRAM";
             lblRAM.Size = new Size(159, 20);
             lblRAM.TabIndex = 11;
             lblRAM.Text = "Dados RAM";
             lblRAM.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // PanelDisco
-            // 
-            PanelDisco.BackColor = Color.FromArgb(21, 21, 21);
-            PanelDisco.BorderStyle = BorderStyle.FixedSingle;
-            PanelDisco.Controls.Add(dungeonLabel4);
-            PanelDisco.Controls.Add(lblDISCO);
-            PanelDisco.Location = new Point(823, 148);
-            PanelDisco.Name = "PanelDisco";
-            PanelDisco.Size = new Size(195, 100);
-            PanelDisco.TabIndex = 3;
-            // 
             // dungeonLabel4
             // 
             dungeonLabel4.BackColor = Color.Transparent;
-            dungeonLabel4.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            dungeonLabel4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             dungeonLabel4.ForeColor = Color.Maroon;
-            dungeonLabel4.Location = new Point(3, 0);
+            dungeonLabel4.Location = new Point(8, 5);
             dungeonLabel4.Name = "dungeonLabel4";
             dungeonLabel4.Size = new Size(159, 20);
             dungeonLabel4.TabIndex = 8;
@@ -284,34 +265,22 @@
             // lblDISCO
             // 
             lblDISCO.BackColor = Color.Transparent;
-            lblDISCO.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblDISCO.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblDISCO.ForeColor = Color.Maroon;
             lblDISCO.ImageAlign = ContentAlignment.BottomCenter;
-            lblDISCO.Location = new Point(3, 20);
+            lblDISCO.Location = new Point(46, 41);
             lblDISCO.Name = "lblDISCO";
             lblDISCO.Size = new Size(159, 20);
             lblDISCO.TabIndex = 12;
             lblDISCO.Text = "DataDisco";
             lblDISCO.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // PanelGPU
-            // 
-            PanelGPU.BackColor = Color.FromArgb(21, 21, 21);
-            PanelGPU.BorderStyle = BorderStyle.FixedSingle;
-            PanelGPU.Controls.Add(lblGpuNome);
-            PanelGPU.Controls.Add(lblGPU);
-            PanelGPU.FlowDirection = FlowDirection.TopDown;
-            PanelGPU.Location = new Point(1073, 148);
-            PanelGPU.Name = "PanelGPU";
-            PanelGPU.Size = new Size(195, 100);
-            PanelGPU.TabIndex = 4;
-            // 
             // lblGpuNome
             // 
             lblGpuNome.BackColor = Color.Transparent;
-            lblGpuNome.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblGpuNome.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblGpuNome.ForeColor = Color.Maroon;
-            lblGpuNome.Location = new Point(3, 0);
+            lblGpuNome.Location = new Point(0, 5);
             lblGpuNome.Name = "lblGpuNome";
             lblGpuNome.Size = new Size(159, 20);
             lblGpuNome.TabIndex = 9;
@@ -320,10 +289,10 @@
             // lblGPU
             // 
             lblGPU.BackColor = Color.Transparent;
-            lblGPU.Font = new Font("Castellar", 14.25F, FontStyle.Bold);
+            lblGPU.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblGPU.ForeColor = Color.Maroon;
             lblGPU.ImageAlign = ContentAlignment.BottomCenter;
-            lblGPU.Location = new Point(3, 20);
+            lblGPU.Location = new Point(8, 41);
             lblGPU.Name = "lblGPU";
             lblGPU.Size = new Size(159, 20);
             lblGPU.TabIndex = 13;
@@ -334,11 +303,11 @@
             // 
             lbl.AutoSize = true;
             lbl.BackColor = Color.Transparent;
-            lbl.Font = new Font("Castellar", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbl.ForeColor = Color.WhiteSmoke;
-            lbl.Location = new Point(214, 11);
+            lbl.Location = new Point(228, 9);
             lbl.Name = "lbl";
-            lbl.Size = new Size(488, 44);
+            lbl.Size = new Size(448, 42);
             lbl.TabIndex = 5;
             lbl.Text = "PAINEL DE CONTROLE";
             // 
@@ -346,11 +315,11 @@
             // 
             dungeonLabel1.AutoSize = true;
             dungeonLabel1.BackColor = Color.Transparent;
-            dungeonLabel1.Font = new Font("Castellar", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel1.ForeColor = Color.FromArgb(119, 119, 119);
             dungeonLabel1.Location = new Point(228, 102);
             dungeonLabel1.Name = "dungeonLabel1";
-            dungeonLabel1.Size = new Size(261, 19);
+            dungeonLabel1.Size = new Size(191, 20);
             dungeonLabel1.TabIndex = 6;
             dungeonLabel1.Text = "Visão geral do sistema";
             // 
@@ -358,11 +327,11 @@
             // 
             dungeonLabel6.AutoSize = true;
             dungeonLabel6.BackColor = Color.Transparent;
-            dungeonLabel6.Font = new Font("Castellar", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel6.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel6.ForeColor = Color.Maroon;
             dungeonLabel6.Location = new Point(292, 45);
             dungeonLabel6.Name = "dungeonLabel6";
-            dungeonLabel6.Size = new Size(687, 35);
+            dungeonLabel6.Size = new Size(639, 33);
             dungeonLabel6.TabIndex = 7;
             dungeonLabel6.Text = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
             // 
@@ -370,11 +339,11 @@
             // 
             dungeonLabel7.AutoSize = true;
             dungeonLabel7.BackColor = Color.Transparent;
-            dungeonLabel7.Font = new Font("Castellar", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel7.ForeColor = Color.White;
             dungeonLabel7.Location = new Point(228, 323);
             dungeonLabel7.Name = "dungeonLabel7";
-            dungeonLabel7.Size = new Size(331, 23);
+            dungeonLabel7.Size = new Size(245, 24);
             dungeonLabel7.TabIndex = 8;
             dungeonLabel7.Text = "Aplicativos em Execução";
             // 
@@ -423,24 +392,80 @@
             dgvProcessos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvProcessos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvProcessos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProcessos.Size = new Size(1040, 285);
+            dgvProcessos.Size = new Size(965, 268);
             dgvProcessos.TabIndex = 9;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(21, 21, 21);
+            panel1.Controls.Add(lblCPU);
+            panel1.Controls.Add(dungeonLabel3);
+            panel1.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel1.Location = new Point(268, 148);
+            panel1.Name = "panel1";
+            panel1.Padding = new Padding(5);
+            panel1.Size = new Size(244, 95);
+            panel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            panel1.TabIndex = 10;
+            panel1.Text = "panel1";
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(21, 21, 21);
+            panel2.Controls.Add(lblRAM);
+            panel2.Controls.Add(dungeonLabel2);
+            panel2.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel2.Location = new Point(553, 148);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(5);
+            panel2.Size = new Size(245, 95);
+            panel2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            panel2.TabIndex = 11;
+            panel2.Text = "panel2";
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(21, 21, 21);
+            panel3.Controls.Add(lblDISCO);
+            panel3.Controls.Add(dungeonLabel4);
+            panel3.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel3.Location = new Point(854, 148);
+            panel3.Name = "panel3";
+            panel3.Padding = new Padding(5);
+            panel3.Size = new Size(235, 95);
+            panel3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            panel3.TabIndex = 12;
+            panel3.Text = "panel3";
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.FromArgb(21, 21, 21);
+            panel4.Controls.Add(lblGPU);
+            panel4.Controls.Add(lblGpuNome);
+            panel4.EdgeColor = Color.FromArgb(32, 41, 50);
+            panel4.Location = new Point(1136, 148);
+            panel4.Name = "panel4";
+            panel4.Padding = new Padding(5);
+            panel4.Size = new Size(248, 95);
+            panel4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            panel4.TabIndex = 13;
+            panel4.Text = "panel4";
             // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(29, 29, 29);
-            ClientSize = new Size(1299, 668);
+            ClientSize = new Size(1224, 651);
+            Controls.Add(panel4);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Controls.Add(dgvProcessos);
             Controls.Add(dungeonLabel7);
             Controls.Add(lbl);
             Controls.Add(dungeonLabel6);
             Controls.Add(dungeonLabel1);
-            Controls.Add(PanelGPU);
-            Controls.Add(PanelDisco);
-            Controls.Add(PanelRam);
-            Controls.Add(PanelCPU);
             Controls.Add(SideBar);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormPrincipal";
@@ -450,11 +475,11 @@
             SideBar.ResumeLayout(false);
             SideBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            PanelCPU.ResumeLayout(false);
-            PanelRam.ResumeLayout(false);
-            PanelDisco.ResumeLayout(false);
-            PanelGPU.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvProcessos).EndInit();
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -463,10 +488,6 @@
 
         private Panel SideBar;
         private PictureBox pictureBox1;
-        private FlowLayoutPanel PanelCPU;
-        private FlowLayoutPanel PanelRam;
-        private FlowLayoutPanel PanelDisco;
-        private FlowLayoutPanel PanelGPU;
         private ReaLTaiizor.Controls.BigLabel lbl;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel1;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel3;
@@ -486,5 +507,10 @@
         private System.Windows.Forms.Timer timerSistema;
         private ReaLTaiizor.Controls.PoisonDataGridView dgvProcessos;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel5;
+        private ReaLTaiizor.Controls.DungeonLabel dungeonLabel8;
+        private ReaLTaiizor.Controls.Panel panel1;
+        private ReaLTaiizor.Controls.Panel panel2;
+        private ReaLTaiizor.Controls.Panel panel3;
+        private ReaLTaiizor.Controls.Panel panel4;
     }
 }

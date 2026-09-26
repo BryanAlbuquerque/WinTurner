@@ -42,6 +42,8 @@
             btntnInfoComputador = new ReaLTaiizor.Controls.Button();
             btnVerificarDisco = new ReaLTaiizor.Controls.Button();
             pnlConteudo = new ReaLTaiizor.Controls.Panel();
+            btnIntegridade = new ReaLTaiizor.Controls.Button();
+            btnRede = new ReaLTaiizor.Controls.Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SideBar.SuspendLayout();
             SuspendLayout();
@@ -50,11 +52,11 @@
             // 
             dungeonLabel6.AutoSize = true;
             dungeonLabel6.BackColor = Color.Transparent;
-            dungeonLabel6.Font = new Font("Castellar", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel6.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel6.ForeColor = Color.Maroon;
             dungeonLabel6.Location = new Point(246, 45);
             dungeonLabel6.Name = "dungeonLabel6";
-            dungeonLabel6.Size = new Size(687, 35);
+            dungeonLabel6.Size = new Size(639, 33);
             dungeonLabel6.TabIndex = 17;
             dungeonLabel6.Text = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
             // 
@@ -62,11 +64,11 @@
             // 
             dungeonLabel1.AutoSize = true;
             dungeonLabel1.BackColor = Color.Transparent;
-            dungeonLabel1.Font = new Font("Castellar", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel1.ForeColor = Color.FromArgb(119, 119, 119);
             dungeonLabel1.Location = new Point(231, 80);
             dungeonLabel1.Name = "dungeonLabel1";
-            dungeonLabel1.Size = new Size(499, 23);
+            dungeonLabel1.Size = new Size(357, 24);
             dungeonLabel1.TabIndex = 16;
             dungeonLabel1.Text = "Verificação e Analise do Computador";
             // 
@@ -77,7 +79,7 @@
             btnHistorico.Cursor = Cursors.Hand;
             btnHistorico.EnteredBorderColor = Color.DarkGray;
             btnHistorico.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnHistorico.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnHistorico.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnHistorico.Image = null;
             btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
             btnHistorico.InactiveColor = Color.Black;
@@ -98,7 +100,7 @@
             btnOtimizacao.Cursor = Cursors.Hand;
             btnOtimizacao.EnteredBorderColor = Color.DarkGray;
             btnOtimizacao.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnOtimizacao.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnOtimizacao.Image = null;
             btnOtimizacao.ImageAlign = ContentAlignment.MiddleLeft;
             btnOtimizacao.InactiveColor = Color.Black;
@@ -119,7 +121,7 @@
             btnLimpeza.Cursor = Cursors.Hand;
             btnLimpeza.EnteredBorderColor = Color.DarkGray;
             btnLimpeza.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnLimpeza.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnLimpeza.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnLimpeza.Image = null;
             btnLimpeza.ImageAlign = ContentAlignment.MiddleLeft;
             btnLimpeza.InactiveColor = Color.Black;
@@ -163,11 +165,11 @@
             dungeonLabel2.AutoSize = true;
             dungeonLabel2.BackColor = Color.Transparent;
             dungeonLabel2.Dock = DockStyle.Bottom;
-            dungeonLabel2.Font = new Font("Castellar", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel2.ForeColor = Color.Red;
-            dungeonLabel2.Location = new Point(0, 660);
+            dungeonLabel2.Location = new Point(0, 659);
             dungeonLabel2.Name = "dungeonLabel2";
-            dungeonLabel2.Size = new Size(201, 14);
+            dungeonLabel2.Size = new Size(185, 15);
             dungeonLabel2.TabIndex = 19;
             dungeonLabel2.Text = "⚫ SISTEMA OPERACIONAL";
             // 
@@ -178,7 +180,7 @@
             btnPainel.Cursor = Cursors.Hand;
             btnPainel.EnteredBorderColor = Color.DarkGray;
             btnPainel.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnPainel.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnPainel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnPainel.Image = null;
             btnPainel.ImageAlign = ContentAlignment.MiddleLeft;
             btnPainel.InactiveColor = Color.Black;
@@ -196,11 +198,11 @@
             // 
             lbl.AutoSize = true;
             lbl.BackColor = Color.Transparent;
-            lbl.Font = new Font("Castellar", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbl.ForeColor = Color.WhiteSmoke;
             lbl.Location = new Point(218, 9);
             lbl.Name = "lbl";
-            lbl.Size = new Size(336, 44);
+            lbl.Size = new Size(299, 42);
             lbl.TabIndex = 15;
             lbl.Text = "DIAGNÓSTICO ";
             // 
@@ -211,7 +213,7 @@
             btntnInfoComputador.Cursor = Cursors.Hand;
             btntnInfoComputador.EnteredBorderColor = Color.DarkGray;
             btntnInfoComputador.EnteredColor = Color.FromArgb(32, 34, 37);
-            btntnInfoComputador.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btntnInfoComputador.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btntnInfoComputador.Image = null;
             btntnInfoComputador.ImageAlign = ContentAlignment.MiddleLeft;
             btntnInfoComputador.InactiveColor = Color.FromArgb(29, 29, 29);
@@ -232,7 +234,7 @@
             btnVerificarDisco.Cursor = Cursors.Hand;
             btnVerificarDisco.EnteredBorderColor = Color.DarkGray;
             btnVerificarDisco.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnVerificarDisco.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnVerificarDisco.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnVerificarDisco.Image = null;
             btnVerificarDisco.ImageAlign = ContentAlignment.MiddleLeft;
             btnVerificarDisco.InactiveColor = Color.FromArgb(29, 29, 29);
@@ -254,17 +256,59 @@
             pnlConteudo.Location = new Point(231, 167);
             pnlConteudo.Name = "pnlConteudo";
             pnlConteudo.Padding = new Padding(5);
-            pnlConteudo.Size = new Size(817, 495);
+            pnlConteudo.Size = new Size(868, 495);
             pnlConteudo.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             pnlConteudo.TabIndex = 22;
             pnlConteudo.Text = "panel1";
+            // 
+            // btnIntegridade
+            // 
+            btnIntegridade.BackColor = Color.Black;
+            btnIntegridade.BorderColor = Color.Transparent;
+            btnIntegridade.Cursor = Cursors.Hand;
+            btnIntegridade.EnteredBorderColor = Color.DarkGray;
+            btnIntegridade.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnIntegridade.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnIntegridade.Image = null;
+            btnIntegridade.ImageAlign = ContentAlignment.MiddleLeft;
+            btnIntegridade.InactiveColor = Color.FromArgb(29, 29, 29);
+            btnIntegridade.Location = new Point(685, 120);
+            btnIntegridade.Name = "btnIntegridade";
+            btnIntegridade.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnIntegridade.PressedColor = Color.FromArgb(165, 37, 37);
+            btnIntegridade.Size = new Size(197, 27);
+            btnIntegridade.TabIndex = 23;
+            btnIntegridade.Text = "INTEGRIDADE WIN";
+            btnIntegridade.TextAlignment = StringAlignment.Center;
+            // 
+            // btnRede
+            // 
+            btnRede.BackColor = Color.Black;
+            btnRede.BorderColor = Color.Transparent;
+            btnRede.Cursor = Cursors.Hand;
+            btnRede.EnteredBorderColor = Color.DarkGray;
+            btnRede.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnRede.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnRede.Image = null;
+            btnRede.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRede.InactiveColor = Color.FromArgb(29, 29, 29);
+            btnRede.Location = new Point(908, 120);
+            btnRede.Name = "btnRede";
+            btnRede.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnRede.PressedColor = Color.FromArgb(165, 37, 37);
+            btnRede.Size = new Size(176, 27);
+            btnRede.TabIndex = 24;
+            btnRede.Text = "REDE";
+            btnRede.TextAlignment = StringAlignment.Center;
             // 
             // FormDiagnostico
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(29, 29, 29);
-            ClientSize = new Size(1060, 674);
+            ClientSize = new Size(1111, 674);
+            Controls.Add(btnRede);
+            Controls.Add(btnIntegridade);
             Controls.Add(pnlConteudo);
             Controls.Add(btnVerificarDisco);
             Controls.Add(btntnInfoComputador);
@@ -299,5 +343,7 @@
         private ReaLTaiizor.Controls.Button btntnInfoComputador;
         private ReaLTaiizor.Controls.Button btnVerificarDisco;
         private ReaLTaiizor.Controls.Panel pnlConteudo;
+        private ReaLTaiizor.Controls.Button btnIntegridade;
+        private ReaLTaiizor.Controls.Button btnRede;
     }
 }
