@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
-using WinTurner.Services.Diagnosticos;
+using System.IO;
+using WinTuner.Services.Diagnosticos;
 
 namespace WinTuner.Forms.Diagnostico
 {
@@ -16,7 +17,8 @@ namespace WinTuner.Forms.Diagnostico
         {
             InitializeComponent();
 
-            _verificarDiscoService = new VerificarDiscoService();
+            _verificarDiscoService =
+                new VerificarDiscoService();
 
             CarregarUnidades();
             ConfigurarEstadoInicial();
@@ -24,29 +26,53 @@ namespace WinTuner.Forms.Diagnostico
 
         private void ConfigurarEstadoInicial()
         {
-            lblStatus.Text = "● AGUARDANDO";
-            lblStatus.ForeColor = Color.FromArgb(145, 145, 145);
+            lblStatus.Text =
+                "● AGUARDANDO";
+
+            lblStatus.ForeColor =
+                Color.FromArgb(145, 145, 145);
 
             lblDescricaoStatus.Text =
                 "Selecione uma unidade e clique em \"VERIFICAR DISCO\" para iniciar a análise.";
 
-            lblEtapa1.Text = "○ Sistema de arquivos";
-            lblEtapa2.Text = "○ Metadados do volume";
-            lblEtapa3.Text = "○ Integridade da unidade";
+            lblEtapa1.Text =
+                "○ Sistema de arquivos";
 
-            lblEtapa1.ForeColor = Color.FromArgb(145, 145, 145);
-            lblEtapa2.ForeColor = Color.FromArgb(145, 145, 145);
-            lblEtapa3.ForeColor = Color.FromArgb(145, 145, 145);
+            lblEtapa2.Text =
+                "○ Metadados do volume";
 
-            progressBar.Style = ProgressBarStyle.Marquee;
-            progressBar.MarqueeAnimationSpeed = 25;
-            progressBar.Visible = false;
+            lblEtapa3.Text =
+                "○ Integridade da unidade";
 
-            btnVerificar.Visible = true;
-            btnVerificar.Enabled = true;
+            lblEtapa1.ForeColor =
+                Color.FromArgb(145, 145, 145);
 
-            btnReparar.Visible = false;
-            btnReparar.Enabled = false;
+            lblEtapa2.ForeColor =
+                Color.FromArgb(145, 145, 145);
+
+            lblEtapa3.ForeColor =
+                Color.FromArgb(145, 145, 145);
+
+            progressBar.Style =
+                ProgressBarStyle.Marquee;
+
+            progressBar.MarqueeAnimationSpeed =
+                25;
+
+            progressBar.Visible =
+                false;
+
+            btnVerificar.Visible =
+                true;
+
+            btnVerificar.Enabled =
+                true;
+
+            btnReparar.Visible =
+                false;
+
+            btnReparar.Enabled =
+                false;
         }
 
         private void CarregarUnidades()
@@ -63,29 +89,39 @@ namespace WinTuner.Forms.Diagnostico
                     if (!drive.IsReady)
                         continue;
 
-                    string unidade = drive.Name.TrimEnd('\\');
+                    string unidade =
+                        drive.Name.TrimEnd('\\');
 
-                    string volume = string.IsNullOrWhiteSpace(drive.VolumeLabel)
-                        ? "Sem nome"
-                        : drive.VolumeLabel;
+                    string volume =
+                        string.IsNullOrWhiteSpace(
+                            drive.VolumeLabel)
+                            ? "Sem nome"
+                            : drive.VolumeLabel;
 
                     string sistemaArquivos;
 
                     try
                     {
-                        sistemaArquivos = drive.DriveFormat;
+                        sistemaArquivos =
+                            drive.DriveFormat;
                     }
                     catch
                     {
-                        sistemaArquivos = "Desconhecido";
+                        sistemaArquivos =
+                            "Desconhecido";
                     }
 
                     cmbUnidades.Items.Add(
                         new UnidadeItem
                         {
-                            Unidade = unidade,
-                            Volume = volume,
-                            SistemaArquivos = sistemaArquivos
+                            Unidade =
+                                unidade,
+
+                            Volume =
+                                volume,
+
+                            SistemaArquivos =
+                                sistemaArquivos
                         });
                 }
 
@@ -116,22 +152,28 @@ namespace WinTuner.Forms.Diagnostico
             object sender,
             EventArgs e)
         {
-            if (_cancellationTokenSource != null || _reparando)
+            if (_cancellationTokenSource != null ||
+                _reparando)
+            {
                 return;
+            }
 
             if (cmbUnidades.SelectedItem is not UnidadeItem item)
                 return;
 
             CarregarInformacoesDisco(item);
+
             ResetarResultadoParaNovaUnidade();
         }
 
-        private void CarregarInformacoesDisco(UnidadeItem item)
+        private void CarregarInformacoesDisco(
+            UnidadeItem item)
         {
             try
             {
                 DriveInfo drive =
-                    new DriveInfo(item.Unidade + "\\");
+                    new DriveInfo(
+                        item.Unidade + "\\");
 
                 if (!drive.IsReady)
                     return;
@@ -149,13 +191,15 @@ namespace WinTuner.Forms.Diagnostico
                     1024.0;
 
                 double utilizadoGB =
-                    totalGB - disponivelGB;
+                    totalGB -
+                    disponivelGB;
 
                 lblDadosDisco01.Text =
                     item.Unidade;
 
                 lblDadosDisco02.Text =
-                    string.IsNullOrWhiteSpace(drive.VolumeLabel)
+                    string.IsNullOrWhiteSpace(
+                        drive.VolumeLabel)
                         ? "Sem nome"
                         : drive.VolumeLabel;
 
@@ -173,12 +217,23 @@ namespace WinTuner.Forms.Diagnostico
             }
             catch
             {
-                lblDadosDisco01.Text = item.Unidade;
-                lblDadosDisco02.Text = "Não identificado";
-                lblSistemaArquivos.Text = "Não identificado";
-                lblCapacidade.Text = "-";
-                lblUtilizado.Text = "-";
-                lblDisponivel.Text = "-";
+                lblDadosDisco01.Text =
+                    item.Unidade;
+
+                lblDadosDisco02.Text =
+                    "Não identificado";
+
+                lblSistemaArquivos.Text =
+                    "Não identificado";
+
+                lblCapacidade.Text =
+                    "-";
+
+                lblUtilizado.Text =
+                    "-";
+
+                lblDisponivel.Text =
+                    "-";
             }
         }
 
@@ -186,19 +241,32 @@ namespace WinTuner.Forms.Diagnostico
         {
             MostrarBotaoReparar(false);
 
-            lblStatus.Text = "● AGUARDANDO";
-            lblStatus.ForeColor = Color.FromArgb(145, 145, 145);
+            lblStatus.Text =
+                "● AGUARDANDO";
+
+            lblStatus.ForeColor =
+                Color.FromArgb(145, 145, 145);
 
             lblDescricaoStatus.Text =
                 "Selecione a unidade e clique em \"VERIFICAR DISCO\" para iniciar uma nova análise.";
 
-            lblEtapa1.Text = "○ Sistema de arquivos";
-            lblEtapa2.Text = "○ Metadados do volume";
-            lblEtapa3.Text = "○ Integridade da unidade";
+            lblEtapa1.Text =
+                "○ Sistema de arquivos";
 
-            lblEtapa1.ForeColor = Color.FromArgb(145, 145, 145);
-            lblEtapa2.ForeColor = Color.FromArgb(145, 145, 145);
-            lblEtapa3.ForeColor = Color.FromArgb(145, 145, 145);
+            lblEtapa2.Text =
+                "○ Metadados do volume";
+
+            lblEtapa3.Text =
+                "○ Integridade da unidade";
+
+            lblEtapa1.ForeColor =
+                Color.FromArgb(145, 145, 145);
+
+            lblEtapa2.ForeColor =
+                Color.FromArgb(145, 145, 145);
+
+            lblEtapa3.ForeColor =
+                Color.FromArgb(145, 145, 145);
 
             lblResultado.Text =
                 "Aguardando uma verificação do sistema de arquivos.";
@@ -208,8 +276,11 @@ namespace WinTuner.Forms.Diagnostico
             object sender,
             EventArgs e)
         {
-            if (_cancellationTokenSource != null || _reparando)
+            if (_cancellationTokenSource != null ||
+                _reparando)
+            {
                 return;
+            }
 
             if (cmbUnidades.SelectedItem is not UnidadeItem item)
             {
@@ -231,10 +302,14 @@ namespace WinTuner.Forms.Diagnostico
                     Stopwatch.StartNew();
 
                 MostrarBotaoReparar(false);
+
                 AlterarEstado(true);
+
                 LimparResultado();
 
-                lblStatus.Text = "● VERIFICANDO";
+                lblStatus.Text =
+                    "● VERIFICANDO";
+
                 lblStatus.ForeColor =
                     Color.FromArgb(230, 170, 60);
 
@@ -273,6 +348,22 @@ namespace WinTuner.Forms.Diagnostico
                 EscreverResultado(
                     $"Início: {DateTime.Now:dd/MM/yyyy HH:mm:ss}\r\n\r\n");
 
+                if (item.SistemaArquivos.Equals(
+                        "NTFS",
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    EscreverResultado(
+                        "Modo de verificação: ONLINE /SCAN\r\n");
+
+                    EscreverResultado(
+                        "O volume NTFS será analisado sem desmontar a unidade.\r\n\r\n");
+                }
+                else
+                {
+                    EscreverResultado(
+                        "Modo de verificação: CHKDSK\r\n\r\n");
+                }
+
                 EscreverResultado(
                     "Executando CHKDSK...\r\n\r\n");
 
@@ -280,6 +371,9 @@ namespace WinTuner.Forms.Diagnostico
                     new Progress<string>(
                         linha =>
                         {
+                            if (IsDisposed)
+                                return;
+
                             EscreverResultado(
                                 linha +
                                 Environment.NewLine);
@@ -305,11 +399,14 @@ namespace WinTuner.Forms.Diagnostico
                 EscreverResultado(
                     $"Resultado: {resultado.Mensagem}\r\n");
 
+                AtualizarEtapasConclusao(
+                    resultado);
+
                 if (resultado.RequerReparo)
                 {
                     MostrarResultadoComProblema();
                 }
-                else if (resultado.CodigoSaida == 0)
+                else if (resultado.Sucesso)
                 {
                     MostrarResultadoSaudavel();
                 }
@@ -322,7 +419,9 @@ namespace WinTuner.Forms.Diagnostico
             {
                 _stopwatch?.Stop();
 
-                lblStatus.Text = "● CANCELADO";
+                lblStatus.Text =
+                    "● CANCELADO";
+
                 lblStatus.ForeColor =
                     Color.FromArgb(230, 170, 60);
 
@@ -351,7 +450,9 @@ namespace WinTuner.Forms.Diagnostico
             {
                 _stopwatch?.Stop();
 
-                lblStatus.Text = "● ERRO";
+                lblStatus.Text =
+                    "● ERRO";
+
                 lblStatus.ForeColor =
                     Color.FromArgb(230, 75, 75);
 
@@ -387,7 +488,9 @@ namespace WinTuner.Forms.Diagnostico
                 _stopwatch?.Stop();
 
                 _cancellationTokenSource?.Dispose();
-                _cancellationTokenSource = null;
+
+                _cancellationTokenSource =
+                    null;
 
                 AlterarEstado(false);
             }
@@ -397,8 +500,11 @@ namespace WinTuner.Forms.Diagnostico
             object sender,
             EventArgs e)
         {
-            if (_cancellationTokenSource != null || _reparando)
+            if (_cancellationTokenSource != null ||
+                _reparando)
+            {
                 return;
+            }
 
             if (cmbUnidades.SelectedItem is not UnidadeItem item)
             {
@@ -414,10 +520,9 @@ namespace WinTuner.Forms.Diagnostico
             DialogResult confirmacao =
                 MessageBox.Show(
                     $"Foram encontrados indícios de problemas na unidade {item.Unidade}.\n\n" +
-                    "O WinTurner irá solicitar privilégios de administrador " +
-                    "para executar o reparo do sistema de arquivos.\n\n" +
-                    "Se a unidade estiver em uso, o Windows poderá solicitar " +
-                    "que o reparo seja realizado na próxima reinicialização.\n\n" +
+                    "O WinTurner executará o CHKDSK /F com privilégios de administrador.\n\n" +
+                    "Se a unidade estiver sendo utilizada pelo Windows, " +
+                    "o reparo poderá ser agendado automaticamente para a próxima reinicialização.\n\n" +
                     "Deseja continuar?",
                     "Reparar erros",
                     MessageBoxButtons.YesNo,
@@ -428,7 +533,8 @@ namespace WinTuner.Forms.Diagnostico
 
             try
             {
-                _reparando = true;
+                _reparando =
+                    true;
 
                 _stopwatch =
                     Stopwatch.StartNew();
@@ -484,14 +590,25 @@ namespace WinTuner.Forms.Diagnostico
                     $"Início: {DateTime.Now:dd/MM/yyyy HH:mm:ss}\r\n\r\n");
 
                 EscreverResultado(
-                    "Solicitando privilégios de administrador...\r\n");
-
-                EscreverResultado(
                     "Executando CHKDSK /F...\r\n\r\n");
+
+                var progresso =
+                    new Progress<string>(
+                        linha =>
+                        {
+                            if (IsDisposed)
+                                return;
+
+                            EscreverResultado(
+                                linha +
+                                Environment.NewLine);
+                        });
 
                 ResultadoVerificacaoDisco resultado =
                     await _verificarDiscoService.RepararAsync(
-                        item.Unidade);
+                        item.Unidade,
+                        progresso,
+                        CancellationToken.None);
 
                 _stopwatch.Stop();
 
@@ -507,19 +624,25 @@ namespace WinTuner.Forms.Diagnostico
                 EscreverResultado(
                     $"Resultado: {resultado.Mensagem}\r\n");
 
-                if (resultado.CodigoSaida == 0 ||
-                    resultado.CodigoSaida == 1)
+                if (resultado.ReparoAgendado)
+                {
+                    MostrarReparoAgendado();
+                }
+                else if (resultado.CodigoSaida == 0 ||
+                         resultado.CodigoSaida == 1)
                 {
                     MostrarReparoConcluido();
-                }
-                else if (resultado.CodigoSaida == -2)
-                {
-                    MostrarReparoCancelado();
                 }
                 else
                 {
                     MostrarReparoIncompleto();
                 }
+            }
+            catch (OperationCanceledException)
+            {
+                _stopwatch?.Stop();
+
+                MostrarReparoCancelado();
             }
             catch (Exception ex)
             {
@@ -562,13 +685,73 @@ namespace WinTuner.Forms.Diagnostico
             {
                 _stopwatch?.Stop();
 
-                _reparando = false;
+                _reparando =
+                    false;
 
                 btnReparar.Text =
                     "REPARAR ERROS";
 
                 AlterarEstado(false);
             }
+        }
+
+        private void AtualizarEtapasConclusao(
+            ResultadoVerificacaoDisco resultado)
+        {
+            if (resultado.RequerReparo)
+            {
+                AtualizarEtapa(
+                    lblEtapa1,
+                    "● Problemas identificados",
+                    Color.FromArgb(230, 75, 75));
+
+                AtualizarEtapa(
+                    lblEtapa2,
+                    "● Reparo recomendado",
+                    Color.FromArgb(230, 170, 60));
+
+                AtualizarEtapa(
+                    lblEtapa3,
+                    "● Ação necessária",
+                    Color.FromArgb(230, 170, 60));
+
+                return;
+            }
+
+            if (resultado.Sucesso)
+            {
+                AtualizarEtapa(
+                    lblEtapa1,
+                    "● Sistema de arquivos OK",
+                    Color.FromArgb(70, 200, 110));
+
+                AtualizarEtapa(
+                    lblEtapa2,
+                    "● Metadados do volume OK",
+                    Color.FromArgb(70, 200, 110));
+
+                AtualizarEtapa(
+                    lblEtapa3,
+                    "● Integridade verificada",
+                    Color.FromArgb(70, 200, 110));
+
+                return;
+            }
+
+            AtualizarEtapa(
+                lblEtapa1,
+                "● Verificação concluída",
+                Color.FromArgb(230, 170, 60));
+
+            AtualizarEtapa(
+                lblEtapa2,
+                "● Consulte o resultado",
+                Color.FromArgb(230, 170, 60));
+
+            AtualizarEtapa(
+                lblEtapa3,
+                "○ Nenhuma ação automática",
+                Color.FromArgb(145, 145, 145));
         }
 
         private void MostrarResultadoSaudavel()
@@ -584,21 +767,6 @@ namespace WinTuner.Forms.Diagnostico
             lblDescricaoStatus.Text =
                 "A verificação foi concluída e não foram " +
                 "detectados problemas pelo CHKDSK.";
-
-            AtualizarEtapa(
-                lblEtapa1,
-                "● Sistema de arquivos OK",
-                Color.FromArgb(70, 200, 110));
-
-            AtualizarEtapa(
-                lblEtapa2,
-                "● Metadados do volume OK",
-                Color.FromArgb(70, 200, 110));
-
-            AtualizarEtapa(
-                lblEtapa3,
-                "● Integridade verificada",
-                Color.FromArgb(70, 200, 110));
         }
 
         private void MostrarResultadoComProblema()
@@ -614,21 +782,6 @@ namespace WinTuner.Forms.Diagnostico
             lblDescricaoStatus.Text =
                 "O CHKDSK identificou problemas que podem exigir reparo. " +
                 "Use o botão \"REPARAR ERROS\" para solicitar a correção.";
-
-            AtualizarEtapa(
-                lblEtapa1,
-                "● Problemas encontrados",
-                Color.FromArgb(230, 75, 75));
-
-            AtualizarEtapa(
-                lblEtapa2,
-                "● Reparo recomendado",
-                Color.FromArgb(230, 170, 60));
-
-            AtualizarEtapa(
-                lblEtapa3,
-                "● Ação necessária",
-                Color.FromArgb(230, 170, 60));
         }
 
         private void MostrarResultadoAtencao()
@@ -642,23 +795,47 @@ namespace WinTuner.Forms.Diagnostico
                 Color.FromArgb(230, 170, 60);
 
             lblDescricaoStatus.Text =
-                "A verificação terminou com um código diferente de zero. " +
+                "A verificação terminou com uma condição que requer atenção. " +
                 "Consulte o resultado detalhado.";
+        }
+
+        private void MostrarReparoAgendado()
+        {
+            MostrarBotaoReparar(false);
+
+            lblStatus.Text =
+                "● REPARO AGENDADO";
+
+            lblStatus.ForeColor =
+                Color.FromArgb(230, 170, 60);
+
+            lblDescricaoStatus.Text =
+                "A unidade está em uso pelo Windows e não pôde ser bloqueada. " +
+                "O reparo foi agendado para a próxima reinicialização. " +
+                "Reinicie o computador para executar a correção.";
 
             AtualizarEtapa(
                 lblEtapa1,
-                "● Verificação concluída",
-                Color.FromArgb(230, 170, 60));
+                "● Problemas identificados",
+                Color.FromArgb(230, 75, 75));
 
             AtualizarEtapa(
                 lblEtapa2,
-                "● Volume analisado",
+                "● Reparo agendado",
                 Color.FromArgb(230, 170, 60));
 
             AtualizarEtapa(
                 lblEtapa3,
-                "● Consulte o resultado",
-                Color.FromArgb(145, 145, 145));
+                "● Aguardando reinicialização",
+                Color.FromArgb(230, 170, 60));
+
+            EscreverResultado(
+                "\r\n\r\n" +
+                "ATENÇÃO:\r\n" +
+                "O reparo não foi executado imediatamente porque a unidade " +
+                "está em uso pelo Windows.\r\n\r\n" +
+                "O CHKDSK foi agendado para a próxima reinicialização.\r\n\r\n" +
+                "Reinicie o computador para concluir o reparo.");
         }
 
         private void MostrarReparoConcluido()
@@ -672,9 +849,7 @@ namespace WinTuner.Forms.Diagnostico
                 Color.FromArgb(70, 200, 110);
 
             lblDescricaoStatus.Text =
-                "O Windows concluiu o comando de reparo da unidade. " +
-                "Se o CHKDSK informou que a verificação foi agendada para " +
-                "a próxima reinicialização, reinicie o computador.";
+                "O CHKDSK concluiu o processo de reparo da unidade.";
 
             AtualizarEtapa(
                 lblEtapa1,
@@ -683,7 +858,7 @@ namespace WinTuner.Forms.Diagnostico
 
             AtualizarEtapa(
                 lblEtapa2,
-                "● Reparo executado",
+                "● Erros corrigidos",
                 Color.FromArgb(70, 200, 110));
 
             AtualizarEtapa(
@@ -703,12 +878,11 @@ namespace WinTuner.Forms.Diagnostico
                 Color.FromArgb(230, 170, 60);
 
             lblDescricaoStatus.Text =
-                "A solicitação de privilégios de administrador foi cancelada. " +
-                "O reparo não foi executado.";
+                "O processo de reparo foi cancelado.";
 
             AtualizarEtapa(
                 lblEtapa1,
-                "● Reparo não iniciado",
+                "● Reparo não concluído",
                 Color.FromArgb(230, 170, 60));
 
             AtualizarEtapa(
@@ -752,7 +926,8 @@ namespace WinTuner.Forms.Diagnostico
                 Color.FromArgb(230, 170, 60));
         }
 
-        private void MostrarBotaoReparar(bool mostrar)
+        private void MostrarBotaoReparar(
+            bool mostrar)
         {
             btnReparar.Visible =
                 mostrar;
@@ -771,7 +946,8 @@ namespace WinTuner.Forms.Diagnostico
                 _cancellationTokenSource == null;
         }
 
-        private void AlterarEstado(bool emOperacao)
+        private void AlterarEstado(
+            bool emOperacao)
         {
             cmbUnidades.Enabled =
                 !emOperacao;
@@ -798,8 +974,11 @@ namespace WinTuner.Forms.Diagnostico
             string texto,
             Color cor)
         {
-            label.Text = texto;
-            label.ForeColor = cor;
+            label.Text =
+                texto;
+
+            label.ForeColor =
+                cor;
         }
 
         private void LimparResultado()
@@ -808,9 +987,16 @@ namespace WinTuner.Forms.Diagnostico
                 "Executando verificação...\r\n\r\n";
         }
 
-        private void EscreverResultado(string texto)
+        private void EscreverResultado(
+            string texto)
         {
-            lblResultado.Text += texto;
+            if (IsDisposed)
+                return;
+
+            lblResultado.Text +=
+                texto;
+
+            lblResultado.Refresh();
         }
 
         private void btnAtualizar_Click(
@@ -828,6 +1014,7 @@ namespace WinTuner.Forms.Diagnostico
             if (cmbUnidades.SelectedItem is UnidadeItem item)
             {
                 CarregarInformacoesDisco(item);
+
                 ResetarResultadoParaNovaUnidade();
             }
         }
@@ -844,6 +1031,7 @@ namespace WinTuner.Forms.Diagnostico
                     MessageBoxIcon.Warning);
 
                 e.Cancel = true;
+
                 return;
             }
 

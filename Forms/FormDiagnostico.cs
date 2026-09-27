@@ -69,20 +69,19 @@ namespace WinTuner.Forms
             formulario.Show();
         }
 
+        private void FormDiagnostico_Load(object sender, EventArgs e)
+        {
+            AbrirFormulario(new SysInfo());
+        }
+
         private void btntnInfoComputador_Click(object sender, EventArgs e)
         {
             AbrirFormulario(new SysInfo());
         }
 
-
         private void btnVerificarDisco_Click(object sender, EventArgs e)
         {
             AbrirFormulario(new VerificarDisco());
-        }
-
-        private void FormDiagnostico_Load(object sender, EventArgs e)
-        {
-            AbrirFormulario(new SysInfo());
         }
 
         private void btnIntegridade_Click(object sender, EventArgs e)

@@ -223,7 +223,7 @@
             btntnInfoComputador.PressedColor = Color.FromArgb(165, 37, 37);
             btntnInfoComputador.Size = new Size(241, 27);
             btntnInfoComputador.TabIndex = 20;
-            btntnInfoComputador.Text = "Info do Computador";
+            btntnInfoComputador.Text = "INFO COMPUTADOR";
             btntnInfoComputador.TextAlignment = StringAlignment.Center;
             btntnInfoComputador.Click += btntnInfoComputador_Click;
             // 
