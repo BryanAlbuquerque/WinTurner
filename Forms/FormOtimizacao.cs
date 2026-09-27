@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WinTuner.Services;
 
 namespace WinTuner.Forms
 {
@@ -13,6 +14,7 @@ namespace WinTuner.Forms
         public FormOtimizacao()
         {
             InitializeComponent();
+            AparenciaWindowsService.AplicarBarraEscura(this);
         }
 
         private void btnPainel_Click(object sender, EventArgs e)

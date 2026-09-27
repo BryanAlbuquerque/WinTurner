@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using WinTuner.Forms.Diagnostico;
+using WinTuner.Services;
 
 namespace WinTuner.Forms
 {
@@ -15,6 +16,7 @@ namespace WinTuner.Forms
         public FormDiagnostico()
         {
             InitializeComponent();
+            AparenciaWindowsService.AplicarBarraEscura(this);
         }
 
         #region Botões de navegação SIDE BAR

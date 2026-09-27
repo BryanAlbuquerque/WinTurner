@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using WinTuner.Forms;
+using WinTuner.Services;
 using WinTurner.Models;
 using WinTurner.Services;
 
@@ -14,6 +15,8 @@ namespace WinTuner
         public FormPrincipal()
         {
             InitializeComponent();
+
+            AparenciaWindowsService.AplicarBarraEscura(this);
 
             _sistemaService = new SistemaService();
             _processosService = new ProcessosService();

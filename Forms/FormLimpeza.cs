@@ -1,5 +1,6 @@
 ﻿using ReaLTaiizor.Controls;
 using WinTuner.Forms.Limpeza;
+using WinTuner.Services;
 
 namespace WinTuner.Forms
 {
@@ -9,6 +10,7 @@ namespace WinTuner.Forms
         public FormLimpeza()
         {
             InitializeComponent();
+            AparenciaWindowsService.AplicarBarraEscura(this);
         }
 
         #region Botões de Navegação SIDE BAR

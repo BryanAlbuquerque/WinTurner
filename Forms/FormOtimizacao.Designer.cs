@@ -47,11 +47,11 @@
             // 
             dungeonLabel6.AutoSize = true;
             dungeonLabel6.BackColor = Color.Transparent;
-            dungeonLabel6.Font = new Font("Castellar", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel6.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel6.ForeColor = Color.Maroon;
             dungeonLabel6.Location = new Point(252, 46);
             dungeonLabel6.Name = "dungeonLabel6";
-            dungeonLabel6.Size = new Size(687, 35);
+            dungeonLabel6.Size = new Size(639, 33);
             dungeonLabel6.TabIndex = 25;
             dungeonLabel6.Text = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
             // 
@@ -59,11 +59,11 @@
             // 
             dungeonLabel1.AutoSize = true;
             dungeonLabel1.BackColor = Color.Transparent;
-            dungeonLabel1.Font = new Font("Castellar", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel1.ForeColor = Color.FromArgb(119, 119, 119);
             dungeonLabel1.Location = new Point(252, 81);
             dungeonLabel1.Name = "dungeonLabel1";
-            dungeonLabel1.Size = new Size(362, 19);
+            dungeonLabel1.Size = new Size(326, 20);
             dungeonLabel1.TabIndex = 24;
             dungeonLabel1.Text = "DESATIVAR ITENS NÃO UTILIZADOS ";
             // 
@@ -74,7 +74,7 @@
             btnHistorico.Cursor = Cursors.Hand;
             btnHistorico.EnteredBorderColor = Color.DarkGray;
             btnHistorico.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnHistorico.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnHistorico.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnHistorico.Image = null;
             btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
             btnHistorico.InactiveColor = Color.Black;
@@ -118,11 +118,11 @@
             dungeonLabel5.AutoSize = true;
             dungeonLabel5.BackColor = Color.Transparent;
             dungeonLabel5.Dock = DockStyle.Bottom;
-            dungeonLabel5.Font = new Font("Castellar", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dungeonLabel5.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dungeonLabel5.ForeColor = Color.Lime;
-            dungeonLabel5.Location = new Point(0, 648);
+            dungeonLabel5.Location = new Point(0, 661);
             dungeonLabel5.Name = "dungeonLabel5";
-            dungeonLabel5.Size = new Size(201, 14);
+            dungeonLabel5.Size = new Size(185, 15);
             dungeonLabel5.TabIndex = 21;
             dungeonLabel5.Text = "⚫ SISTEMA OPERACIONAL";
             // 
@@ -133,7 +133,7 @@
             btnLimpeza.Cursor = Cursors.Hand;
             btnLimpeza.EnteredBorderColor = Color.DarkGray;
             btnLimpeza.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnLimpeza.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnLimpeza.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnLimpeza.Image = null;
             btnLimpeza.ImageAlign = ContentAlignment.MiddleLeft;
             btnLimpeza.InactiveColor = Color.Black;
@@ -154,7 +154,7 @@
             btnDiagnostico.Cursor = Cursors.Hand;
             btnDiagnostico.EnteredBorderColor = Color.DarkGray;
             btnDiagnostico.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnDiagnostico.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnDiagnostico.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnDiagnostico.Image = null;
             btnDiagnostico.ImageAlign = ContentAlignment.MiddleLeft;
             btnDiagnostico.InactiveColor = Color.Black;
@@ -175,7 +175,7 @@
             btnPainel.Cursor = Cursors.Hand;
             btnPainel.EnteredBorderColor = Color.DarkGray;
             btnPainel.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnPainel.Font = new Font("Castellar", 12F, FontStyle.Bold);
+            btnPainel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnPainel.Image = null;
             btnPainel.ImageAlign = ContentAlignment.MiddleLeft;
             btnPainel.InactiveColor = Color.Black;
@@ -193,11 +193,11 @@
             // 
             lbl.AutoSize = true;
             lbl.BackColor = Color.Transparent;
-            lbl.Font = new Font("Castellar", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbl.ForeColor = Color.WhiteSmoke;
             lbl.Location = new Point(216, 10);
             lbl.Name = "lbl";
-            lbl.Size = new Size(301, 44);
+            lbl.Size = new Size(258, 42);
             lbl.TabIndex = 23;
             lbl.Text = "OTIMIZAÇÃO";
             // 
