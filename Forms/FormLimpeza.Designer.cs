@@ -323,6 +323,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Limpeza";
             WindowState = FormWindowState.Maximized;
+            Load += FormLimpeza_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             SideBar.ResumeLayout(false);
             SideBar.PerformLayout();

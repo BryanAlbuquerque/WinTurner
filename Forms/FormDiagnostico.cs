@@ -14,10 +14,10 @@ namespace WinTuner.Forms
         private Form? _formAtual;
         public FormDiagnostico()
         {
-
             InitializeComponent();
         }
 
+        #region Botões de navegação SIDE BAR
 
         private void btnPainel_Click(object sender, EventArgs e)
         {
@@ -48,6 +48,10 @@ namespace WinTuner.Forms
             formHistorico.Show();
             this.Hide();
         }
+
+        #endregion
+
+        #region Botões de navegação TOP BAR
 
         private void AbrirFormulario(Form formulario)
         {
@@ -93,6 +97,9 @@ namespace WinTuner.Forms
         {
             AbrirFormulario(new DiagnosticoRede());
         }
+
+        #endregion
+
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using WinTuner.Forms.Limpeza;
+﻿using ReaLTaiizor.Controls;
+using WinTuner.Forms.Limpeza;
 
 namespace WinTuner.Forms
 {
@@ -8,8 +9,6 @@ namespace WinTuner.Forms
         public FormLimpeza()
         {
             InitializeComponent();
-
-
         }
 
         #region Botões de Navegação SIDE BAR
@@ -85,5 +84,9 @@ namespace WinTuner.Forms
         }
         #endregion
 
+        private void FormLimpeza_Load(object sender, EventArgs e)
+        {
+            AbrirFormulario(new ArquivosTemp());
+        }
     }
 }
