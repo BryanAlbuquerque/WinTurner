@@ -77,7 +77,7 @@ namespace WinTuner.Forms
 
         private void btnCache_Click(object sender, EventArgs e)
         {
-            AbrirFormulario(new Cache());
+            AbrirFormulario(new LimparCache());
         }
 
         private void btnLimpezaWin_Click(object sender, EventArgs e)
