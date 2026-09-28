@@ -1,18 +1,586 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinTuner.Services;
+using WinTuner.Services.Limpeza;
 
 namespace WinTuner.Forms.Limpeza
 {
     public partial class LimpezaWin : Form
     {
+        private readonly LimpezaWinService _limpezaWinService;
+
+        private CancellationTokenSource? _cancellationTokenSource;
+
+        private List<ResultadoLocalWindows> _locais = new();
+
+        private bool _processando;
+
         public LimpezaWin()
         {
             InitializeComponent();
+
+            _limpezaWinService =
+                new LimpezaWinService();
+
+            AparenciaWindowsService
+                .AplicarBarraEscura(this);
+
+            ConfigurarEstadoInicial();
+        }
+
+        private void ConfigurarEstadoInicial()
+        {
+            lblStatus.Text =
+                "Clique em ANALISAR para verificar arquivos de limpeza do Windows.";
+
+            lblLocaisSelecionados.Text = "0";
+            lblArquivosEncontrados.Text = "0";
+            lblEspacoLiberavel.Text = "0 B";
+
+            btnLimpar.Enabled = false;
+
+            progressBar.Visible = false;
+        }
+
+        private async void btnAnalisar_Click(
+            object sender,
+            EventArgs e)
+        {
+            if (_processando)
+                return;
+
+            await AnalisarAsync();
+        }
+
+        private async Task AnalisarAsync()
+        {
+            _processando = true;
+
+            _cancellationTokenSource?.Dispose();
+
+            _cancellationTokenSource =
+                new CancellationTokenSource();
+
+            try
+            {
+                AlterarEstadoProcessamento(true);
+
+                lblStatus.Text =
+                    "Iniciando análise...";
+
+                lblStatus.ForeColor =
+                    Color.FromArgb(145, 145, 145);
+
+                var progresso =
+                    new Progress<string>(mensagem =>
+                    {
+                        lblStatus.Text = mensagem;
+                    });
+
+                ResultadoAnaliseWindows resultado =
+                    await _limpezaWinService.AnalisarAsync(
+                        progresso,
+                        _cancellationTokenSource.Token);
+
+                _locais = resultado.Locais;
+
+                AplicarResultado(resultado);
+
+                lblStatus.Text =
+                    "Análise concluída.";
+
+                lblStatus.ForeColor =
+                    Color.FromArgb(76, 175, 80);
+            }
+            catch (OperationCanceledException)
+            {
+                lblStatus.Text =
+                    "Análise cancelada.";
+
+                lblStatus.ForeColor =
+                    Color.FromArgb(220, 35, 35);
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text =
+                    "Erro durante a análise.";
+
+                lblStatus.ForeColor =
+                    Color.FromArgb(220, 35, 35);
+
+                MessageBox.Show(
+                    $"Não foi possível concluir a análise.\n\n{ex.Message}",
+                    "WinTurner",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            finally
+            {
+                _processando = false;
+
+                AlterarEstadoProcessamento(false);
+            }
+        }
+
+        private void AplicarResultado(
+            ResultadoAnaliseWindows resultado)
+        {
+            LimparCards();
+
+            foreach (ResultadoLocalWindows local
+                in resultado.Locais)
+            {
+                local.Selecionado =
+                    ObterSelecaoPadrao(local.Nome);
+
+                CriarCardLocal(local);
+            }
+
+            AtualizarResumo();
+
+            btnLimpar.Enabled =
+                resultado.Locais.Any(
+                    x =>
+                        x.Disponivel &&
+                        x.Selecionado &&
+                        x.QuantidadeArquivos > 0);
+        }
+
+        private bool ObterSelecaoPadrao(
+            string nome)
+        {
+            return nome switch
+            {
+                "Cache do Windows Update" => true,
+                "Relatórios de Erros do Windows" => true,
+                "Delivery Optimization" => true,
+                "Cache DirectX" => true,
+                _ => false
+            };
+        }
+
+        private void CriarCardLocal(
+            ResultadoLocalWindows local)
+        {
+            Panel card = new Panel
+            {
+                Width = 320,
+                Height = 175,
+                BackColor =
+                    Color.FromArgb(23, 23, 23),
+                BorderStyle =
+                    BorderStyle.FixedSingle,
+                Margin =
+                    new Padding(0, 0, 14, 14),
+                Tag = local
+            };
+
+            CheckBox checkBox = new CheckBox
+            {
+                AutoSize = false,
+                Width = 30,
+                Height = 30,
+                Location =
+                    new Point(14, 14),
+                Checked =
+                    local.Selecionado,
+                ForeColor =
+                    Color.White,
+                BackColor =
+                    Color.FromArgb(23, 23, 23),
+                Tag = local,
+                Cursor =
+                    Cursors.Hand
+            };
+
+            checkBox.CheckedChanged +=
+                CardCheckBox_CheckedChanged;
+
+            Label lblNome = new Label
+            {
+                AutoEllipsis = true,
+                Location =
+                    new Point(52, 13),
+                Size =
+                    new Size(245, 30),
+                Font =
+                    new Font(
+                        "Segoe UI Semibold",
+                        10.5F,
+                        FontStyle.Bold),
+                ForeColor =
+                    Color.FromArgb(235, 235, 235),
+                Text =
+                    local.Nome
+            };
+
+            Label lblCaminho = new Label
+            {
+                AutoEllipsis = true,
+                Location =
+                    new Point(16, 52),
+                Size =
+                    new Size(285, 32),
+                Font =
+                    new Font(
+                        "Segoe UI",
+                        8F),
+                ForeColor =
+                    Color.FromArgb(145, 145, 145),
+                Text =
+                    local.Caminho
+            };
+
+            Label lblArquivos = new Label
+            {
+                AutoSize = false,
+                Location =
+                    new Point(16, 105),
+                Size =
+                    new Size(125, 42),
+                Font =
+                    new Font(
+                        "Segoe UI Semibold",
+                        8.5F,
+                        FontStyle.Bold),
+                ForeColor =
+                    Color.FromArgb(235, 235, 235),
+                Text =
+                    $"{local.QuantidadeArquivos:N0}\nARQUIVOS"
+            };
+
+            Label lblTamanho = new Label
+            {
+                AutoSize = false,
+                Location =
+                    new Point(158, 105),
+                Size =
+                    new Size(140, 42),
+                Font =
+                    new Font(
+                        "Segoe UI Semibold",
+                        8.5F,
+                        FontStyle.Bold),
+                ForeColor =
+                    Color.FromArgb(208, 0, 0),
+                Text =
+                    $"{local.TamanhoFormatado}\nRECUPERÁVEL"
+            };
+
+            if (!local.Disponivel)
+            {
+                local.Selecionado = false;
+
+                checkBox.Checked = false;
+                checkBox.Enabled = false;
+
+                lblNome.ForeColor =
+                    Color.FromArgb(110, 110, 110);
+
+                lblCaminho.Text =
+                    "Pasta não encontrada";
+
+                lblArquivos.Text =
+                    "INDISPONÍVEL";
+
+                lblTamanho.Text =
+                    "-";
+            }
+
+            if (local.QuantidadeErros > 0)
+            {
+                Label lblAviso = new Label
+                {
+                    AutoEllipsis = true,
+                    Location =
+                        new Point(16, 145),
+                    Size =
+                        new Size(285, 20),
+                    Font =
+                        new Font(
+                            "Segoe UI",
+                            7.5F),
+                    ForeColor =
+                        Color.FromArgb(230, 160, 60),
+                    Text =
+                        $"{local.QuantidadeErros} item(ns) não puderam ser analisados."
+                };
+
+                card.Controls.Add(lblAviso);
+            }
+
+            card.Controls.Add(checkBox);
+            card.Controls.Add(lblNome);
+            card.Controls.Add(lblCaminho);
+            card.Controls.Add(lblArquivos);
+            card.Controls.Add(lblTamanho);
+
+            flowCards.Controls.Add(card);
+        }
+
+        private void CardCheckBox_CheckedChanged(
+            object? sender,
+            EventArgs e)
+        {
+            if (sender is CheckBox checkBox &&
+                checkBox.Tag is ResultadoLocalWindows local)
+            {
+                local.Selecionado =
+                    checkBox.Checked;
+
+                AtualizarResumo();
+            }
+        }
+
+        private void AtualizarResumo()
+        {
+            List<ResultadoLocalWindows> selecionados =
+                _locais
+                    .Where(
+                        x =>
+                            x.Selecionado &&
+                            x.Disponivel)
+                    .ToList();
+
+            int arquivos =
+                selecionados.Sum(
+                    x => x.QuantidadeArquivos);
+
+            long bytes =
+                selecionados.Sum(
+                    x => x.TamanhoBytes);
+
+            lblLocaisSelecionados.Text =
+                selecionados.Count.ToString();
+
+            lblArquivosEncontrados.Text =
+                arquivos.ToString("N0");
+
+            lblEspacoLiberavel.Text =
+                FormatarTamanho(bytes);
+
+            btnLimpar.Enabled =
+                !_processando &&
+                selecionados.Any(
+                    x =>
+                        x.QuantidadeArquivos > 0);
+        }
+
+        private async void btnLimpar_Click(
+            object sender,
+            EventArgs e)
+        {
+            if (_processando)
+                return;
+
+            List<ResultadoLocalWindows> selecionados =
+                _locais
+                    .Where(
+                        x =>
+                            x.Selecionado &&
+                            x.Disponivel &&
+                            x.QuantidadeArquivos > 0)
+                    .ToList();
+
+            if (selecionados.Count == 0)
+            {
+                MessageBox.Show(
+                    "Selecione pelo menos uma categoria com arquivos para limpar.",
+                    "WinTurner",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
+            long bytes =
+                selecionados.Sum(
+                    x => x.TamanhoBytes);
+
+            int arquivos =
+                selecionados.Sum(
+                    x => x.QuantidadeArquivos);
+
+            DialogResult confirmacao =
+                MessageBox.Show(
+                    $"A limpeza irá remover os arquivos encontrados nas categorias selecionadas.\n\n" +
+                    $"Arquivos encontrados: {arquivos:N0}\n" +
+                    $"Espaço potencialmente liberado: {FormatarTamanho(bytes)}\n\n" +
+                    "Arquivos protegidos ou em uso serão ignorados.\n\n" +
+                    "Deseja continuar?",
+                    "Confirmar limpeza",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+            if (confirmacao != DialogResult.Yes)
+                return;
+
+            await LimparAsync(selecionados);
+        }
+
+        private async Task LimparAsync(
+            List<ResultadoLocalWindows> selecionados)
+        {
+            _processando = true;
+
+            _cancellationTokenSource?.Dispose();
+
+            _cancellationTokenSource =
+                new CancellationTokenSource();
+
+            try
+            {
+                AlterarEstadoProcessamento(true);
+
+                lblStatus.Text =
+                    "Iniciando limpeza...";
+
+                lblStatus.ForeColor =
+                    Color.FromArgb(145, 145, 145);
+
+                var progresso =
+                    new Progress<string>(mensagem =>
+                    {
+                        lblStatus.Text = mensagem;
+                    });
+
+                ResultadoLimpezaWindows resultado =
+                    await _limpezaWinService.LimparAsync(
+                        selecionados,
+                        progresso,
+                        _cancellationTokenSource.Token);
+
+                MostrarResultado(resultado);
+
+                lblStatus.Text =
+                    "Limpeza concluída.";
+
+                lblStatus.ForeColor =
+                    resultado.ArquivosComErro > 0
+                        ? Color.FromArgb(230, 160, 60)
+                        : Color.FromArgb(76, 175, 80);
+            }
+            catch (OperationCanceledException)
+            {
+                lblStatus.Text =
+                    "Limpeza cancelada.";
+
+                lblStatus.ForeColor =
+                    Color.FromArgb(220, 35, 35);
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text =
+                    "Erro durante a limpeza.";
+
+                lblStatus.ForeColor =
+                    Color.FromArgb(220, 35, 35);
+
+                MessageBox.Show(
+                    $"Não foi possível concluir a limpeza.\n\n{ex.Message}",
+                    "WinTurner",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            finally
+            {
+                _processando = false;
+
+                AlterarEstadoProcessamento(false);
+
+                if (!_processando)
+                    await AnalisarAsync();
+            }
+        }
+
+        private void MostrarResultado(
+            ResultadoLimpezaWindows resultado)
+        {
+            MessageBox.Show(
+                $"Limpeza concluída.\n\n" +
+                $"Arquivos excluídos: {resultado.ArquivosExcluidos:N0}\n" +
+                $"Arquivos com erro: {resultado.ArquivosComErro:N0}\n" +
+                $"Espaço liberado: {resultado.EspacoLiberado}",
+                "Resultado da limpeza",
+                MessageBoxButtons.OK,
+                resultado.ArquivosComErro > 0
+                    ? MessageBoxIcon.Warning
+                    : MessageBoxIcon.Information);
+        }
+
+        private void AlterarEstadoProcessamento(
+            bool processando)
+        {
+            progressBar.Visible =
+                processando;
+
+            btnAnalisar.Enabled =
+                !processando;
+
+            btnLimpar.Enabled =
+                !processando &&
+                _locais.Any(
+                    x =>
+                        x.Selecionado &&
+                        x.Disponivel &&
+                        x.QuantidadeArquivos > 0);
+
+            flowCards.Enabled =
+                !processando;
+        }
+
+        private void LimparCards()
+        {
+            foreach (Control controle in
+                flowCards.Controls.Cast<Control>().ToList())
+            {
+                controle.Dispose();
+            }
+
+            flowCards.Controls.Clear();
+        }
+
+        private static string FormatarTamanho(
+            long bytes)
+        {
+            if (bytes < 1024)
+                return $"{bytes} B";
+
+            if (bytes < 1024 * 1024)
+                return $"{bytes / 1024.0:0.00} KB";
+
+            if (bytes < 1024 * 1024 * 1024)
+                return $"{bytes / 1024.0 / 1024.0:0.00} MB";
+
+            return $"{bytes / 1024.0 / 1024.0 / 1024.0:0.00} GB";
+        }
+
+        private void LimpezaWin_FormClosing(
+            object sender,
+            FormClosingEventArgs e)
+        {
+            if (_processando)
+            {
+                e.Cancel = true;
+
+                MessageBox.Show(
+                    "A operação ainda está em andamento.\n\n" +
+                    "Aguarde a conclusão antes de fechar.",
+                    "WinTurner",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource?.Dispose();
+            _cancellationTokenSource = null;
         }
     }
 }
