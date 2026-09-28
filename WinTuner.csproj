@@ -11,20 +11,17 @@
 
   <ItemGroup>
     <Compile Remove="Services\Historico\**" />
-    <Compile Remove="Services\Limpeza\**" />
     <Compile Remove="Services\Otimizacao\**" />
     <EmbeddedResource Remove="Services\Historico\**" />
-    <EmbeddedResource Remove="Services\Limpeza\**" />
     <EmbeddedResource Remove="Services\Otimizacao\**" />
     <None Remove="Services\Historico\**" />
-    <None Remove="Services\Limpeza\**" />
     <None Remove="Services\Otimizacao\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ReaLTaiizor" Version="3.8.2.1" />
-    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.12" />
-    <PackageReference Include="System.Management" Version="10.0.12" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="11.0.0-rc.1.26425.128" />
+    <PackageReference Include="System.Management" Version="11.0.0-rc.1.26425.128" />
   </ItemGroup>
 
   <ItemGroup>
