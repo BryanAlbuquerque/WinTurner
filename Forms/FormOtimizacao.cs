@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using WinTuner.Forms.Otimizacao;
 using WinTuner.Services;
 
 namespace WinTuner.Forms
 {
     public partial class FormOtimizacao : Form
     {
+
+        private Form _formAtual;
         public FormOtimizacao()
         {
             InitializeComponent();
@@ -44,5 +40,60 @@ namespace WinTuner.Forms
             formHistorico.Show();
             this.Hide();
         }
+
+        private void FormOtimizacao_Load(object sender, EventArgs e)
+        {
+            // Vai chamar panel com uma inicialização de otimização
+        }
+
+
+        private void AbrirFormulario(Form formulario)
+        {
+            if (_formAtual != null)
+            {
+                _formAtual.Close();
+                _formAtual.Dispose();
+            }
+
+            _formAtual = formulario;
+
+            formulario.TopLevel = false;
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.Dock = DockStyle.Fill;
+
+
+            pnlConteudo.Controls.Clear();
+            pnlConteudo.Controls.Add(formulario);
+
+            formulario.Show();
+        }
+
+        #region Botões TOP BAR
+        private void btnDebloat_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new Debloat());
+        }
+
+        private void btnEfeitos_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new EfeitosVisuais());
+        }
+
+        private void btnInicializacao_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new ProgramasInicializacao());
+        }
+
+        private void btnServicos_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormulario(new ServicosWindows());
+        }
+
+        private void btnEnergia_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new PlanoEnergia());
+        }
+
+        #endregion
     }
 }

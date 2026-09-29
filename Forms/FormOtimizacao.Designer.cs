@@ -39,6 +39,12 @@
             btnDiagnostico = new ReaLTaiizor.Controls.Button();
             btnPainel = new ReaLTaiizor.Controls.Button();
             lbl = new ReaLTaiizor.Controls.BigLabel();
+            btnDebloat = new ReaLTaiizor.Controls.Button();
+            pnlConteudo = new ReaLTaiizor.Controls.Panel();
+            btnEfeitos = new ReaLTaiizor.Controls.Button();
+            btnInicializacao = new ReaLTaiizor.Controls.Button();
+            btnServicos = new ReaLTaiizor.Controls.Button();
+            btnEnergia = new ReaLTaiizor.Controls.Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SideBar.SuspendLayout();
             SuspendLayout();
@@ -201,21 +207,146 @@
             lbl.TabIndex = 23;
             lbl.Text = "OTIMIZAÇÃO";
             // 
+            // btnDebloat
+            // 
+            btnDebloat.BackColor = Color.Black;
+            btnDebloat.BorderColor = Color.Transparent;
+            btnDebloat.Cursor = Cursors.Hand;
+            btnDebloat.EnteredBorderColor = Color.DarkGray;
+            btnDebloat.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnDebloat.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDebloat.Image = null;
+            btnDebloat.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDebloat.InactiveColor = Color.FromArgb(29, 29, 29);
+            btnDebloat.Location = new Point(203, 121);
+            btnDebloat.Name = "btnDebloat";
+            btnDebloat.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnDebloat.PressedColor = Color.FromArgb(165, 37, 37);
+            btnDebloat.Size = new Size(178, 27);
+            btnDebloat.TabIndex = 26;
+            btnDebloat.Text = "Debloat do Windows ";
+            btnDebloat.TextAlignment = StringAlignment.Center;
+            btnDebloat.Click += btnDebloat_Click;
+            // 
+            // pnlConteudo
+            // 
+            pnlConteudo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlConteudo.BackColor = Color.FromArgb(21, 21, 21);
+            pnlConteudo.EdgeColor = Color.FromArgb(32, 41, 50);
+            pnlConteudo.Location = new Point(206, 169);
+            pnlConteudo.Name = "pnlConteudo";
+            pnlConteudo.Padding = new Padding(5);
+            pnlConteudo.Size = new Size(1143, 495);
+            pnlConteudo.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            pnlConteudo.TabIndex = 27;
+            pnlConteudo.Text = "panel1";
+            // 
+            // btnEfeitos
+            // 
+            btnEfeitos.BackColor = Color.Black;
+            btnEfeitos.BorderColor = Color.Transparent;
+            btnEfeitos.Cursor = Cursors.Hand;
+            btnEfeitos.EnteredBorderColor = Color.DarkGray;
+            btnEfeitos.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnEfeitos.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEfeitos.Image = null;
+            btnEfeitos.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEfeitos.InactiveColor = Color.FromArgb(29, 29, 29);
+            btnEfeitos.Location = new Point(387, 122);
+            btnEfeitos.Name = "btnEfeitos";
+            btnEfeitos.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnEfeitos.PressedColor = Color.FromArgb(165, 37, 37);
+            btnEfeitos.Size = new Size(221, 27);
+            btnEfeitos.TabIndex = 28;
+            btnEfeitos.Text = "Efeitos visuais do Windows";
+            btnEfeitos.TextAlignment = StringAlignment.Center;
+            btnEfeitos.Click += btnEfeitos_Click;
+            // 
+            // btnInicializacao
+            // 
+            btnInicializacao.BackColor = Color.Black;
+            btnInicializacao.BorderColor = Color.Transparent;
+            btnInicializacao.Cursor = Cursors.Hand;
+            btnInicializacao.EnteredBorderColor = Color.DarkGray;
+            btnInicializacao.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnInicializacao.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnInicializacao.Image = null;
+            btnInicializacao.ImageAlign = ContentAlignment.MiddleLeft;
+            btnInicializacao.InactiveColor = Color.FromArgb(29, 29, 29);
+            btnInicializacao.Location = new Point(614, 122);
+            btnInicializacao.Name = "btnInicializacao";
+            btnInicializacao.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnInicializacao.PressedColor = Color.FromArgb(165, 37, 37);
+            btnInicializacao.Size = new Size(234, 28);
+            btnInicializacao.TabIndex = 29;
+            btnInicializacao.Text = "Programas de inicialização";
+            btnInicializacao.TextAlignment = StringAlignment.Center;
+            btnInicializacao.Click += btnInicializacao_Click;
+            // 
+            // btnServicos
+            // 
+            btnServicos.BackColor = Color.Black;
+            btnServicos.BorderColor = Color.Transparent;
+            btnServicos.Cursor = Cursors.Hand;
+            btnServicos.EnteredBorderColor = Color.DarkGray;
+            btnServicos.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnServicos.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnServicos.Image = null;
+            btnServicos.ImageAlign = ContentAlignment.MiddleLeft;
+            btnServicos.InactiveColor = Color.FromArgb(29, 29, 29);
+            btnServicos.Location = new Point(854, 122);
+            btnServicos.Name = "btnServicos";
+            btnServicos.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnServicos.PressedColor = Color.FromArgb(165, 37, 37);
+            btnServicos.Size = new Size(241, 28);
+            btnServicos.TabIndex = 30;
+            btnServicos.Text = "Serviços do Windows";
+            btnServicos.TextAlignment = StringAlignment.Center;
+            btnServicos.Click += btnServicos_Click_1;
+            // 
+            // btnEnergia
+            // 
+            btnEnergia.BackColor = Color.Black;
+            btnEnergia.BorderColor = Color.Transparent;
+            btnEnergia.Cursor = Cursors.Hand;
+            btnEnergia.EnteredBorderColor = Color.DarkGray;
+            btnEnergia.EnteredColor = Color.FromArgb(32, 34, 37);
+            btnEnergia.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEnergia.Image = null;
+            btnEnergia.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEnergia.InactiveColor = Color.FromArgb(29, 29, 29);
+            btnEnergia.Location = new Point(1101, 121);
+            btnEnergia.Name = "btnEnergia";
+            btnEnergia.PressedBorderColor = Color.FromArgb(165, 37, 37);
+            btnEnergia.PressedColor = Color.FromArgb(165, 37, 37);
+            btnEnergia.Size = new Size(241, 28);
+            btnEnergia.TabIndex = 31;
+            btnEnergia.Text = "Plano de energia";
+            btnEnergia.TextAlignment = StringAlignment.Center;
+            btnEnergia.Click += btnEnergia_Click;
+            // 
             // FormOtimizacao
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(29, 29, 29);
-            ClientSize = new Size(1049, 676);
+            ClientSize = new Size(1352, 676);
+            Controls.Add(lbl);
+            Controls.Add(btnEnergia);
+            Controls.Add(btnServicos);
+            Controls.Add(btnInicializacao);
+            Controls.Add(btnEfeitos);
+            Controls.Add(pnlConteudo);
+            Controls.Add(btnDebloat);
             Controls.Add(dungeonLabel6);
             Controls.Add(dungeonLabel1);
             Controls.Add(SideBar);
-            Controls.Add(lbl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormOtimizacao";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Otimização";
             WindowState = FormWindowState.Maximized;
+            Load += FormOtimizacao_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             SideBar.ResumeLayout(false);
             SideBar.PerformLayout();
@@ -235,5 +366,11 @@
         private ReaLTaiizor.Controls.BigLabel lbl;
         private ReaLTaiizor.Controls.Button btnLimpeza;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel5;
+        private ReaLTaiizor.Controls.Button btnDebloat;
+        private ReaLTaiizor.Controls.Panel pnlConteudo;
+        private ReaLTaiizor.Controls.Button btnEfeitos;
+        private ReaLTaiizor.Controls.Button btnInicializacao;
+        private ReaLTaiizor.Controls.Button btnServicos;
+        private ReaLTaiizor.Controls.Button btnEnergia;
     }
 }

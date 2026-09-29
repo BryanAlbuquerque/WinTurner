@@ -11,11 +11,8 @@
 
   <ItemGroup>
     <Compile Remove="Services\Historico\**" />
-    <Compile Remove="Services\Otimizacao\**" />
     <EmbeddedResource Remove="Services\Historico\**" />
-    <EmbeddedResource Remove="Services\Otimizacao\**" />
     <None Remove="Services\Historico\**" />
-    <None Remove="Services\Otimizacao\**" />
   </ItemGroup>
 
   <ItemGroup>
