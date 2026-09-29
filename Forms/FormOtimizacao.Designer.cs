@@ -63,9 +63,9 @@
             dungeonLabel1.ForeColor = Color.FromArgb(119, 119, 119);
             dungeonLabel1.Location = new Point(252, 81);
             dungeonLabel1.Name = "dungeonLabel1";
-            dungeonLabel1.Size = new Size(326, 20);
+            dungeonLabel1.Size = new Size(628, 20);
             dungeonLabel1.TabIndex = 24;
-            dungeonLabel1.Text = "DESATIVAR ITENS NÃO UTILIZADOS ";
+            dungeonLabel1.Text = "Ajuste o Windows para reduzir processos, efeitos e recursos desnecessários.";
             // 
             // btnHistorico
             // 

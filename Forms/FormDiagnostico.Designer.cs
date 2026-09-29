@@ -2,350 +2,349 @@
 {
     partial class FormDiagnostico
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiagnostico));
-            dungeonLabel6 = new ReaLTaiizor.Controls.DungeonLabel();
-            dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
-            btnHistorico = new ReaLTaiizor.Controls.Button();
-            btnOtimizacao = new ReaLTaiizor.Controls.Button();
-            btnLimpeza = new ReaLTaiizor.Controls.Button();
-            pictureBox1 = new PictureBox();
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(FormDiagnostico));
+
             SideBar = new Panel();
-            dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
+            pictureBox1 = new PictureBox();
+
             btnPainel = new ReaLTaiizor.Controls.Button();
+            btnLimpeza = new ReaLTaiizor.Controls.Button();
+            btnOtimizacao = new ReaLTaiizor.Controls.Button();
+            btnHistorico = new ReaLTaiizor.Controls.Button();
+
+            dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
+
             lbl = new ReaLTaiizor.Controls.BigLabel();
+            dungeonLabel1 = new ReaLTaiizor.Controls.DungeonLabel();
+
+            pnlNavegacao = new Panel();
+
             btntnInfoComputador = new ReaLTaiizor.Controls.Button();
             btnVerificarDisco = new ReaLTaiizor.Controls.Button();
-            pnlConteudo = new ReaLTaiizor.Controls.Panel();
             btnIntegridade = new ReaLTaiizor.Controls.Button();
             btnRede = new ReaLTaiizor.Controls.Button();
+
+            pnlConteudo = new ReaLTaiizor.Controls.Panel();
+
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SideBar.SuspendLayout();
+            pnlNavegacao.SuspendLayout();
             SuspendLayout();
-            // 
-            // dungeonLabel6
-            // 
-            dungeonLabel6.AutoSize = true;
-            dungeonLabel6.BackColor = Color.Transparent;
-            dungeonLabel6.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dungeonLabel6.ForeColor = Color.Maroon;
-            dungeonLabel6.Location = new Point(246, 45);
-            dungeonLabel6.Name = "dungeonLabel6";
-            dungeonLabel6.Size = new Size(639, 33);
-            dungeonLabel6.TabIndex = 17;
-            dungeonLabel6.Text = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
-            // 
-            // dungeonLabel1
-            // 
-            dungeonLabel1.AutoSize = true;
-            dungeonLabel1.BackColor = Color.Transparent;
-            dungeonLabel1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dungeonLabel1.ForeColor = Color.FromArgb(119, 119, 119);
-            dungeonLabel1.Location = new Point(231, 80);
-            dungeonLabel1.Name = "dungeonLabel1";
-            dungeonLabel1.Size = new Size(357, 24);
-            dungeonLabel1.TabIndex = 16;
-            dungeonLabel1.Text = "Verificação e Analise do Computador";
-            // 
-            // btnHistorico
-            // 
-            btnHistorico.BackColor = Color.Black;
-            btnHistorico.BorderColor = Color.Transparent;
-            btnHistorico.Cursor = Cursors.Hand;
-            btnHistorico.EnteredBorderColor = Color.DarkGray;
-            btnHistorico.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnHistorico.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnHistorico.Image = null;
-            btnHistorico.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHistorico.InactiveColor = Color.Black;
-            btnHistorico.Location = new Point(20, 375);
-            btnHistorico.Name = "btnHistorico";
-            btnHistorico.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnHistorico.PressedColor = Color.FromArgb(165, 37, 37);
-            btnHistorico.Size = new Size(173, 40);
-            btnHistorico.TabIndex = 11;
-            btnHistorico.Text = "Historico";
-            btnHistorico.TextAlignment = StringAlignment.Center;
-            btnHistorico.Click += btnHistorico_Click;
-            // 
-            // btnOtimizacao
-            // 
-            btnOtimizacao.BackColor = Color.Black;
-            btnOtimizacao.BorderColor = Color.Transparent;
-            btnOtimizacao.Cursor = Cursors.Hand;
-            btnOtimizacao.EnteredBorderColor = Color.DarkGray;
-            btnOtimizacao.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnOtimizacao.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnOtimizacao.Image = null;
-            btnOtimizacao.ImageAlign = ContentAlignment.MiddleLeft;
-            btnOtimizacao.InactiveColor = Color.Black;
-            btnOtimizacao.Location = new Point(20, 305);
-            btnOtimizacao.Name = "btnOtimizacao";
-            btnOtimizacao.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnOtimizacao.PressedColor = Color.FromArgb(165, 37, 37);
-            btnOtimizacao.Size = new Size(173, 40);
-            btnOtimizacao.TabIndex = 10;
-            btnOtimizacao.Text = "Otimização";
-            btnOtimizacao.TextAlignment = StringAlignment.Center;
-            btnOtimizacao.Click += btnOtimizacao_Click;
-            // 
-            // btnLimpeza
-            // 
-            btnLimpeza.BackColor = Color.Black;
-            btnLimpeza.BorderColor = Color.Transparent;
-            btnLimpeza.Cursor = Cursors.Hand;
-            btnLimpeza.EnteredBorderColor = Color.DarkGray;
-            btnLimpeza.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnLimpeza.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnLimpeza.Image = null;
-            btnLimpeza.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLimpeza.InactiveColor = Color.Black;
-            btnLimpeza.Location = new Point(20, 235);
-            btnLimpeza.Name = "btnLimpeza";
-            btnLimpeza.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnLimpeza.PressedColor = Color.FromArgb(165, 37, 37);
-            btnLimpeza.Size = new Size(173, 40);
-            btnLimpeza.TabIndex = 9;
-            btnLimpeza.Text = "Limpeza";
-            btnLimpeza.TextAlignment = StringAlignment.Center;
-            btnLimpeza.Click += btnLimpeza_Click;
-            // 
-            // pictureBox1
-            // 
+
+            // SideBar
+            SideBar.BackColor = Color.FromArgb(5, 5, 5);
+            SideBar.Dock = DockStyle.Left;
+            SideBar.Name = "SideBar";
+            SideBar.Size = new Size(220, 700);
+            SideBar.TabIndex = 0;
+
+            // Logo
+            pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Location = new Point(10, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(194, 118);
+            pictureBox1.Size = new Size(200, 125);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            // 
-            // SideBar
-            // 
-            SideBar.BackColor = Color.Black;
-            SideBar.Controls.Add(dungeonLabel2);
-            SideBar.Controls.Add(btnPainel);
-            SideBar.Controls.Add(btnHistorico);
-            SideBar.Controls.Add(btnOtimizacao);
-            SideBar.Controls.Add(btnLimpeza);
-            SideBar.Controls.Add(pictureBox1);
-            SideBar.Dock = DockStyle.Left;
-            SideBar.Location = new Point(0, 0);
-            SideBar.Name = "SideBar";
-            SideBar.Size = new Size(212, 674);
-            SideBar.TabIndex = 10;
-            // 
-            // dungeonLabel2
-            // 
+
+            // Painel
+            ConfigurarBotaoSidebar(
+                btnPainel,
+                "Painel de Controle",
+                new Point(12, 165)
+            );
+            btnPainel.Name = "btnPainel";
+            btnPainel.Click += btnPainel_Click;
+
+            // Limpeza
+            ConfigurarBotaoSidebar(
+                btnLimpeza,
+                "Limpeza",
+                new Point(12, 219)
+            );
+            btnLimpeza.Name = "btnLimpeza";
+            btnLimpeza.Click += btnLimpeza_Click;
+
+            // Otimização
+            ConfigurarBotaoSidebar(
+                btnOtimizacao,
+                "Otimização",
+                new Point(12, 273)
+            );
+            btnOtimizacao.Name = "btnOtimizacao";
+            btnOtimizacao.Click += btnOtimizacao_Click;
+
+            // Histórico
+            ConfigurarBotaoSidebar(
+                btnHistorico,
+                "Histórico",
+                new Point(12, 327)
+            );
+            btnHistorico.Name = "btnHistorico";
+            btnHistorico.Click += btnHistorico_Click;
+
+            // Status
             dungeonLabel2.AutoSize = true;
             dungeonLabel2.BackColor = Color.Transparent;
             dungeonLabel2.Dock = DockStyle.Bottom;
-            dungeonLabel2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dungeonLabel2.ForeColor = Color.Red;
-            dungeonLabel2.Location = new Point(0, 659);
+            dungeonLabel2.Font = new Font(
+                "Microsoft Sans Serif",
+                9F,
+                FontStyle.Bold,
+                GraphicsUnit.Point
+            );
+            dungeonLabel2.ForeColor = Color.FromArgb(0, 200, 80);
+            dungeonLabel2.Location = new Point(0, 685);
             dungeonLabel2.Name = "dungeonLabel2";
-            dungeonLabel2.Size = new Size(185, 15);
-            dungeonLabel2.TabIndex = 19;
-            dungeonLabel2.Text = "⚫ SISTEMA OPERACIONAL";
-            // 
-            // btnPainel
-            // 
-            btnPainel.BackColor = Color.Black;
-            btnPainel.BorderColor = Color.Transparent;
-            btnPainel.Cursor = Cursors.Hand;
-            btnPainel.EnteredBorderColor = Color.DarkGray;
-            btnPainel.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnPainel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnPainel.Image = null;
-            btnPainel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPainel.InactiveColor = Color.Black;
-            btnPainel.Location = new Point(20, 167);
-            btnPainel.Name = "btnPainel";
-            btnPainel.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnPainel.PressedColor = Color.FromArgb(165, 37, 37);
-            btnPainel.Size = new Size(173, 40);
-            btnPainel.TabIndex = 12;
-            btnPainel.Text = "Painel de Controle";
-            btnPainel.TextAlignment = StringAlignment.Center;
-            btnPainel.Click += btnPainel_Click;
-            // 
-            // lbl
-            // 
+            dungeonLabel2.Padding = new Padding(12, 0, 0, 0);
+            dungeonLabel2.Size = new Size(220, 15);
+            dungeonLabel2.TabIndex = 5;
+            dungeonLabel2.Text = "● SISTEMA OPERACIONAL";
+
+            SideBar.Controls.Add(dungeonLabel2);
+            SideBar.Controls.Add(btnHistorico);
+            SideBar.Controls.Add(btnOtimizacao);
+            SideBar.Controls.Add(btnLimpeza);
+            SideBar.Controls.Add(btnPainel);
+            SideBar.Controls.Add(pictureBox1);
+
+            // Título
             lbl.AutoSize = true;
             lbl.BackColor = Color.Transparent;
-            lbl.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbl.ForeColor = Color.WhiteSmoke;
-            lbl.Location = new Point(218, 9);
+            lbl.Font = new Font(
+                "Microsoft Sans Serif",
+                27.75F,
+                FontStyle.Bold,
+                GraphicsUnit.Point
+            );
+            lbl.ForeColor = Color.FromArgb(242, 242, 242);
+            lbl.Location = new Point(250, 22);
             lbl.Name = "lbl";
             lbl.Size = new Size(299, 42);
-            lbl.TabIndex = 15;
-            lbl.Text = "DIAGNÓSTICO ";
-            // 
-            // btntnInfoComputador
-            // 
-            btntnInfoComputador.BackColor = Color.Black;
-            btntnInfoComputador.BorderColor = Color.Transparent;
-            btntnInfoComputador.Cursor = Cursors.Hand;
-            btntnInfoComputador.EnteredBorderColor = Color.DarkGray;
-            btntnInfoComputador.EnteredColor = Color.FromArgb(32, 34, 37);
-            btntnInfoComputador.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btntnInfoComputador.Image = null;
-            btntnInfoComputador.ImageAlign = ContentAlignment.MiddleLeft;
-            btntnInfoComputador.InactiveColor = Color.FromArgb(29, 29, 29);
-            btntnInfoComputador.Location = new Point(231, 120);
+            lbl.TabIndex = 6;
+            lbl.Text = "DIAGNÓSTICO";
+
+            // Subtítulo
+            dungeonLabel1.AutoSize = true;
+            dungeonLabel1.BackColor = Color.Transparent;
+            dungeonLabel1.Font = new Font(
+                "Microsoft Sans Serif",
+                11F,
+                FontStyle.Regular,
+                GraphicsUnit.Point
+            );
+            dungeonLabel1.ForeColor = Color.FromArgb(145, 145, 145);
+            dungeonLabel1.Location = new Point(254, 68);
+            dungeonLabel1.Name = "dungeonLabel1";
+            dungeonLabel1.Size = new Size(276, 18);
+            dungeonLabel1.TabIndex = 7;
+            dungeonLabel1.Text = "Verificação e análise do computador";
+
+            // Barra de navegação
+            pnlNavegacao.BackColor = Color.FromArgb(26, 26, 26);
+            pnlNavegacao.Location = new Point(250, 105);
+            pnlNavegacao.Name = "pnlNavegacao";
+            pnlNavegacao.Padding = new Padding(8);
+            pnlNavegacao.Size = new Size(1000, 58);
+            pnlNavegacao.TabIndex = 8;
+
+            // Informações do computador
+            ConfigurarBotaoModulo(
+                btntnInfoComputador,
+                "INFO COMPUTADOR"
+            );
+            btntnInfoComputador.Dock = DockStyle.Left;
+            btntnInfoComputador.Margin = new Padding(0, 0, 8, 0);
             btntnInfoComputador.Name = "btntnInfoComputador";
-            btntnInfoComputador.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btntnInfoComputador.PressedColor = Color.FromArgb(165, 37, 37);
-            btntnInfoComputador.Size = new Size(241, 27);
-            btntnInfoComputador.TabIndex = 20;
-            btntnInfoComputador.Text = "INFO COMPUTADOR";
-            btntnInfoComputador.TextAlignment = StringAlignment.Center;
+            btntnInfoComputador.Width = 220;
             btntnInfoComputador.Click += btntnInfoComputador_Click;
-            // 
-            // btnVerificarDisco
-            // 
-            btnVerificarDisco.BackColor = Color.Black;
-            btnVerificarDisco.BorderColor = Color.Transparent;
-            btnVerificarDisco.Cursor = Cursors.Hand;
-            btnVerificarDisco.EnteredBorderColor = Color.DarkGray;
-            btnVerificarDisco.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnVerificarDisco.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnVerificarDisco.Image = null;
-            btnVerificarDisco.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVerificarDisco.InactiveColor = Color.FromArgb(29, 29, 29);
-            btnVerificarDisco.Location = new Point(489, 120);
+
+            // Verificação do disco
+            ConfigurarBotaoModulo(
+                btnVerificarDisco,
+                "VERIFICAR DISCO"
+            );
+            btnVerificarDisco.Dock = DockStyle.Left;
+            btnVerificarDisco.Margin = new Padding(0, 0, 8, 0);
             btnVerificarDisco.Name = "btnVerificarDisco";
-            btnVerificarDisco.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnVerificarDisco.PressedColor = Color.FromArgb(165, 37, 37);
-            btnVerificarDisco.Size = new Size(176, 27);
-            btnVerificarDisco.TabIndex = 21;
-            btnVerificarDisco.Text = "VERIFICAR DISCO";
-            btnVerificarDisco.TextAlignment = StringAlignment.Center;
+            btnVerificarDisco.Width = 190;
             btnVerificarDisco.Click += btnVerificarDisco_Click;
-            // 
-            // pnlConteudo
-            // 
-            pnlConteudo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlConteudo.BackColor = Color.Black;
-            pnlConteudo.EdgeColor = Color.FromArgb(32, 41, 50);
-            pnlConteudo.Location = new Point(231, 167);
-            pnlConteudo.Name = "pnlConteudo";
-            pnlConteudo.Padding = new Padding(5);
-            pnlConteudo.Size = new Size(868, 495);
-            pnlConteudo.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            pnlConteudo.TabIndex = 22;
-            pnlConteudo.Text = "panel1";
-            // 
-            // btnIntegridade
-            // 
-            btnIntegridade.BackColor = Color.Black;
-            btnIntegridade.BorderColor = Color.Transparent;
-            btnIntegridade.Cursor = Cursors.Hand;
-            btnIntegridade.EnteredBorderColor = Color.DarkGray;
-            btnIntegridade.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnIntegridade.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnIntegridade.Image = null;
-            btnIntegridade.ImageAlign = ContentAlignment.MiddleLeft;
-            btnIntegridade.InactiveColor = Color.FromArgb(29, 29, 29);
-            btnIntegridade.Location = new Point(685, 120);
+
+            // Integridade
+            ConfigurarBotaoModulo(
+                btnIntegridade,
+                "INTEGRIDADE WINDOWS"
+            );
+            btnIntegridade.Dock = DockStyle.Left;
+            btnIntegridade.Margin = new Padding(0, 0, 8, 0);
             btnIntegridade.Name = "btnIntegridade";
-            btnIntegridade.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnIntegridade.PressedColor = Color.FromArgb(165, 37, 37);
-            btnIntegridade.Size = new Size(197, 27);
-            btnIntegridade.TabIndex = 23;
-            btnIntegridade.Text = "INTEGRIDADE WIN";
-            btnIntegridade.TextAlignment = StringAlignment.Center;
+            btnIntegridade.Width = 220;
             btnIntegridade.Click += btnIntegridade_Click;
-            // 
-            // btnRede
-            // 
-            btnRede.BackColor = Color.Black;
-            btnRede.BorderColor = Color.Transparent;
-            btnRede.Cursor = Cursors.Hand;
-            btnRede.EnteredBorderColor = Color.DarkGray;
-            btnRede.EnteredColor = Color.FromArgb(32, 34, 37);
-            btnRede.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnRede.Image = null;
-            btnRede.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRede.InactiveColor = Color.FromArgb(29, 29, 29);
-            btnRede.Location = new Point(908, 120);
+
+            // Rede
+            ConfigurarBotaoModulo(
+                btnRede,
+                "REDE"
+            );
+            btnRede.Dock = DockStyle.Fill;
             btnRede.Name = "btnRede";
-            btnRede.PressedBorderColor = Color.FromArgb(165, 37, 37);
-            btnRede.PressedColor = Color.FromArgb(165, 37, 37);
-            btnRede.Size = new Size(176, 27);
-            btnRede.TabIndex = 24;
-            btnRede.Text = "REDE";
-            btnRede.TextAlignment = StringAlignment.Center;
             btnRede.Click += btnRede_Click;
-            // 
+
+            pnlNavegacao.Controls.Add(btnRede);
+            pnlNavegacao.Controls.Add(btnIntegridade);
+            pnlNavegacao.Controls.Add(btnVerificarDisco);
+            pnlNavegacao.Controls.Add(btntnInfoComputador);
+
+            // Área de conteúdo
+            pnlConteudo.Anchor =
+                AnchorStyles.Top |
+                AnchorStyles.Bottom |
+                AnchorStyles.Left |
+                AnchorStyles.Right;
+
+            pnlConteudo.BackColor = Color.FromArgb(15, 15, 15);
+            pnlConteudo.EdgeColor = Color.FromArgb(58, 58, 58);
+            pnlConteudo.Location = new Point(250, 178);
+            pnlConteudo.Name = "pnlConteudo";
+            pnlConteudo.Padding = new Padding(8);
+            pnlConteudo.Size = new Size(1000, 490);
+            pnlConteudo.SmoothingType =
+                System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            pnlConteudo.TabIndex = 9;
+            pnlConteudo.Text = "pnlConteudo";
+
             // FormDiagnostico
-            // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(29, 29, 29);
-            ClientSize = new Size(1111, 674);
-            Controls.Add(btnRede);
-            Controls.Add(btnIntegridade);
+
+            BackColor = Color.FromArgb(26, 26, 26);
+
+            ClientSize = new Size(1280, 700);
+
             Controls.Add(pnlConteudo);
-            Controls.Add(btnVerificarDisco);
-            Controls.Add(btntnInfoComputador);
-            Controls.Add(lbl);
-            Controls.Add(dungeonLabel6);
+            Controls.Add(pnlNavegacao);
             Controls.Add(dungeonLabel1);
+            Controls.Add(lbl);
             Controls.Add(SideBar);
+
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(1100, 650);
             Name = "FormDiagnostico";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Diagnostico";
+            Text = "WinTuner - Diagnóstico";
             WindowState = FormWindowState.Maximized;
+
             Load += FormDiagnostico_Load;
+
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             SideBar.ResumeLayout(false);
             SideBar.PerformLayout();
+            pnlNavegacao.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
+        private void ConfigurarBotaoSidebar(
+            ReaLTaiizor.Controls.Button botao,
+            string texto,
+            Point localizacao)
+        {
+            botao.BackColor = Color.FromArgb(5, 5, 5);
+            botao.BorderColor = Color.FromArgb(5, 5, 5);
+            botao.Cursor = Cursors.Hand;
+
+            botao.EnteredBorderColor = Color.FromArgb(224, 0, 0);
+            botao.EnteredColor = Color.FromArgb(30, 30, 30);
+
+            botao.Font = new Font(
+                "Microsoft Sans Serif",
+                11F,
+                FontStyle.Bold
+            );
+
+            botao.Image = null;
+            botao.ImageAlign = ContentAlignment.MiddleLeft;
+            botao.InactiveColor = Color.FromArgb(5, 5, 5);
+
+            botao.Location = localizacao;
+
+            botao.PressedBorderColor = Color.FromArgb(176, 0, 0);
+            botao.PressedColor = Color.FromArgb(176, 0, 0);
+
+            botao.Size = new Size(196, 44);
+            botao.TabIndex = 0;
+            botao.Text = texto;
+            botao.TextAlignment = StringAlignment.Center;
+        }
+
+        private void ConfigurarBotaoModulo(
+            ReaLTaiizor.Controls.Button botao,
+            string texto)
+        {
+            botao.BackColor = Color.FromArgb(26, 26, 26);
+            botao.BorderColor = Color.FromArgb(58, 58, 58);
+            botao.Cursor = Cursors.Hand;
+
+            botao.EnteredBorderColor = Color.FromArgb(208, 0, 0);
+            botao.EnteredColor = Color.FromArgb(32, 32, 32);
+
+            botao.Font = new Font(
+                "Microsoft Sans Serif",
+                9.5F,
+                FontStyle.Bold
+            );
+
+            botao.Image = null;
+            botao.ImageAlign = ContentAlignment.MiddleLeft;
+            botao.InactiveColor = Color.FromArgb(26, 26, 26);
+
+            botao.PressedBorderColor = Color.FromArgb(176, 0, 0);
+            botao.PressedColor = Color.FromArgb(176, 0, 0);
+
+            botao.Text = texto;
+            botao.TextAlignment = StringAlignment.Center;
+        }
+
         #endregion
-        private ReaLTaiizor.Controls.DungeonLabel dungeonLabel6;
+
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel1;
+        private ReaLTaiizor.Controls.DungeonLabel dungeonLabel2;
+
         private ReaLTaiizor.Controls.Button btnHistorico;
         private ReaLTaiizor.Controls.Button btnOtimizacao;
         private ReaLTaiizor.Controls.Button btnLimpeza;
+        private ReaLTaiizor.Controls.Button btnPainel;
+
         private PictureBox pictureBox1;
         private Panel SideBar;
+
         private ReaLTaiizor.Controls.BigLabel lbl;
-        private ReaLTaiizor.Controls.Button btnPainel;
-        private ReaLTaiizor.Controls.DungeonLabel dungeonLabel2;
+
+        private Panel pnlNavegacao;
+
         private ReaLTaiizor.Controls.Button btntnInfoComputador;
         private ReaLTaiizor.Controls.Button btnVerificarDisco;
-        private ReaLTaiizor.Controls.Panel pnlConteudo;
         private ReaLTaiizor.Controls.Button btnIntegridade;
         private ReaLTaiizor.Controls.Button btnRede;
+
+        private ReaLTaiizor.Controls.Panel pnlConteudo;
     }
 }
