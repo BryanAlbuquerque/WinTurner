@@ -43,7 +43,7 @@ namespace WinTuner.Forms
 
         private void FormOtimizacao_Load(object sender, EventArgs e)
         {
-            // Vai chamar panel com uma inicialização de otimização
+            AbrirFormulario(new Debloat());
         }
 
 
