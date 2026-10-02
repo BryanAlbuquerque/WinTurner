@@ -11,6 +11,7 @@ namespace WinTuner.Forms.Otimizacao
 
         private bool _processando;
         private bool _carregando;
+        private bool _fechamentoForcado;
 
         public EfeitosVisuais()
         {
@@ -19,13 +20,19 @@ namespace WinTuner.Forms.Otimizacao
             _service =
                 new OtimizacaoEfeitosVisuaisService();
 
+            ConfigurarEventos();
+        }
+
+        private void ConfigurarEventos()
+        {
             Shown += EfeitosVisuais_Shown;
             FormClosing += EfeitosVisuais_FormClosing;
+            Resize += EfeitosVisuais_Resize;
 
             btnAplicar.Click += btnAplicar_Click;
             btnMelhorDesempenho.Click += btnMelhorDesempenho_Click;
-            btnMelhorAparencia.Click += btnMelhorAparencia_Click;
             btnEquilibrado.Click += btnEquilibrado_Click;
+            btnMelhorAparencia.Click += btnMelhorAparencia_Click;
             btnRestaurar.Click += btnRestaurar_Click;
 
             chkAbrirCaixasCombinacao.CheckedChanged += Configuracao_CheckedChanged;
@@ -59,6 +66,7 @@ namespace WinTuner.Forms.Otimizacao
             try
             {
                 _carregando = true;
+
                 AlterarInterface(true);
 
                 lblStatus.Text =
@@ -92,6 +100,7 @@ namespace WinTuner.Forms.Otimizacao
             finally
             {
                 _carregando = false;
+
                 AlterarInterface(false);
             }
         }
@@ -99,56 +108,70 @@ namespace WinTuner.Forms.Otimizacao
         private void AplicarNaInterface(
             OtimizacaoEfeitosVisuaisService.ConfiguracaoEfeitos config)
         {
-            chkAbrirCaixasCombinacao.Checked =
-                config.AbrirCaixasCombinacao;
+            _carregando = true;
 
-            chkAnimacoesBarraTarefas.Checked =
-                config.AnimacoesBarraTarefas;
+            try
+            {
+                chkAbrirCaixasCombinacao.Checked =
+                    config.AbrirCaixasCombinacao;
 
-            chkAnimarControlesElementos.Checked =
-                config.AnimarControlesElementos;
+                chkAnimacoesBarraTarefas.Checked =
+                    config.AnimacoesBarraTarefas;
 
-            chkAnimarJanelasMinMax.Checked =
-                config.AnimarJanelasMinMax;
+                chkAnimarControlesElementos.Checked =
+                    config.AnimarControlesElementos;
 
-            chkEsmaecerItensMenu.Checked =
-                config.EsmaecerItensMenu;
+                chkAnimarJanelasMinMax.Checked =
+                    config.AnimarJanelasMinMax;
 
-            chkEsmaecerToolTips.Checked =
-                config.EsmaecerToolTips;
+                chkEsmaecerItensMenu.Checked =
+                    config.EsmaecerItensMenu;
 
-            chkEsmaecerMenus.Checked =
-                config.EsmaecerMenus;
+                chkEsmaecerToolTips.Checked =
+                    config.EsmaecerToolTips;
 
-            chkHabilitarPeek.Checked =
-                config.HabilitarPeek;
+                chkEsmaecerMenus.Checked =
+                    config.EsmaecerMenus;
 
-            chkMostrarConteudoJanela.Checked =
-                config.MostrarConteudoJanelaArrastar;
+                chkHabilitarPeek.Checked =
+                    config.HabilitarPeek;
 
-            chkMostrarMiniaturas.Checked =
-                config.MostrarMiniaturas;
+                chkMostrarConteudoJanela.Checked =
+                    config.MostrarConteudoJanelaArrastar;
 
-            chkRetanguloSelecao.Checked =
-                config.RetanguloSelecaoTranslucido;
+                chkMostrarMiniaturas.Checked =
+                    config.MostrarMiniaturas;
 
-            chkSombrasJanelas.Checked =
-                config.SombrasJanelas;
+                chkRetanguloSelecao.Checked =
+                    config.RetanguloSelecaoTranslucido;
 
-            chkSombrasPonteiro.Checked =
-                config.SombrasPonteiro;
+                chkSombrasJanelas.Checked =
+                    config.SombrasJanelas;
 
-            chkRolarListas.Checked =
-                config.RolarListasSuavemente;
+                chkSombrasPonteiro.Checked =
+                    config.SombrasPonteiro;
 
-            chkSalvarMiniaturas.Checked =
-                config.SalvarMiniaturasBarraTarefas;
+                chkRolarListas.Checked =
+                    config.RolarListasSuavemente;
 
-            chkSuavizacaoFontes.Checked =
-                config.SuavizacaoFontes;
+                chkSalvarMiniaturas.Checked =
+                    config.SalvarMiniaturasBarraTarefas;
 
-            chkSombrasRotulos.Checked =
-                config.SombrasRotulosDesktop;
+                chkSuavizacaoFontes.Checked =
+                    config.SuavizacaoFontes;
+
+                chkSombrasRotulos.Checked =
+                    config.SombrasRotulosDesktop;
+
+                lblPreset.Text =
+                    config.Preset;
+
+                AtualizarResumo();
+            }
+            finally
+            {
+                _carregando = false;
+            }
         }
 
         private OtimizacaoEfeitosVisuaisService.ConfiguracaoEfeitos
@@ -207,7 +230,11 @@ namespace WinTuner.Forms.Otimizacao
                 SombrasRotulosDesktop =
                     chkSombrasRotulos.Checked,
 
-                Preset = "Personalizado"
+                Preset =
+                    "Personalizado",
+
+                ModoVisualFX =
+                    3
             };
         }
 
@@ -228,14 +255,20 @@ namespace WinTuner.Forms.Otimizacao
                 AlterarInterface(true);
 
                 lblStatus.Text =
-                    "Aplicando configurações...";
+                    "Aplicando configurações personalizadas...";
+
+                var configuracao =
+                    ObterDaInterface();
 
                 var resultado =
                     await _service.AplicarConfiguracaoAsync(
-                        ObterDaInterface());
+                        configuracao);
 
                 if (!resultado.Sucesso)
                 {
+                    lblStatus.Text =
+                        "A confirmação apresentou diferenças.";
+
                     MessageBox.Show(
                         resultado.Mensagem,
                         "WinTuner",
@@ -245,24 +278,29 @@ namespace WinTuner.Forms.Otimizacao
                     return;
                 }
 
-                lblPreset.Text =
-                    "Personalizado";
+                var atual =
+                    await _service.ObterConfiguracaoAsync();
+
+                AplicarNaInterface(atual);
 
                 lblStatus.Text =
-                    "Configurações aplicadas.";
+                    "Configurações aplicadas e confirmadas.";
 
                 AtualizarResumo();
 
                 MessageBox.Show(
-                    resultado.Mensagem +
-                    "\n\nAlgumas alterações podem aparecer imediatamente. Outras podem exigir a atualização do Explorer ou uma nova sessão do Windows.",
+                    resultado.Mensagem,
                     "WinTuner",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
+                lblStatus.Text =
+                    "Erro durante a aplicação.";
+
                 MessageBox.Show(
+                    "Não foi possível aplicar as configurações.\n\n" +
                     ex.Message,
                     "WinTuner",
                     MessageBoxButtons.OK,
@@ -278,30 +316,36 @@ namespace WinTuner.Forms.Otimizacao
             object? sender,
             EventArgs e)
         {
-            await AplicarPresetAsync("Melhor desempenho");
-        }
-
-        private async void btnMelhorAparencia_Click(
-            object? sender,
-            EventArgs e)
-        {
-            await AplicarPresetAsync("Melhor aparência");
+            await AplicarPresetAsync(
+                "Melhor desempenho");
         }
 
         private async void btnEquilibrado_Click(
             object? sender,
             EventArgs e)
         {
-            await AplicarPresetAsync("Equilibrado");
+            await AplicarPresetAsync(
+                "Equilibrado");
+        }
+
+        private async void btnMelhorAparencia_Click(
+            object? sender,
+            EventArgs e)
+        {
+            await AplicarPresetAsync(
+                "Melhor aparência");
         }
 
         private async void btnRestaurar_Click(
             object? sender,
             EventArgs e)
         {
+            if (_processando)
+                return;
+
             DialogResult resposta =
                 MessageBox.Show(
-                    "Deseja restaurar os efeitos visuais para a configuração padrão?",
+                    "Deseja devolver o controle dos efeitos visuais ao Windows?",
                     "Restaurar padrão",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
@@ -309,8 +353,59 @@ namespace WinTuner.Forms.Otimizacao
             if (resposta != DialogResult.Yes)
                 return;
 
-            await AplicarPresetAsync(
-                "Padrão do Windows");
+            try
+            {
+                AlterarInterface(true);
+
+                lblStatus.Text =
+                    "Restaurando o controle padrão do Windows...";
+
+                var resultado =
+                    await _service.AplicarPresetAsync(
+                        "Padrão do Windows");
+
+                if (!resultado.Sucesso)
+                {
+                    MessageBox.Show(
+                        resultado.Mensagem,
+                        "WinTuner",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
+                var atual =
+                    await _service.ObterConfiguracaoAsync();
+
+                AplicarNaInterface(atual);
+
+                lblStatus.Text =
+                    "Controle devolvido ao Windows.";
+
+                AtualizarResumo();
+
+                MessageBox.Show(
+                    resultado.Mensagem,
+                    "WinTuner",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                lblStatus.Text =
+                    "Erro ao restaurar o padrão.";
+
+                MessageBox.Show(
+                    ex.Message,
+                    "WinTuner",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            finally
+            {
+                AlterarInterface(false);
+            }
         }
 
         private async Task AplicarPresetAsync(
@@ -332,6 +427,9 @@ namespace WinTuner.Forms.Otimizacao
 
                 if (!resultado.Sucesso)
                 {
+                    lblStatus.Text =
+                        "A confirmação apresentou diferenças.";
+
                     MessageBox.Show(
                         resultado.Mensagem,
                         "WinTuner",
@@ -341,7 +439,18 @@ namespace WinTuner.Forms.Otimizacao
                     return;
                 }
 
-                await CarregarAsync();
+                var atual =
+                    await _service.ObterConfiguracaoAsync();
+
+                AplicarNaInterface(atual);
+
+                lblPreset.Text =
+                    atual.Preset;
+
+                lblStatus.Text =
+                    $"{atual.Preset} aplicado.";
+
+                AtualizarResumo();
 
                 MessageBox.Show(
                     resultado.Mensagem,
@@ -351,6 +460,9 @@ namespace WinTuner.Forms.Otimizacao
             }
             catch (Exception ex)
             {
+                lblStatus.Text =
+                    "Erro ao aplicar preset.";
+
                 MessageBox.Show(
                     ex.Message,
                     "WinTuner",
@@ -367,8 +479,11 @@ namespace WinTuner.Forms.Otimizacao
             object? sender,
             EventArgs e)
         {
-            if (_carregando)
+            if (_carregando ||
+                _processando)
+            {
                 return;
+            }
 
             lblPreset.Text =
                 "Personalizado";
@@ -378,9 +493,7 @@ namespace WinTuner.Forms.Otimizacao
 
         private void AtualizarResumo()
         {
-            int ativos = 0;
-
-            CheckBox[] checkboxes = 
+            CheckBox[] checkboxes =
             {
                 chkAbrirCaixasCombinacao,
                 chkAnimacoesBarraTarefas,
@@ -401,6 +514,8 @@ namespace WinTuner.Forms.Otimizacao
                 chkSombrasRotulos
             };
 
+            int ativos = 0;
+
             foreach (CheckBox check in checkboxes)
             {
                 if (check.Checked)
@@ -411,9 +526,11 @@ namespace WinTuner.Forms.Otimizacao
                 $"{ativos} de 17 efeitos visuais ativados";
         }
 
-        private void AlterarInterface(bool processando)
+        private void AlterarInterface(
+            bool processando)
         {
-            _processando = processando;
+            _processando =
+                processando;
 
             CheckBox[] checkboxes =
             {
@@ -438,16 +555,27 @@ namespace WinTuner.Forms.Otimizacao
 
             foreach (CheckBox check in checkboxes)
             {
-                check.Enabled = !processando;
+                check.Enabled =
+                    !processando;
             }
 
-            btnAplicar.Enabled = !processando;
-            btnMelhorDesempenho.Enabled = !processando;
-            btnMelhorAparencia.Enabled = !processando;
-            btnEquilibrado.Enabled = !processando;
-            btnRestaurar.Enabled = !processando;
+            btnAplicar.Enabled =
+                !processando;
 
-            progressBar.Visible = processando;
+            btnMelhorDesempenho.Enabled =
+                !processando;
+
+            btnEquilibrado.Enabled =
+                !processando;
+
+            btnMelhorAparencia.Enabled =
+                !processando;
+
+            btnRestaurar.Enabled =
+                !processando;
+
+            progressBar.Visible =
+                processando;
 
             progressBar.Style =
                 processando
@@ -455,22 +583,60 @@ namespace WinTuner.Forms.Otimizacao
                     : ProgressBarStyle.Blocks;
         }
 
+        private void EfeitosVisuais_Resize(
+            object? sender,
+            EventArgs e)
+        {
+            if (lblResumo == null ||
+                panelStatus == null)
+            {
+                return;
+            }
+
+            lblResumo.Left =
+                Math.Max(
+                    10,
+                    panelStatus.ClientSize.Width -
+                    lblResumo.Width -
+                    18);
+
+            lblResumo.Top =
+                28;
+        }
+
         private void EfeitosVisuais_FormClosing(
             object? sender,
             FormClosingEventArgs e)
         {
-            if (!_processando)
+            if (!_processando ||
+                _fechamentoForcado)
+            {
                 return;
+            }
 
             DialogResult resposta =
                 MessageBox.Show(
-                    "Existe uma operação em andamento. Deseja fechar o WinTuner?",
+                    "Existe uma operação em andamento.\n\n" +
+                    "Fechar agora pode interromper a confirmação das configurações.\n\n" +
+                    "Deseja realmente fechar o WinTuner?",
                     "WinTuner",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
             if (resposta == DialogResult.No)
+            {
                 e.Cancel = true;
+                return;
+            }
+
+            /*
+             * Não cancela a Task em execução porque o serviço
+             * está executando alterações reais no Windows.
+             *
+             * O fechamento é permitido somente depois da
+             * confirmação explícita do usuário.
+             */
+            _fechamentoForcado = true;
         }
     }
 }

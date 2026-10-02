@@ -51,7 +51,8 @@
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && components != null)
+            if (disposing &&
+                components != null)
             {
                 components.Dispose();
             }
@@ -61,128 +62,171 @@
 
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            components =
+                new System.ComponentModel.Container();
 
-            panelPrincipal = new System.Windows.Forms.Panel();
+            panelPrincipal =
+                new System.Windows.Forms.Panel();
 
-            panelCabecalho = new System.Windows.Forms.Panel();
-            lblTitulo = new System.Windows.Forms.Label();
-            lblDescricao = new System.Windows.Forms.Label();
+            panelCabecalho =
+                new System.Windows.Forms.Panel();
 
-            panelStatus = new System.Windows.Forms.Panel();
-            lblStatus = new System.Windows.Forms.Label();
-            lblPreset = new System.Windows.Forms.Label();
-            lblResumo = new System.Windows.Forms.Label();
+            lblTitulo =
+                new System.Windows.Forms.Label();
 
-            panelOpcoes = new System.Windows.Forms.Panel();
-            tabelaOpcoes = new System.Windows.Forms.TableLayoutPanel();
+            lblDescricao =
+                new System.Windows.Forms.Label();
 
-            chkAbrirCaixasCombinacao = CriarCheckBox(
-                "Abrir caixas de combinação");
+            panelStatus =
+                new System.Windows.Forms.Panel();
 
-            chkAnimacoesBarraTarefas = CriarCheckBox(
-                "Animações na barra de tarefas");
+            lblStatus =
+                new System.Windows.Forms.Label();
 
-            chkAnimarControlesElementos = CriarCheckBox(
-                "Animar controles e elementos no Windows");
+            lblPreset =
+                new System.Windows.Forms.Label();
 
-            chkAnimarJanelasMinMax = CriarCheckBox(
-                "Animar janelas ao minimizar e maximizar");
+            lblResumo =
+                new System.Windows.Forms.Label();
 
-            chkEsmaecerItensMenu = CriarCheckBox(
-                "Esmaecer itens de menu após clicados");
+            panelOpcoes =
+                new System.Windows.Forms.Panel();
 
-            chkEsmaecerToolTips = CriarCheckBox(
-                "Esmaecer ou deslizar dicas de ferramenta para a exibição");
+            tabelaOpcoes =
+                new System.Windows.Forms.TableLayoutPanel();
 
-            chkEsmaecerMenus = CriarCheckBox(
-                "Esmaecer ou deslizar menus para a exibição");
+            chkAbrirCaixasCombinacao =
+                CriarCheckBox(
+                    "Abrir caixas de combinação");
 
-            chkHabilitarPeek = CriarCheckBox(
-                "Habilitar o Peek");
+            chkAnimacoesBarraTarefas =
+                CriarCheckBox(
+                    "Animações na barra de tarefas");
 
-            chkMostrarConteudoJanela = CriarCheckBox(
-                "Mostrar conteúdo da janela ao arrastar");
+            chkAnimarControlesElementos =
+                CriarCheckBox(
+                    "Animar controles e elementos no Windows");
 
-            chkMostrarMiniaturas = CriarCheckBox(
-                "Mostrar miniaturas em vez de ícones");
+            chkAnimarJanelasMinMax =
+                CriarCheckBox(
+                    "Animar janelas ao minimizar e maximizar");
 
-            chkRetanguloSelecao = CriarCheckBox(
-                "Mostrar retângulo de seleção translúcido");
+            chkEsmaecerItensMenu =
+                CriarCheckBox(
+                    "Esmaecer itens de menu após clicados");
 
-            chkSombrasJanelas = CriarCheckBox(
-                "Mostrar sombras sob janelas");
+            chkEsmaecerToolTips =
+                CriarCheckBox(
+                    "Esmaecer ou deslizar dicas de ferramenta para a exibição");
 
-            chkSombrasPonteiro = CriarCheckBox(
-                "Mostrar sombras sob o ponteiro do mouse");
+            chkEsmaecerMenus =
+                CriarCheckBox(
+                    "Esmaecer ou deslizar menus para a exibição");
 
-            chkRolarListas = CriarCheckBox(
-                "Rolar caixas de listagem suavemente");
+            chkHabilitarPeek =
+                CriarCheckBox(
+                    "Habilitar o Peek");
 
-            chkSalvarMiniaturas = CriarCheckBox(
-                "Salvar visualizações de miniaturas da barra de tarefas");
+            chkMostrarConteudoJanela =
+                CriarCheckBox(
+                    "Mostrar conteúdo da janela ao arrastar");
 
-            chkSuavizacaoFontes = CriarCheckBox(
-                "Usar fontes de tela com cantos arredondados");
+            chkMostrarMiniaturas =
+                CriarCheckBox(
+                    "Mostrar miniaturas em vez de ícones");
 
-            chkSombrasRotulos = CriarCheckBox(
-                "Usar sombras subjacentes para rótulos de ícones na área de trabalho");
+            chkRetanguloSelecao =
+                CriarCheckBox(
+                    "Mostrar retângulo de seleção translúcido");
 
-            panelPresets = new System.Windows.Forms.Panel();
-            lblPresets = new System.Windows.Forms.Label();
-            painelBotoesPreset = new System.Windows.Forms.FlowLayoutPanel();
+            chkSombrasJanelas =
+                CriarCheckBox(
+                    "Mostrar sombras sob janelas");
 
-            btnMelhorDesempenho = CriarBotao(
-                "Melhor desempenho");
+            chkSombrasPonteiro =
+                CriarCheckBox(
+                    "Mostrar sombras sob o ponteiro do mouse");
 
-            btnEquilibrado = CriarBotao(
-                "Equilibrado");
+            chkRolarListas =
+                CriarCheckBox(
+                    "Rolar caixas de listagem suavemente");
 
-            btnMelhorAparencia = CriarBotao(
-                "Melhor aparência");
+            chkSalvarMiniaturas =
+                CriarCheckBox(
+                    "Salvar visualizações de miniaturas da barra de tarefas");
 
-            panelAcoes = new System.Windows.Forms.Panel();
+            chkSuavizacaoFontes =
+                CriarCheckBox(
+                    "Suavizar fontes das telas");
 
-            btnAplicar = CriarBotao(
-                "Aplicar alterações");
+            chkSombrasRotulos =
+                CriarCheckBox(
+                    "Usar sombras subjacentes para rótulos de ícones na área de trabalho");
 
-            btnRestaurar = CriarBotao(
-                "Restaurar padrão");
+            panelPresets =
+                new System.Windows.Forms.Panel();
 
-            progressBar = new System.Windows.Forms.ProgressBar();
+            lblPresets =
+                new System.Windows.Forms.Label();
 
-            panelPrincipal.SuspendLayout();
+            painelBotoesPreset =
+                new System.Windows.Forms.FlowLayoutPanel();
 
-            panelCabecalho.SuspendLayout();
-            panelStatus.SuspendLayout();
-            panelOpcoes.SuspendLayout();
-            tabelaOpcoes.SuspendLayout();
+            btnMelhorDesempenho =
+                CriarBotao(
+                    "Melhor desempenho");
 
-            panelPresets.SuspendLayout();
-            painelBotoesPreset.SuspendLayout();
+            btnEquilibrado =
+                CriarBotao(
+                    "Equilibrado");
 
-            panelAcoes.SuspendLayout();
+            btnMelhorAparencia =
+                CriarBotao(
+                    "Melhor aparência");
+
+            panelAcoes =
+                new System.Windows.Forms.Panel();
+
+            btnAplicar =
+                CriarBotao(
+                    "Aplicar alterações");
+
+            btnRestaurar =
+                CriarBotao(
+                    "Restaurar padrão");
+
+            progressBar =
+                new System.Windows.Forms.ProgressBar();
 
             SuspendLayout();
 
-            // ============================================================
+            // =========================================================
             // FORM
-            // ============================================================
+            // =========================================================
 
             AutoScaleDimensions =
-                new System.Drawing.SizeF(7F, 15F);
+                new System.Drawing.SizeF(
+                    7F,
+                    15F);
 
             AutoScaleMode =
                 System.Windows.Forms.AutoScaleMode.Font;
 
             BackColor =
-                System.Drawing.Color.FromArgb(18, 18, 18);
+                System.Drawing.Color.FromArgb(
+                    18,
+                    18,
+                    18);
 
             ClientSize =
-                new System.Drawing.Size(1180, 760);
+                new System.Drawing.Size(
+                    1180,
+                    760);
 
             MinimumSize =
-                new System.Drawing.Size(980, 620);
+                new System.Drawing.Size(
+                    980,
+                    620);
 
             Name =
                 "EfeitosVisuais";
@@ -193,28 +237,45 @@
             Text =
                 "WinTuner - Efeitos Visuais";
 
-            // ============================================================
+            // =========================================================
             // PANEL PRINCIPAL
-            // ============================================================
+            // =========================================================
 
             panelPrincipal.Dock =
                 System.Windows.Forms.DockStyle.Fill;
 
             panelPrincipal.BackColor =
-                System.Drawing.Color.FromArgb(18, 18, 18);
+                System.Drawing.Color.FromArgb(
+                    18,
+                    18,
+                    18);
 
             panelPrincipal.Padding =
-                new System.Windows.Forms.Padding(20);
+                new System.Windows.Forms.Padding(
+                    20);
 
-            panelPrincipal.Controls.Add(panelOpcoes);
-            panelPrincipal.Controls.Add(panelPresets);
-            panelPrincipal.Controls.Add(panelAcoes);
-            panelPrincipal.Controls.Add(panelStatus);
-            panelPrincipal.Controls.Add(panelCabecalho);
+            /*
+             * Adicionamos primeiro o Fill.
+             * Depois os elementos Dock Top/Bottom.
+             */
+            panelPrincipal.Controls.Add(
+                panelOpcoes);
 
-            // ============================================================
+            panelPrincipal.Controls.Add(
+                panelPresets);
+
+            panelPrincipal.Controls.Add(
+                panelAcoes);
+
+            panelPrincipal.Controls.Add(
+                panelStatus);
+
+            panelPrincipal.Controls.Add(
+                panelCabecalho);
+
+            // =========================================================
             // CABEÇALHO
-            // ============================================================
+            // =========================================================
 
             panelCabecalho.Dock =
                 System.Windows.Forms.DockStyle.Top;
@@ -223,13 +284,20 @@
                 78;
 
             panelCabecalho.BackColor =
-                System.Drawing.Color.FromArgb(24, 24, 24);
+                System.Drawing.Color.FromArgb(
+                    24,
+                    24,
+                    24);
 
             panelCabecalho.Padding =
-                new System.Windows.Forms.Padding(18);
+                new System.Windows.Forms.Padding(
+                    18);
 
-            panelCabecalho.Controls.Add(lblDescricao);
-            panelCabecalho.Controls.Add(lblTitulo);
+            panelCabecalho.Controls.Add(
+                lblTitulo);
+
+            panelCabecalho.Controls.Add(
+                lblDescricao);
 
             lblTitulo.AutoSize =
                 true;
@@ -241,16 +309,26 @@
                     System.Drawing.FontStyle.Bold);
 
             lblTitulo.ForeColor =
-                System.Drawing.Color.FromArgb(235, 65, 65);
+                System.Drawing.Color.FromArgb(
+                    235,
+                    65,
+                    65);
 
             lblTitulo.Location =
-                new System.Drawing.Point(18, 10);
+                new System.Drawing.Point(
+                    18,
+                    10);
 
             lblTitulo.Text =
                 "EFEITOS VISUAIS";
 
             lblDescricao.AutoSize =
-                true;
+                false;
+
+            lblDescricao.Anchor =
+                System.Windows.Forms.AnchorStyles.Top |
+                System.Windows.Forms.AnchorStyles.Left |
+                System.Windows.Forms.AnchorStyles.Right;
 
             lblDescricao.Font =
                 new System.Drawing.Font(
@@ -258,17 +336,28 @@
                     9F);
 
             lblDescricao.ForeColor =
-                System.Drawing.Color.FromArgb(175, 175, 175);
+                System.Drawing.Color.FromArgb(
+                    175,
+                    175,
+                    175);
 
             lblDescricao.Location =
-                new System.Drawing.Point(20, 43);
+                new System.Drawing.Point(
+                    20,
+                    43);
+
+            lblDescricao.Width =
+                850;
+
+            lblDescricao.Height =
+                22;
 
             lblDescricao.Text =
                 "Configure os efeitos visuais do Windows para equilibrar aparência e desempenho.";
 
-            // ============================================================
+            // =========================================================
             // STATUS
-            // ============================================================
+            // =========================================================
 
             panelStatus.Dock =
                 System.Windows.Forms.DockStyle.Top;
@@ -277,14 +366,23 @@
                 72;
 
             panelStatus.BackColor =
-                System.Drawing.Color.FromArgb(28, 28, 28);
+                System.Drawing.Color.FromArgb(
+                    28,
+                    28,
+                    28);
 
             panelStatus.Padding =
-                new System.Windows.Forms.Padding(18);
+                new System.Windows.Forms.Padding(
+                    18);
 
-            panelStatus.Controls.Add(lblResumo);
-            panelStatus.Controls.Add(lblPreset);
-            panelStatus.Controls.Add(lblStatus);
+            panelStatus.Controls.Add(
+                lblStatus);
+
+            panelStatus.Controls.Add(
+                lblPreset);
+
+            panelStatus.Controls.Add(
+                lblResumo);
 
             lblStatus.AutoSize =
                 true;
@@ -295,10 +393,15 @@
                     9F);
 
             lblStatus.ForeColor =
-                System.Drawing.Color.FromArgb(190, 190, 190);
+                System.Drawing.Color.FromArgb(
+                    190,
+                    190,
+                    190);
 
             lblStatus.Location =
-                new System.Drawing.Point(18, 12);
+                new System.Drawing.Point(
+                    18,
+                    12);
 
             lblStatus.Text =
                 "Carregando configurações...";
@@ -313,10 +416,15 @@
                     System.Drawing.FontStyle.Bold);
 
             lblPreset.ForeColor =
-                System.Drawing.Color.FromArgb(235, 65, 65);
+                System.Drawing.Color.FromArgb(
+                    235,
+                    65,
+                    65);
 
             lblPreset.Location =
-                new System.Drawing.Point(18, 39);
+                new System.Drawing.Point(
+                    18,
+                    39);
 
             lblPreset.Text =
                 "Personalizado";
@@ -335,34 +443,48 @@
                     System.Drawing.FontStyle.Bold);
 
             lblResumo.ForeColor =
-                System.Drawing.Color.FromArgb(210, 210, 210);
-
-            lblResumo.Location =
-                new System.Drawing.Point(0, 28);
+                System.Drawing.Color.FromArgb(
+                    210,
+                    210,
+                    210);
 
             lblResumo.Text =
                 "0 de 17 efeitos visuais ativados";
 
-            // ============================================================
+            lblResumo.Top =
+                28;
+
+            lblResumo.Left =
+                700;
+
+            // =========================================================
             // OPÇÕES
-            // ============================================================
+            // =========================================================
 
             panelOpcoes.Dock =
                 System.Windows.Forms.DockStyle.Fill;
 
             panelOpcoes.BackColor =
-                System.Drawing.Color.FromArgb(22, 22, 22);
+                System.Drawing.Color.FromArgb(
+                    22,
+                    22,
+                    22);
 
             panelOpcoes.Padding =
-                new System.Windows.Forms.Padding(10);
+                new System.Windows.Forms.Padding(
+                    10);
 
-            panelOpcoes.Controls.Add(tabelaOpcoes);
+            panelOpcoes.Controls.Add(
+                tabelaOpcoes);
 
             tabelaOpcoes.Dock =
                 System.Windows.Forms.DockStyle.Fill;
 
             tabelaOpcoes.BackColor =
-                System.Drawing.Color.FromArgb(22, 22, 22);
+                System.Drawing.Color.FromArgb(
+                    22,
+                    22,
+                    22);
 
             tabelaOpcoes.ColumnCount =
                 2;
@@ -371,7 +493,8 @@
                 9;
 
             tabelaOpcoes.Padding =
-                new System.Windows.Forms.Padding(4);
+                new System.Windows.Forms.Padding(
+                    4);
 
             tabelaOpcoes.ColumnStyles.Add(
                 new System.Windows.Forms.ColumnStyle(
@@ -476,9 +599,9 @@
                 0,
                 8);
 
-            // ============================================================
+            // =========================================================
             // PRESETS
-            // ============================================================
+            // =========================================================
 
             panelPresets.Dock =
                 System.Windows.Forms.DockStyle.Bottom;
@@ -487,10 +610,17 @@
                 64;
 
             panelPresets.BackColor =
-                System.Drawing.Color.FromArgb(28, 28, 28);
+                System.Drawing.Color.FromArgb(
+                    28,
+                    28,
+                    28);
 
             panelPresets.Padding =
-                new System.Windows.Forms.Padding(12, 10, 12, 10);
+                new System.Windows.Forms.Padding(
+                    12,
+                    10,
+                    12,
+                    10);
 
             panelPresets.Controls.Add(
                 painelBotoesPreset);
@@ -514,7 +644,10 @@
                     System.Drawing.FontStyle.Bold);
 
             lblPresets.ForeColor =
-                System.Drawing.Color.FromArgb(180, 180, 180);
+                System.Drawing.Color.FromArgb(
+                    180,
+                    180,
+                    180);
 
             lblPresets.Text =
                 "PRESETS:";
@@ -527,9 +660,6 @@
 
             painelBotoesPreset.WrapContents =
                 false;
-
-            painelBotoesPreset.Padding =
-                new System.Windows.Forms.Padding(0);
 
             painelBotoesPreset.BackColor =
                 System.Drawing.Color.Transparent;
@@ -561,9 +691,9 @@
             btnMelhorDesempenho.Height =
                 40;
 
-            // ============================================================
+            // =========================================================
             // AÇÕES
-            // ============================================================
+            // =========================================================
 
             panelAcoes.Dock =
                 System.Windows.Forms.DockStyle.Bottom;
@@ -572,10 +702,17 @@
                 58;
 
             panelAcoes.BackColor =
-                System.Drawing.Color.FromArgb(18, 18, 18);
+                System.Drawing.Color.FromArgb(
+                    18,
+                    18,
+                    18);
 
             panelAcoes.Padding =
-                new System.Windows.Forms.Padding(0, 8, 0, 0);
+                new System.Windows.Forms.Padding(
+                    0,
+                    8,
+                    0,
+                    0);
 
             panelAcoes.Controls.Add(
                 progressBar);
@@ -596,10 +733,19 @@
                 40;
 
             btnAplicar.BackColor =
-                System.Drawing.Color.FromArgb(190, 40, 40);
+                System.Drawing.Color.FromArgb(
+                    190,
+                    40,
+                    40);
 
             btnAplicar.ForeColor =
                 System.Drawing.Color.White;
+
+            btnAplicar.FlatAppearance.BorderColor =
+                System.Drawing.Color.FromArgb(
+                    220,
+                    60,
+                    60);
 
             btnRestaurar.Dock =
                 System.Windows.Forms.DockStyle.Right;
@@ -619,36 +765,18 @@
             progressBar.Height =
                 12;
 
-            progressBar.Margin =
-                new System.Windows.Forms.Padding(0, 14, 0, 0);
-
             progressBar.Visible =
                 false;
 
             progressBar.Style =
                 System.Windows.Forms.ProgressBarStyle.Blocks;
 
-            // ============================================================
+            // =========================================================
             // FINALIZAÇÃO
-            // ============================================================
+            // =========================================================
 
-            panelAcoes.ResumeLayout(false);
-
-            painelBotoesPreset.ResumeLayout(false);
-            panelPresets.ResumeLayout(false);
-
-            tabelaOpcoes.ResumeLayout(false);
-            panelOpcoes.ResumeLayout(false);
-
-            panelStatus.ResumeLayout(false);
-            panelStatus.PerformLayout();
-
-            panelCabecalho.ResumeLayout(false);
-            panelCabecalho.PerformLayout();
-
-            panelPrincipal.ResumeLayout(false);
-
-            Controls.Add(panelPrincipal);
+            Controls.Add(
+                panelPrincipal);
 
             ResumeLayout(false);
         }
