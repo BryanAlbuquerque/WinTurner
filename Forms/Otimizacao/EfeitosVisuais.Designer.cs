@@ -51,8 +51,7 @@
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing &&
-                components != null)
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
@@ -62,826 +61,278 @@
 
         private void InitializeComponent()
         {
-            components =
-                new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
 
-            panelPrincipal =
-                new System.Windows.Forms.Panel();
+            panelPrincipal = new System.Windows.Forms.Panel();
 
-            panelCabecalho =
-                new System.Windows.Forms.Panel();
+            panelCabecalho = new System.Windows.Forms.Panel();
+            lblTitulo = new System.Windows.Forms.Label();
+            lblDescricao = new System.Windows.Forms.Label();
 
-            lblTitulo =
-                new System.Windows.Forms.Label();
+            panelStatus = new System.Windows.Forms.Panel();
+            lblStatus = new System.Windows.Forms.Label();
+            lblPreset = new System.Windows.Forms.Label();
+            lblResumo = new System.Windows.Forms.Label();
 
-            lblDescricao =
-                new System.Windows.Forms.Label();
+            panelOpcoes = new System.Windows.Forms.Panel();
+            tabelaOpcoes = new System.Windows.Forms.TableLayoutPanel();
 
-            panelStatus =
-                new System.Windows.Forms.Panel();
+            chkAbrirCaixasCombinacao = CriarCheckBox("Abrir caixas de combinação");
+            chkAnimacoesBarraTarefas = CriarCheckBox("Animações na barra de tarefas");
+            chkAnimarControlesElementos = CriarCheckBox("Animar controles e elementos no Windows");
+            chkAnimarJanelasMinMax = CriarCheckBox("Animar janelas ao minimizar e maximizar");
+            chkEsmaecerItensMenu = CriarCheckBox("Esmaecer itens de menu após clicados");
+            chkEsmaecerToolTips = CriarCheckBox("Esmaecer ou deslizar dicas de ferramenta para a exibição");
+            chkEsmaecerMenus = CriarCheckBox("Esmaecer ou deslizar menus para a exibição");
+            chkHabilitarPeek = CriarCheckBox("Habilitar o Peek");
+            chkMostrarConteudoJanela = CriarCheckBox("Mostrar conteúdo da janela ao arrastar");
+            chkMostrarMiniaturas = CriarCheckBox("Mostrar miniaturas em vez de ícones");
+            chkRetanguloSelecao = CriarCheckBox("Mostrar retângulo de seleção translúcido");
+            chkSombrasJanelas = CriarCheckBox("Mostrar sombras sob janelas");
+            chkSombrasPonteiro = CriarCheckBox("Mostrar sombras sob o ponteiro do mouse");
+            chkRolarListas = CriarCheckBox("Rolar caixas de listagem suavemente");
+            chkSalvarMiniaturas = CriarCheckBox("Salvar visualizações de miniaturas da barra de tarefas");
+            chkSuavizacaoFontes = CriarCheckBox("Usar fontes de tela com cantos arredondados");
+            chkSombrasRotulos = CriarCheckBox("Usar sombras subjacentes para rótulos de ícones na área de trabalho");
 
-            lblStatus =
-                new System.Windows.Forms.Label();
+            panelPresets = new System.Windows.Forms.Panel();
+            lblPresets = new System.Windows.Forms.Label();
+            painelBotoesPreset = new System.Windows.Forms.FlowLayoutPanel();
 
-            lblPreset =
-                new System.Windows.Forms.Label();
+            btnMelhorDesempenho = CriarBotao("Melhor desempenho");
+            btnEquilibrado = CriarBotao("Equilibrado");
+            btnMelhorAparencia = CriarBotao("Melhor aparência");
 
-            lblResumo =
-                new System.Windows.Forms.Label();
-
-            panelOpcoes =
-                new System.Windows.Forms.Panel();
-
-            tabelaOpcoes =
-                new System.Windows.Forms.TableLayoutPanel();
-
-            chkAbrirCaixasCombinacao =
-                CriarCheckBox(
-                    "Abrir caixas de combinação");
-
-            chkAnimacoesBarraTarefas =
-                CriarCheckBox(
-                    "Animações na barra de tarefas");
-
-            chkAnimarControlesElementos =
-                CriarCheckBox(
-                    "Animar controles e elementos no Windows");
-
-            chkAnimarJanelasMinMax =
-                CriarCheckBox(
-                    "Animar janelas ao minimizar e maximizar");
-
-            chkEsmaecerItensMenu =
-                CriarCheckBox(
-                    "Esmaecer itens de menu após clicados");
-
-            chkEsmaecerToolTips =
-                CriarCheckBox(
-                    "Esmaecer ou deslizar dicas de ferramenta para a exibição");
-
-            chkEsmaecerMenus =
-                CriarCheckBox(
-                    "Esmaecer ou deslizar menus para a exibição");
-
-            chkHabilitarPeek =
-                CriarCheckBox(
-                    "Habilitar o Peek");
-
-            chkMostrarConteudoJanela =
-                CriarCheckBox(
-                    "Mostrar conteúdo da janela ao arrastar");
-
-            chkMostrarMiniaturas =
-                CriarCheckBox(
-                    "Mostrar miniaturas em vez de ícones");
-
-            chkRetanguloSelecao =
-                CriarCheckBox(
-                    "Mostrar retângulo de seleção translúcido");
-
-            chkSombrasJanelas =
-                CriarCheckBox(
-                    "Mostrar sombras sob janelas");
-
-            chkSombrasPonteiro =
-                CriarCheckBox(
-                    "Mostrar sombras sob o ponteiro do mouse");
-
-            chkRolarListas =
-                CriarCheckBox(
-                    "Rolar caixas de listagem suavemente");
-
-            chkSalvarMiniaturas =
-                CriarCheckBox(
-                    "Salvar visualizações de miniaturas da barra de tarefas");
-
-            chkSuavizacaoFontes =
-                CriarCheckBox(
-                    "Suavizar fontes das telas");
-
-            chkSombrasRotulos =
-                CriarCheckBox(
-                    "Usar sombras subjacentes para rótulos de ícones na área de trabalho");
-
-            panelPresets =
-                new System.Windows.Forms.Panel();
-
-            lblPresets =
-                new System.Windows.Forms.Label();
-
-            painelBotoesPreset =
-                new System.Windows.Forms.FlowLayoutPanel();
-
-            btnMelhorDesempenho =
-                CriarBotao(
-                    "Melhor desempenho");
-
-            btnEquilibrado =
-                CriarBotao(
-                    "Equilibrado");
-
-            btnMelhorAparencia =
-                CriarBotao(
-                    "Melhor aparência");
-
-            panelAcoes =
-                new System.Windows.Forms.Panel();
-
-            btnAplicar =
-                CriarBotao(
-                    "Aplicar alterações");
-
-            btnRestaurar =
-                CriarBotao(
-                    "Restaurar padrão");
-
-            progressBar =
-                new System.Windows.Forms.ProgressBar();
+            panelAcoes = new System.Windows.Forms.Panel();
+            btnAplicar = CriarBotao("Aplicar alterações");
+            btnRestaurar = CriarBotao("Restaurar padrão");
+            progressBar = new System.Windows.Forms.ProgressBar();
 
             SuspendLayout();
 
-            // =========================================================
-            // FORM
-            // =========================================================
+            // Form
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.FromArgb(18, 18, 18);
+            ClientSize = new System.Drawing.Size(1180, 760);
+            MinimumSize = new System.Drawing.Size(980, 620);
+            Name = "EfeitosVisuais";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "WinTuner - Efeitos Visuais";
 
-            AutoScaleDimensions =
-                new System.Drawing.SizeF(
-                    7F,
-                    15F);
+            // Painel principal (o Fill entra primeiro, depois os Top/Bottom)
+            panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            panelPrincipal.BackColor = System.Drawing.Color.FromArgb(18, 18, 18);
+            panelPrincipal.Padding = new System.Windows.Forms.Padding(20);
 
-            AutoScaleMode =
-                System.Windows.Forms.AutoScaleMode.Font;
+            panelPrincipal.Controls.Add(panelOpcoes);
+            panelPrincipal.Controls.Add(panelPresets);
+            panelPrincipal.Controls.Add(panelAcoes);
+            panelPrincipal.Controls.Add(panelStatus);
+            panelPrincipal.Controls.Add(panelCabecalho);
 
-            BackColor =
-                System.Drawing.Color.FromArgb(
-                    18,
-                    18,
-                    18);
+            // Cabeçalho
+            panelCabecalho.Dock = System.Windows.Forms.DockStyle.Top;
+            panelCabecalho.Height = 78;
+            panelCabecalho.BackColor = System.Drawing.Color.FromArgb(24, 24, 24);
+            panelCabecalho.Padding = new System.Windows.Forms.Padding(18);
 
-            ClientSize =
-                new System.Drawing.Size(
-                    1180,
-                    760);
+            panelCabecalho.Controls.Add(lblTitulo);
+            panelCabecalho.Controls.Add(lblDescricao);
 
-            MinimumSize =
-                new System.Drawing.Size(
-                    980,
-                    620);
+            lblTitulo.AutoSize = true;
+            lblTitulo.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
+            lblTitulo.ForeColor = System.Drawing.Color.FromArgb(235, 65, 65);
+            lblTitulo.Location = new System.Drawing.Point(18, 10);
+            lblTitulo.Text = "EFEITOS VISUAIS";
 
-            Name =
-                "EfeitosVisuais";
-
-            StartPosition =
-                System.Windows.Forms.FormStartPosition.CenterScreen;
-
-            Text =
-                "WinTuner - Efeitos Visuais";
-
-            // =========================================================
-            // PANEL PRINCIPAL
-            // =========================================================
-
-            panelPrincipal.Dock =
-                System.Windows.Forms.DockStyle.Fill;
-
-            panelPrincipal.BackColor =
-                System.Drawing.Color.FromArgb(
-                    18,
-                    18,
-                    18);
-
-            panelPrincipal.Padding =
-                new System.Windows.Forms.Padding(
-                    20);
-
-            /*
-             * Adicionamos primeiro o Fill.
-             * Depois os elementos Dock Top/Bottom.
-             */
-            panelPrincipal.Controls.Add(
-                panelOpcoes);
-
-            panelPrincipal.Controls.Add(
-                panelPresets);
-
-            panelPrincipal.Controls.Add(
-                panelAcoes);
-
-            panelPrincipal.Controls.Add(
-                panelStatus);
-
-            panelPrincipal.Controls.Add(
-                panelCabecalho);
-
-            // =========================================================
-            // CABEÇALHO
-            // =========================================================
-
-            panelCabecalho.Dock =
-                System.Windows.Forms.DockStyle.Top;
-
-            panelCabecalho.Height =
-                78;
-
-            panelCabecalho.BackColor =
-                System.Drawing.Color.FromArgb(
-                    24,
-                    24,
-                    24);
-
-            panelCabecalho.Padding =
-                new System.Windows.Forms.Padding(
-                    18);
-
-            panelCabecalho.Controls.Add(
-                lblTitulo);
-
-            panelCabecalho.Controls.Add(
-                lblDescricao);
-
-            lblTitulo.AutoSize =
-                true;
-
-            lblTitulo.Font =
-                new System.Drawing.Font(
-                    "Segoe UI Semibold",
-                    17F,
-                    System.Drawing.FontStyle.Bold);
-
-            lblTitulo.ForeColor =
-                System.Drawing.Color.FromArgb(
-                    235,
-                    65,
-                    65);
-
-            lblTitulo.Location =
-                new System.Drawing.Point(
-                    18,
-                    10);
-
-            lblTitulo.Text =
-                "EFEITOS VISUAIS";
-
-            lblDescricao.AutoSize =
-                false;
-
+            lblDescricao.AutoSize = false;
             lblDescricao.Anchor =
                 System.Windows.Forms.AnchorStyles.Top |
                 System.Windows.Forms.AnchorStyles.Left |
                 System.Windows.Forms.AnchorStyles.Right;
+            lblDescricao.Font = new System.Drawing.Font("Segoe UI", 9F);
+            lblDescricao.ForeColor = System.Drawing.Color.FromArgb(175, 175, 175);
+            lblDescricao.Location = new System.Drawing.Point(20, 43);
+            lblDescricao.Width = 850;
+            lblDescricao.Height = 22;
+            lblDescricao.Text = "Configure os efeitos visuais do Windows para equilibrar aparência e desempenho.";
 
-            lblDescricao.Font =
-                new System.Drawing.Font(
-                    "Segoe UI",
-                    9F);
+            // Status
+            panelStatus.Dock = System.Windows.Forms.DockStyle.Top;
+            panelStatus.Height = 72;
+            panelStatus.BackColor = System.Drawing.Color.FromArgb(28, 28, 28);
+            panelStatus.Padding = new System.Windows.Forms.Padding(18);
 
-            lblDescricao.ForeColor =
-                System.Drawing.Color.FromArgb(
-                    175,
-                    175,
-                    175);
+            panelStatus.Controls.Add(lblStatus);
+            panelStatus.Controls.Add(lblPreset);
+            panelStatus.Controls.Add(lblResumo);
 
-            lblDescricao.Location =
-                new System.Drawing.Point(
-                    20,
-                    43);
+            lblStatus.AutoSize = true;
+            lblStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
+            lblStatus.ForeColor = System.Drawing.Color.FromArgb(190, 190, 190);
+            lblStatus.Location = new System.Drawing.Point(18, 12);
+            lblStatus.Text = "Carregando configurações...";
 
-            lblDescricao.Width =
-                850;
-
-            lblDescricao.Height =
-                22;
-
-            lblDescricao.Text =
-                "Configure os efeitos visuais do Windows para equilibrar aparência e desempenho.";
-
-            // =========================================================
-            // STATUS
-            // =========================================================
-
-            panelStatus.Dock =
-                System.Windows.Forms.DockStyle.Top;
-
-            panelStatus.Height =
-                72;
-
-            panelStatus.BackColor =
-                System.Drawing.Color.FromArgb(
-                    28,
-                    28,
-                    28);
-
-            panelStatus.Padding =
-                new System.Windows.Forms.Padding(
-                    18);
-
-            panelStatus.Controls.Add(
-                lblStatus);
-
-            panelStatus.Controls.Add(
-                lblPreset);
-
-            panelStatus.Controls.Add(
-                lblResumo);
-
-            lblStatus.AutoSize =
-                true;
-
-            lblStatus.Font =
-                new System.Drawing.Font(
-                    "Segoe UI",
-                    9F);
-
-            lblStatus.ForeColor =
-                System.Drawing.Color.FromArgb(
-                    190,
-                    190,
-                    190);
-
-            lblStatus.Location =
-                new System.Drawing.Point(
-                    18,
-                    12);
-
-            lblStatus.Text =
-                "Carregando configurações...";
-
-            lblPreset.AutoSize =
-                true;
-
-            lblPreset.Font =
-                new System.Drawing.Font(
-                    "Segoe UI Semibold",
-                    9F,
-                    System.Drawing.FontStyle.Bold);
-
-            lblPreset.ForeColor =
-                System.Drawing.Color.FromArgb(
-                    235,
-                    65,
-                    65);
-
-            lblPreset.Location =
-                new System.Drawing.Point(
-                    18,
-                    39);
-
-            lblPreset.Text =
-                "Personalizado";
+            lblPreset.AutoSize = true;
+            lblPreset.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            lblPreset.ForeColor = System.Drawing.Color.FromArgb(235, 65, 65);
+            lblPreset.Location = new System.Drawing.Point(18, 39);
+            lblPreset.Text = "Personalizado";
 
             lblResumo.Anchor =
                 System.Windows.Forms.AnchorStyles.Top |
                 System.Windows.Forms.AnchorStyles.Right;
+            lblResumo.AutoSize = true;
+            lblResumo.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            lblResumo.ForeColor = System.Drawing.Color.FromArgb(210, 210, 210);
+            lblResumo.Text = "0 de 17 efeitos visuais ativados";
+            lblResumo.Top = 28;
+            lblResumo.Left = 700;
 
-            lblResumo.AutoSize =
-                true;
+            // Opções
+            panelOpcoes.Dock = System.Windows.Forms.DockStyle.Fill;
+            panelOpcoes.BackColor = System.Drawing.Color.FromArgb(22, 22, 22);
+            panelOpcoes.Padding = new System.Windows.Forms.Padding(10);
 
-            lblResumo.Font =
-                new System.Drawing.Font(
-                    "Segoe UI Semibold",
-                    9F,
-                    System.Drawing.FontStyle.Bold);
+            panelOpcoes.Controls.Add(tabelaOpcoes);
 
-            lblResumo.ForeColor =
-                System.Drawing.Color.FromArgb(
-                    210,
-                    210,
-                    210);
-
-            lblResumo.Text =
-                "0 de 17 efeitos visuais ativados";
-
-            lblResumo.Top =
-                28;
-
-            lblResumo.Left =
-                700;
-
-            // =========================================================
-            // OPÇÕES
-            // =========================================================
-
-            panelOpcoes.Dock =
-                System.Windows.Forms.DockStyle.Fill;
-
-            panelOpcoes.BackColor =
-                System.Drawing.Color.FromArgb(
-                    22,
-                    22,
-                    22);
-
-            panelOpcoes.Padding =
-                new System.Windows.Forms.Padding(
-                    10);
-
-            panelOpcoes.Controls.Add(
-                tabelaOpcoes);
-
-            tabelaOpcoes.Dock =
-                System.Windows.Forms.DockStyle.Fill;
-
-            tabelaOpcoes.BackColor =
-                System.Drawing.Color.FromArgb(
-                    22,
-                    22,
-                    22);
-
-            tabelaOpcoes.ColumnCount =
-                2;
-
-            tabelaOpcoes.RowCount =
-                9;
-
-            tabelaOpcoes.Padding =
-                new System.Windows.Forms.Padding(
-                    4);
+            tabelaOpcoes.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabelaOpcoes.BackColor = System.Drawing.Color.FromArgb(22, 22, 22);
+            tabelaOpcoes.ColumnCount = 2;
+            tabelaOpcoes.RowCount = 9;
+            tabelaOpcoes.Padding = new System.Windows.Forms.Padding(4);
 
             tabelaOpcoes.ColumnStyles.Add(
-                new System.Windows.Forms.ColumnStyle(
-                    System.Windows.Forms.SizeType.Percent,
-                    50F));
-
+                new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tabelaOpcoes.ColumnStyles.Add(
-                new System.Windows.Forms.ColumnStyle(
-                    System.Windows.Forms.SizeType.Percent,
-                    50F));
+                new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
 
             for (int i = 0; i < 9; i++)
             {
                 tabelaOpcoes.RowStyles.Add(
-                    new System.Windows.Forms.RowStyle(
-                        System.Windows.Forms.SizeType.Percent,
-                        11.11111F));
+                    new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             }
 
-            tabelaOpcoes.Controls.Add(
-                chkAbrirCaixasCombinacao,
-                0,
-                0);
-
-            tabelaOpcoes.Controls.Add(
-                chkAnimacoesBarraTarefas,
-                1,
-                0);
-
-            tabelaOpcoes.Controls.Add(
-                chkAnimarControlesElementos,
-                0,
-                1);
-
-            tabelaOpcoes.Controls.Add(
-                chkAnimarJanelasMinMax,
-                1,
-                1);
-
-            tabelaOpcoes.Controls.Add(
-                chkEsmaecerItensMenu,
-                0,
-                2);
-
-            tabelaOpcoes.Controls.Add(
-                chkEsmaecerToolTips,
-                1,
-                2);
-
-            tabelaOpcoes.Controls.Add(
-                chkEsmaecerMenus,
-                0,
-                3);
-
-            tabelaOpcoes.Controls.Add(
-                chkHabilitarPeek,
-                1,
-                3);
-
-            tabelaOpcoes.Controls.Add(
-                chkMostrarConteudoJanela,
-                0,
-                4);
-
-            tabelaOpcoes.Controls.Add(
-                chkMostrarMiniaturas,
-                1,
-                4);
-
-            tabelaOpcoes.Controls.Add(
-                chkRetanguloSelecao,
-                0,
-                5);
-
-            tabelaOpcoes.Controls.Add(
-                chkSombrasJanelas,
-                1,
-                5);
-
-            tabelaOpcoes.Controls.Add(
-                chkSombrasPonteiro,
-                0,
-                6);
-
-            tabelaOpcoes.Controls.Add(
-                chkRolarListas,
-                1,
-                6);
-
-            tabelaOpcoes.Controls.Add(
-                chkSalvarMiniaturas,
-                0,
-                7);
-
-            tabelaOpcoes.Controls.Add(
-                chkSuavizacaoFontes,
-                1,
-                7);
-
-            tabelaOpcoes.Controls.Add(
-                chkSombrasRotulos,
-                0,
-                8);
-
-            // =========================================================
-            // PRESETS
-            // =========================================================
-
-            panelPresets.Dock =
-                System.Windows.Forms.DockStyle.Bottom;
-
-            panelPresets.Height =
-                64;
-
-            panelPresets.BackColor =
-                System.Drawing.Color.FromArgb(
-                    28,
-                    28,
-                    28);
-
-            panelPresets.Padding =
-                new System.Windows.Forms.Padding(
-                    12,
-                    10,
-                    12,
-                    10);
-
-            panelPresets.Controls.Add(
-                painelBotoesPreset);
-
-            panelPresets.Controls.Add(
-                lblPresets);
-
-            lblPresets.Dock =
-                System.Windows.Forms.DockStyle.Left;
-
-            lblPresets.Width =
-                100;
-
-            lblPresets.TextAlign =
-                System.Drawing.ContentAlignment.MiddleLeft;
-
-            lblPresets.Font =
-                new System.Drawing.Font(
-                    "Segoe UI Semibold",
-                    9F,
-                    System.Drawing.FontStyle.Bold);
-
-            lblPresets.ForeColor =
-                System.Drawing.Color.FromArgb(
-                    180,
-                    180,
-                    180);
-
-            lblPresets.Text =
-                "PRESETS:";
-
-            painelBotoesPreset.Dock =
-                System.Windows.Forms.DockStyle.Fill;
-
-            painelBotoesPreset.FlowDirection =
-                System.Windows.Forms.FlowDirection.RightToLeft;
-
-            painelBotoesPreset.WrapContents =
-                false;
-
-            painelBotoesPreset.BackColor =
-                System.Drawing.Color.Transparent;
-
-            painelBotoesPreset.Controls.Add(
-                btnMelhorAparencia);
-
-            painelBotoesPreset.Controls.Add(
-                btnEquilibrado);
-
-            painelBotoesPreset.Controls.Add(
-                btnMelhorDesempenho);
-
-            btnMelhorAparencia.Width =
-                150;
-
-            btnMelhorAparencia.Height =
-                40;
-
-            btnEquilibrado.Width =
-                130;
-
-            btnEquilibrado.Height =
-                40;
-
-            btnMelhorDesempenho.Width =
-                160;
-
-            btnMelhorDesempenho.Height =
-                40;
-
-            // =========================================================
-            // AÇÕES
-            // =========================================================
-
-            panelAcoes.Dock =
-                System.Windows.Forms.DockStyle.Bottom;
-
-            panelAcoes.Height =
-                58;
-
-            panelAcoes.BackColor =
-                System.Drawing.Color.FromArgb(
-                    18,
-                    18,
-                    18);
-
-            panelAcoes.Padding =
-                new System.Windows.Forms.Padding(
-                    0,
-                    8,
-                    0,
-                    0);
-
-            panelAcoes.Controls.Add(
-                progressBar);
-
-            panelAcoes.Controls.Add(
-                btnRestaurar);
-
-            panelAcoes.Controls.Add(
-                btnAplicar);
-
-            btnAplicar.Dock =
-                System.Windows.Forms.DockStyle.Right;
-
-            btnAplicar.Width =
-                180;
-
-            btnAplicar.Height =
-                40;
-
-            btnAplicar.BackColor =
-                System.Drawing.Color.FromArgb(
-                    190,
-                    40,
-                    40);
-
-            btnAplicar.ForeColor =
-                System.Drawing.Color.White;
-
-            btnAplicar.FlatAppearance.BorderColor =
-                System.Drawing.Color.FromArgb(
-                    220,
-                    60,
-                    60);
-
-            btnRestaurar.Dock =
-                System.Windows.Forms.DockStyle.Right;
-
-            btnRestaurar.Width =
-                155;
-
-            btnRestaurar.Height =
-                40;
-
-            progressBar.Dock =
-                System.Windows.Forms.DockStyle.Left;
-
-            progressBar.Width =
-                220;
-
-            progressBar.Height =
-                12;
-
-            progressBar.Visible =
-                false;
-
-            progressBar.Style =
-                System.Windows.Forms.ProgressBarStyle.Blocks;
-
-            // =========================================================
-            // FINALIZAÇÃO
-            // =========================================================
-
-            Controls.Add(
-                panelPrincipal);
+            tabelaOpcoes.Controls.Add(chkAbrirCaixasCombinacao, 0, 0);
+            tabelaOpcoes.Controls.Add(chkAnimacoesBarraTarefas, 1, 0);
+            tabelaOpcoes.Controls.Add(chkAnimarControlesElementos, 0, 1);
+            tabelaOpcoes.Controls.Add(chkAnimarJanelasMinMax, 1, 1);
+            tabelaOpcoes.Controls.Add(chkEsmaecerItensMenu, 0, 2);
+            tabelaOpcoes.Controls.Add(chkEsmaecerToolTips, 1, 2);
+            tabelaOpcoes.Controls.Add(chkEsmaecerMenus, 0, 3);
+            tabelaOpcoes.Controls.Add(chkHabilitarPeek, 1, 3);
+            tabelaOpcoes.Controls.Add(chkMostrarConteudoJanela, 0, 4);
+            tabelaOpcoes.Controls.Add(chkMostrarMiniaturas, 1, 4);
+            tabelaOpcoes.Controls.Add(chkRetanguloSelecao, 0, 5);
+            tabelaOpcoes.Controls.Add(chkSombrasJanelas, 1, 5);
+            tabelaOpcoes.Controls.Add(chkSombrasPonteiro, 0, 6);
+            tabelaOpcoes.Controls.Add(chkRolarListas, 1, 6);
+            tabelaOpcoes.Controls.Add(chkSalvarMiniaturas, 0, 7);
+            tabelaOpcoes.Controls.Add(chkSuavizacaoFontes, 1, 7);
+            tabelaOpcoes.Controls.Add(chkSombrasRotulos, 0, 8);
+
+            // Presets
+            panelPresets.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panelPresets.Height = 64;
+            panelPresets.BackColor = System.Drawing.Color.FromArgb(28, 28, 28);
+            panelPresets.Padding = new System.Windows.Forms.Padding(12, 10, 12, 10);
+
+            panelPresets.Controls.Add(painelBotoesPreset);
+            panelPresets.Controls.Add(lblPresets);
+
+            lblPresets.Dock = System.Windows.Forms.DockStyle.Left;
+            lblPresets.Width = 100;
+            lblPresets.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblPresets.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            lblPresets.ForeColor = System.Drawing.Color.FromArgb(180, 180, 180);
+            lblPresets.Text = "PRESETS:";
+
+            painelBotoesPreset.Dock = System.Windows.Forms.DockStyle.Fill;
+            painelBotoesPreset.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            painelBotoesPreset.WrapContents = false;
+            painelBotoesPreset.BackColor = System.Drawing.Color.Transparent;
+
+            painelBotoesPreset.Controls.Add(btnMelhorAparencia);
+            painelBotoesPreset.Controls.Add(btnEquilibrado);
+            painelBotoesPreset.Controls.Add(btnMelhorDesempenho);
+
+            btnMelhorAparencia.Width = 150;
+            btnMelhorAparencia.Height = 40;
+
+            btnEquilibrado.Width = 130;
+            btnEquilibrado.Height = 40;
+
+            btnMelhorDesempenho.Width = 160;
+            btnMelhorDesempenho.Height = 40;
+
+            // Ações
+            panelAcoes.Dock = System.Windows.Forms.DockStyle.Bottom;
+            panelAcoes.Height = 58;
+            panelAcoes.BackColor = System.Drawing.Color.FromArgb(18, 18, 18);
+            panelAcoes.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+
+            panelAcoes.Controls.Add(progressBar);
+            panelAcoes.Controls.Add(btnRestaurar);
+            panelAcoes.Controls.Add(btnAplicar);
+
+            btnAplicar.Dock = System.Windows.Forms.DockStyle.Right;
+            btnAplicar.Width = 180;
+            btnAplicar.Height = 40;
+            btnAplicar.BackColor = System.Drawing.Color.FromArgb(190, 40, 40);
+            btnAplicar.ForeColor = System.Drawing.Color.White;
+            btnAplicar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(220, 60, 60);
+
+            btnRestaurar.Dock = System.Windows.Forms.DockStyle.Right;
+            btnRestaurar.Width = 155;
+            btnRestaurar.Height = 40;
+
+            progressBar.Dock = System.Windows.Forms.DockStyle.Left;
+            progressBar.Width = 220;
+            progressBar.Height = 12;
+            progressBar.Visible = false;
+            progressBar.Style = System.Windows.Forms.ProgressBarStyle.Blocks;
+
+            // Finalização
+            Controls.Add(panelPrincipal);
 
             ResumeLayout(false);
         }
 
-        private System.Windows.Forms.CheckBox CriarCheckBox(
-            string texto)
+        private System.Windows.Forms.CheckBox CriarCheckBox(string texto)
         {
             return new System.Windows.Forms.CheckBox
             {
                 Text = texto,
-
-                Dock =
-                    System.Windows.Forms.DockStyle.Fill,
-
+                Dock = System.Windows.Forms.DockStyle.Fill,
                 AutoSize = false,
-
-                Margin =
-                    new System.Windows.Forms.Padding(
-                        8,
-                        4,
-                        8,
-                        4),
-
-                Padding =
-                    new System.Windows.Forms.Padding(
-                        8,
-                        0,
-                        4,
-                        0),
-
-                Font =
-                    new System.Drawing.Font(
-                        "Segoe UI",
-                        9F),
-
-                ForeColor =
-                    System.Drawing.Color.FromArgb(
-                        220,
-                        220,
-                        220),
-
-                BackColor =
-                    System.Drawing.Color.Transparent,
-
-                TextAlign =
-                    System.Drawing.ContentAlignment.MiddleLeft,
-
-                FlatStyle =
-                    System.Windows.Forms.FlatStyle.Flat,
-
-                Cursor =
-                    System.Windows.Forms.Cursors.Hand
+                Margin = new System.Windows.Forms.Padding(8, 4, 8, 4),
+                Padding = new System.Windows.Forms.Padding(8, 0, 4, 0),
+                Font = new System.Drawing.Font("Segoe UI", 9F),
+                ForeColor = System.Drawing.Color.FromArgb(220, 220, 220),
+                BackColor = System.Drawing.Color.Transparent,
+                TextAlign = System.Drawing.ContentAlignment.MiddleLeft,
+                FlatStyle = System.Windows.Forms.FlatStyle.Flat,
+                Cursor = System.Windows.Forms.Cursors.Hand
             };
         }
 
-        private System.Windows.Forms.Button CriarBotao(
-            string texto)
+        private System.Windows.Forms.Button CriarBotao(string texto)
         {
             return new System.Windows.Forms.Button
             {
                 Text = texto,
-
                 Width = 140,
-
                 Height = 40,
-
-                Margin =
-                    new System.Windows.Forms.Padding(
-                        5,
-                        0,
-                        5,
-                        0),
-
-                FlatStyle =
-                    System.Windows.Forms.FlatStyle.Flat,
-
-                BackColor =
-                    System.Drawing.Color.FromArgb(
-                        35,
-                        35,
-                        35),
-
-                ForeColor =
-                    System.Drawing.Color.FromArgb(
-                        225,
-                        225,
-                        225),
-
-                Font =
-                    new System.Drawing.Font(
-                        "Segoe UI Semibold",
-                        9F,
-                        System.Drawing.FontStyle.Bold),
-
-                Cursor =
-                    System.Windows.Forms.Cursors.Hand,
-
+                Margin = new System.Windows.Forms.Padding(5, 0, 5, 0),
+                FlatStyle = System.Windows.Forms.FlatStyle.Flat,
+                BackColor = System.Drawing.Color.FromArgb(35, 35, 35),
+                ForeColor = System.Drawing.Color.FromArgb(225, 225, 225),
+                Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold),
+                Cursor = System.Windows.Forms.Cursors.Hand,
                 FlatAppearance =
                 {
-                    BorderColor =
-                        System.Drawing.Color.FromArgb(
-                            65,
-                            65,
-                            65),
-
+                    BorderColor = System.Drawing.Color.FromArgb(65, 65, 65),
                     BorderSize = 1
                 }
             };

@@ -8,7 +8,7 @@ namespace WinTuner
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new FormOtimizacao());
+            Application.Run(new FormPrincipal());
         }
     }
 }
