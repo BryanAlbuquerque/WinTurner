@@ -25,7 +25,6 @@
             btnPainel = new ReaLTaiizor.Controls.Button();
             btnDiagnostico = new ReaLTaiizor.Controls.Button();
             btnOtimizacao = new ReaLTaiizor.Controls.Button();
-            btnHistorico = new ReaLTaiizor.Controls.Button();
 
             dungeonLabel2 = new ReaLTaiizor.Controls.DungeonLabel();
 
@@ -96,17 +95,6 @@
             btnOtimizacao.Name = "btnOtimizacao";
             btnOtimizacao.Click += btnOtimizacao_Click;
 
-            // Histórico
-            ConfigurarBotao(
-                btnHistorico,
-                "Histórico",
-                new Point(12, 327),
-                new Size(196, 44)
-            );
-
-            btnHistorico.Name = "btnHistorico";
-            btnHistorico.Click += btnHistorico_Click;
-
             // Status
             dungeonLabel2.AutoSize = true;
             dungeonLabel2.BackColor = Color.Transparent;
@@ -126,7 +114,6 @@
             dungeonLabel2.Text = "● SISTEMA OPERACIONAL";
 
             SideBar.Controls.Add(dungeonLabel2);
-            SideBar.Controls.Add(btnHistorico);
             SideBar.Controls.Add(btnOtimizacao);
             SideBar.Controls.Add(btnDiagnostico);
             SideBar.Controls.Add(btnPainel);
@@ -348,7 +335,6 @@
         private ReaLTaiizor.Controls.Button btnPainel;
         private ReaLTaiizor.Controls.Button btnDiagnostico;
         private ReaLTaiizor.Controls.Button btnOtimizacao;
-        private ReaLTaiizor.Controls.Button btnHistorico;
 
         private PictureBox pictureBox1;
         private Panel SideBar;

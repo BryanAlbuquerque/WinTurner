@@ -44,12 +44,6 @@ namespace WinTuner.Forms
 
         }
 
-        private void btnHistorico_Click(object sender, EventArgs e)
-        {
-            FormHistorico formHistorico = new FormHistorico();
-            formHistorico.Show();
-            this.Hide();
-        }
 
         #endregion
 

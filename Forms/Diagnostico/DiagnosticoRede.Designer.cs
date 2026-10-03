@@ -138,6 +138,7 @@
                 Color.FromArgb(130, 0, 0);
             btnDiagnosticar.FlatAppearance.MouseOverBackColor =
                 Color.FromArgb(208, 0, 0);
+            btnDiagnosticar.Cursor = Cursors.Hand;
             btnDiagnosticar.FlatStyle = FlatStyle.Flat;
             btnDiagnosticar.Font = new Font(
                 "Segoe UI Semibold",

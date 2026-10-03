@@ -16,7 +16,6 @@ namespace WinTuner
         private ReaLTaiizor.Controls.Button btnDiagnostico;
         private ReaLTaiizor.Controls.Button btnLimpeza;
         private ReaLTaiizor.Controls.Button btnOtimizacao;
-        private ReaLTaiizor.Controls.Button btnHistorico;
 
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel3;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel2;
@@ -74,8 +73,6 @@ namespace WinTuner
             btnOtimizacao =
                 new ReaLTaiizor.Controls.Button();
 
-            btnHistorico =
-                new ReaLTaiizor.Controls.Button();
 
             lbl =
                 new ReaLTaiizor.Controls.BigLabel();
@@ -185,9 +182,6 @@ namespace WinTuner
                 new Padding(15, 15, 15, 20);
 
             SideBar.Controls.Add(
-                btnHistorico);
-
-            SideBar.Controls.Add(
                 btnOtimizacao);
 
             SideBar.Controls.Add(
@@ -203,8 +197,7 @@ namespace WinTuner
             pictureBox1.Dock =
                 DockStyle.Top;
 
-            pictureBox1.Height =
-                130;
+            pictureBox1.Size = new Size(200, 125);
 
             pictureBox1.SizeMode =
                 PictureBoxSizeMode.Zoom;
@@ -234,11 +227,6 @@ namespace WinTuner
                 "Otimização",
                 280);
 
-            ConfigurarBotao(
-                btnHistorico,
-                "Histórico",
-                335);
-
             btnDiagnostico.Click +=
                 btnDiagnostico_Click;
 
@@ -247,9 +235,6 @@ namespace WinTuner
 
             btnOtimizacao.Click +=
                 btnOtimizacao_Click;
-
-            btnHistorico.Click +=
-                btnHistorico_Click;
 
             // Título
             lbl.AutoSize =

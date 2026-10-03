@@ -25,7 +25,6 @@
 
             dungeonLabel5 = new ReaLTaiizor.Controls.DungeonLabel();
 
-            btnHistorico = new ReaLTaiizor.Controls.Button();
             btnLimpeza = new ReaLTaiizor.Controls.Button();
             btnDiagnostico = new ReaLTaiizor.Controls.Button();
             btnPainel = new ReaLTaiizor.Controls.Button();
@@ -57,7 +56,6 @@
             // 
             SideBar.BackColor = Color.FromArgb(5, 5, 5);
             SideBar.Controls.Add(dungeonLabel5);
-            SideBar.Controls.Add(btnHistorico);
             SideBar.Controls.Add(btnLimpeza);
             SideBar.Controls.Add(btnDiagnostico);
             SideBar.Controls.Add(btnPainel);
@@ -134,18 +132,6 @@
 
             btnLimpeza.Name = "btnLimpeza";
             btnLimpeza.Click += btnLimpeza_Click;
-
-            // 
-            // btnHistorico
-            // 
-            ConfigurarBotaoSidebar(
-                btnHistorico,
-                "Histórico",
-                new Point(12, 327)
-            );
-
-            btnHistorico.Name = "btnHistorico";
-            btnHistorico.Click += btnHistorico_Click;
 
             // 
             // lbl
@@ -457,7 +443,6 @@
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel1;
         private ReaLTaiizor.Controls.DungeonLabel dungeonLabel5;
 
-        private ReaLTaiizor.Controls.Button btnHistorico;
         private ReaLTaiizor.Controls.Button btnLimpeza;
         private ReaLTaiizor.Controls.Button btnDiagnostico;
         private ReaLTaiizor.Controls.Button btnPainel;
